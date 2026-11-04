@@ -22,6 +22,8 @@ Tom: direto, brasileiro e levemente irreverente. Usar frases curtas, humor sobre
 
 Subtexto de adoção nativa: **“Se isso virar padrão, a gente aposenta a extensão feliz.”** A frase comunica uma aspiração: o melhor resultado é o próprio fluxo resolver o problema. Não é uma negociação, solicitação de compra, pedido de emprego, anúncio de parceria ou alegação de interesse da Meta. Uma formulação de apoio é: “Código aberto. A ideia também pode virar recurso.”
 
+A licença MIT permite usar, copiar e modificar o código dentro dos termos publicados. Isso inclui uma eventual adoção pela Meta sem obrigação de comprar o projeto. Portanto, a estratégia é construir utilidade, reputação e uma demonstração de capacidade de produto e manutenção; aquisição, contratação ou parceria seriam possibilidades separadas, nunca uma consequência prometida do open source.
+
 ## Sistema visual
 
 | Elemento | Direção |
