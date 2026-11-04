@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://klederson.github.io/jata/sitemap.xml

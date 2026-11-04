@@ -1,0 +1,28 @@
+{
+  "name": "jata",
+  "version": "1.2.0",
+  "license": "MIT",
+  "author": "Klederson Bueno",
+  "homepage": "https://klederson.github.io/jata/",
+  "repository": { "type": "git", "url": "https://github.com/klederson/jata.git" },
+  "private": true,
+  "type": "module",
+  "description": "Reutiliza uma aba do WhatsApp Web ao abrir links de conversa.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "test:firefox": "node tests/firefox.mjs",
+    "package": "npm run build && node scripts/package.mjs",
+    "build:brand": "node scripts/build-brand.mjs",
+    "build:site": "node scripts/build-site.mjs",
+    "test:site": "node tests/site.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.1",
+    "selenium-webdriver": "4.35.0"
+  }
+}

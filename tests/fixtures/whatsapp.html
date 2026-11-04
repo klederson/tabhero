@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<title>Simulação do WhatsApp: comandos internos</title>
+<body>
+  <aside id="pane-side">Lista de conversas já carregada</aside>
+  <main id="main"><h1 id="contact">Conversa anterior</h1><textarea id="compose">Rascunho anterior</textarea></main>
+  <script nonce="fixture">
+    // A contract fixture, not a real WhatsApp session. Browser tests must assert
+    // the document and state survive; asserting just the tab ID is insufficient.
+    window.documentToken = crypto.randomUUID();
+    window.appState = { opens: [], previousDraft: "Rascunho anterior", messages: [], lookups: [] };
+    const chats = new Map();
+    const key = value => typeof value === "string" ? value : value._serialized;
+    const store = { get: id => chats.get(key(id)) };
+    const modules = {
+      WAWebWidFactory: { createWid: id => ({ _serialized: id }) },
+      WAWebChatCollection: { ChatCollection: store },
+      WAWebCollections: { Chat: store },
+      WAWebFindChatAction: {
+        findOrCreateLatestChat: async (wid, origin) => {
+          appState.lookups.push([key(wid), origin]);
+          // Native lookup can resolve a phone to a different LID identifier.
+          const id = { _serialized: key(wid).replace("@c.us", "@lid") };
+          const chat = {
+            id, active: false, draft: "",
+            setComposeContents({ text }) { this.draft = text; }
+          };
+          chats.set(key(id), chat);
+          chats.set(key(wid), chat);
+          return { chat: { id }, created: true };
+        }
+      },
+      WAWebBuildConstants: { VERSION_STR: "2.3000.1047877691" },
+      WAWebCmd: {
+        Cmd: {
+          isMainLoaded: true,
+          openChatBottom: async ({ chat }) => {
+            if (!chat) throw new Error("Comando requer o modelo de conversa");
+            for (const other of chats.values()) other.active = false;
+            chat.active = true;
+            appState.opens.push(key(chat.id));
+            document.getElementById("contact").textContent = key(chat.id);
+            document.getElementById("compose").value = chat.draft;
+            return true;
+          }
+        }
+      },
+      WAWebComposeBoxActions: {
+        ComposeBoxActions: {
+          setTextContent(chat, text) {
+            if (!chat.active) throw new Error("Rascunho em conversa inativa");
+            document.getElementById("compose").value = text;
+          }
+        }
+      }
+    };
+    window.require = name => {
+      if (window.integrationUnavailable || document.documentElement.hasAttribute("data-integration-unavailable") || !modules[name]) throw new Error("Módulo indisponível");
+      return modules[name];
+    };
+  </script>
+</body>
+</html>
