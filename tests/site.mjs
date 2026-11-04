@@ -25,73 +25,89 @@ page.on('pageerror', error => errors.push(error.message));
 page.on('response', response => { if (response.status() >= 400) badResponses.push(response.url()); });
 
 try {
-  await page.goto(url);
-  await page.evaluate(() => document.fonts.ready);
-  await page.waitForFunction(() => document.querySelector('#support-status').textContent.includes('não foi ativado'));
-  assert.equal(await page.locator('#support-submit').isDisabled(), true, 'Sem perfil ativo, não oferecer cobrança falsa');
-  assert.equal(await page.locator('h1').innerText(), 'Outra aba?\nPoxa, já tá\naberto.');
-  await page.locator('#run-demo').click();
-  assert.equal(await page.locator('.sim-tab').count(), 1);
-  assert.match(await page.locator('#sim-document').textContent(), /Documento preservado/);
-  await page.locator('[data-mode="before"]').click();
-  await page.locator('#run-demo').click();
-  await page.locator('#run-demo').click();
-  assert.equal(await page.locator('.sim-tab').count(), 3);
-  await page.locator('[data-mode="after"]').click();
-  assert.equal(await page.locator('.sim-tab').count(), 1);
-  console.log('OK site: demonstração ilustrativa diferencia os fluxos sem abrir WhatsApp.');
-
-  await page.locator('[data-browser="firefox"]').click();
-  assert.match(await page.locator('#install-steps').textContent(), /manifest.json/);
-  assert.match(await page.locator('#download-extension').getAttribute('href'), /jata-firefox.zip$/);
-  await page.locator('[data-browser="chrome"]').click();
-  const downloadUrl = new URL(await page.locator('#download-extension').getAttribute('href'), url);
-  const archive = await page.request.get(downloadUrl.href);
-  assert.equal(archive.ok(), true);
-  assert.equal((await archive.body()).subarray(0, 2).toString(), 'PK');
-  const kit = await page.request.get(`${url}downloads/jata-brand-kit.zip`);
-  assert.equal(kit.ok(), true);
-  assert.equal((await kit.body()).subarray(0, 2).toString(), 'PK');
-  console.log('OK site: instruções dos navegadores e pacotes ZIP funcionam.');
-
-  await page.locator('[data-amount="custom"]').click();
-  assert.equal(await page.locator('#custom-note').isVisible(), true);
-  assert.match(await page.locator('#custom-note').textContent(), /GitHub Sponsors/);
-  assert.equal(await page.locator('#support-submit').isDisabled(), true);
-  await page.locator('[data-amount="100"]').click();
-  await page.locator('summary').filter({ hasText: 'Está tudo pronto' }).click();
-  assert.match(await page.locator('details[open]').textContent(), /não comprovam/);
-  await page.locator('summary').filter({ hasText: 'Está tudo pronto' }).click();
-
+  const locales = ['en', 'es-419', 'pt-BR', 'id', 'hi'];
+  const catalogs = [];
+  const version = JSON.parse(await readFile('package.json', 'utf8')).version;
+  const load = async path => {
+    await page.goto(new URL(path, url).href);
+    await page.waitForFunction(() => document.documentElement.dataset.i18nReady === 'true');
+    await page.evaluate(() => document.fonts.ready);
+  };
   await mkdir('artifacts', { recursive: true });
-  await page.evaluate(() => scrollTo(0, 0));
-  await page.screenshot({ path: 'artifacts/site-desktop.png' });
-  await page.screenshot({ path: 'artifacts/site-full.png', fullPage: true });
-  for (const width of [390, 768, 1440]) {
-    await page.setViewportSize({ width, height: 900 });
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `Sem overflow horizontal em ${width}px`);
-    if (width === 390) await page.screenshot({ path: 'artifacts/site-mobile.png', fullPage: true });
+  for (const locale of locales) {
+    const catalog = JSON.parse(await readFile(`website/locales/${locale}.json`, 'utf8'));
+    catalogs.push(catalog);
+    const path = catalog.path ? `${catalog.path}/` : '';
+    await page.setViewportSize({ width: 1440, height: 1050 });
+    await load(path);
+    assert.equal(await page.locator('html').getAttribute('lang'), locale);
+    assert.equal(await page.locator('#language-select').inputValue(), locale);
+    assert.equal(await page.locator('link[rel="alternate"]').count(), 6);
+    assert.match(await page.title(), /TabThere/);
+    assert.equal(await page.locator('[data-version]').textContent(), version);
+    assert.doesNotMatch(await page.locator('body').textContent(), /__(?:BRAND|WORDMARK|I18N|META|LANG)/);
+    assert.equal(await page.locator('#support-submit').isDisabled(), true, 'Unverified receiving profile must stay disabled');
+    await page.locator('#run-demo').click();
+    assert.equal(await page.locator('.sim-tab').count(), 1);
+    assert.equal(await page.locator('#sim-document').textContent(), catalog.ui.afterDoc);
+    assert.equal(await page.locator('#sim-draft').textContent(), catalog.ui.afterDraft);
+    await page.locator('[data-mode="before"]').click();
+    await page.locator('#run-demo').click();
+    await page.locator('#run-demo').click();
+    assert.equal(await page.locator('.sim-tab').count(), 3);
+    await page.locator('[data-mode="after"]').click();
+    await page.locator('[data-browser="firefox"]').click();
+    assert.match(await page.locator('#install-steps').textContent(), /manifest.json/);
+    assert.equal(await page.locator('#install-title').textContent(), catalog.ui.firefoxTitle);
+    assert.match(await page.locator('#download-extension').getAttribute('href'), /tabthere-firefox.zip$/);
+    await page.locator('[data-browser="chrome"]').click();
+    await page.locator('[data-amount="custom"]').click();
+    assert.equal(await page.locator('#custom-note').isVisible(), true);
+    assert.equal(await page.locator('#support-submit').isDisabled(), true);
+    await page.locator('[data-amount="100"]').click();
+    if (locale === 'en') {
+      assert.equal(await page.locator('h1').innerText(), 'Another tab?\nIt’s already\nopen.');
+      await page.evaluate(() => scrollTo(0, 0));
+      await page.screenshot({ path: 'artifacts/site-desktop.png' });
+      await page.screenshot({ path: 'artifacts/site-full.png', fullPage: true });
+    }
+    for (const width of [390, 768, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `${locale}: no overflow at ${width}px`);
+      if (width === 390) { await page.evaluate(() => scrollTo(0, 0)); await page.screenshot({ path: `artifacts/site-${locale}-mobile.png`, fullPage: true }); }
+    }
+    await page.goto(new URL(`${path}privacy.html`, url).href);
+    assert.equal(await page.locator('html').getAttribute('lang'), locale);
+    assert.equal(await page.title(), catalog.privacy.title);
+    assert.equal(await page.locator('h1').innerHTML(), catalog.privacy.heading);
+    console.log(`OK site ${locale}: localized static page, interactive UI, downloads, privacy and responsive layout.`);
   }
-  console.log('OK site: responsivo em 390, 768 e 1440px; capturas salvas em artifacts.');
-
-  await page.goto(`${url}brand-book.html`);
+  await load('');
+  await Promise.all([page.waitForURL(new URL('es/', url).href), page.locator('#language-select').selectOption('es-419')]);
+  await page.waitForFunction(() => document.documentElement.dataset.i18nReady === 'true');
+  assert.equal(await page.locator('html').getAttribute('lang'), 'es-419');
+  await page.goto(new URL('es/privacy.html', url).href);
+  await Promise.all([page.waitForURL(new URL('hi/privacy.html', url).href), page.locator('#language-select').selectOption('hi')]);
+  assert.equal(await page.locator('html').getAttribute('lang'), 'hi');
+  console.log('OK site: language selector preserves the privacy route.');
+  for (const file of ['tabthere-chrome.zip','tabthere-firefox.zip','tabthere-brand-kit.zip','jata-chrome.zip']) {
+    const archive = await page.request.get(new URL(`downloads/${file}`, url).href);
+    assert.equal(archive.ok(), true);
+    assert.equal((await archive.body()).subarray(0, 2).toString(), 'PK');
+  }
+  await page.goto(new URL('brand-book.html', url).href);
   await page.evaluate(() => document.fonts.ready);
-  assert.match(await page.title(), /JáTá/);
-  assert.equal((await page.request.get(`${url}assets/brand-book.pdf`)).ok(), true);
-  await page.goto(`${url}privacy.html`);
-  assert.match(await page.locator('h1').textContent(), /Conversa sua/);
-
-  // A configured destination enables the handoff; the actual payment page is
-  // mocked here, and no sponsorship/payment is made by this test.
+  assert.match(await page.title(), /TabThere/);
+  assert.equal((await page.request.get(new URL('assets/brand-book.pdf',url).href)).ok(), true);
   await page.route('**/funding.json', route => route.fulfill({ json: { provider: 'github', enabled: true, githubSponsors: 'https://github.com/sponsors/klederson' } }));
-  await page.route('https://github.com/sponsors/klederson', route => route.fulfill({ contentType: 'text/html', body: '<h1>Checkout simulado</h1>' }));
-  await page.goto(url);
+  await page.route('https://github.com/sponsors/klederson', route => route.fulfill({ contentType: 'text/html', body: '<h1>Mock checkout</h1>' }));
+  await load('');
   await page.waitForFunction(() => !document.querySelector('#support-submit').disabled);
   await page.locator('#support-submit').click();
   await page.waitForURL('https://github.com/sponsors/klederson');
-  console.log('OK site: encaminhamento para Sponsors configurado; nenhum pagamento real executado.');
   assert.deepEqual(errors, []);
   assert.deepEqual(badResponses, []);
+  console.log('OK site: configured Sponsors handoff; no real payment performed.');
 } finally {
   await browser.close();
   await new Promise(resolve => server.close(resolve));

@@ -1,4 +1,5 @@
 import { openConversationInTab } from "./whatsapp.js";
+import { localizedError } from "./i18n.js";
 
 export function chooseTab(tabs, source) {
   return tabs
@@ -35,7 +36,7 @@ export async function routeConversation(api, source, url, canGoBack) {
   while (true) {
     const loaded = await api.tabs.get(target.id);
     if (loaded.url?.startsWith("https://web.whatsapp.com/") && loaded.status !== "loading") break;
-    if (Date.now() >= deadline) throw new Error("Aguarde o WhatsApp carregar e tente novamente. A aba não foi recarregada.");
+    if (Date.now() >= deadline) throw localizedError("load-timeout", api);
     await new Promise(resolve => setTimeout(resolve, 100));
   }
   await openConversationInTab(api, target.id, url);

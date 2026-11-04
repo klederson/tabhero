@@ -1,5 +1,6 @@
 import { conversationUrl, redirectRules } from "./links.js";
 import { chooseTab, routeConversation, whatsappTabs } from "./router.js";
+import { errorMessage, message as translatedMessage, normalizeErrorCode } from "./i18n.js";
 
 const api = globalThis.browser ?? globalThis.chrome;
 const handoffUrl = api.runtime.getURL("handoff.html");
@@ -12,14 +13,14 @@ async function installRules() {
     addRules: rules
   });
   await api.action.setBadgeText({ text: "" });
-  await api.action.setTitle({ title: "JáTá — abrir o WhatsApp Web" });
+  await api.action.setTitle({ title: translatedMessage("actionTitle", api) });
 }
 
 function initialize() {
   installRules().catch(() => {
     // Surface installation failures without logging a phone number or message.
     api.action.setBadgeText({ text: "!" });
-    api.action.setTitle({ title: "Falha ao ativar. Recarregue a extensão e confira as permissões para os sites do WhatsApp." });
+    api.action.setTitle({ title: translatedMessage("activationFailed", api) });
   });
 }
 
@@ -31,14 +32,14 @@ api.runtime.onMessage.addListener((message, sender, sendResponse) => {
   // Only our own handoff page may request tab navigation. Verify both sender
   // and fragment, rather than accepting a URL supplied by any web page.
   if (sender.id !== api.runtime.id || !sender.tab || sender.frameId !== 0 || !sender.url?.startsWith(`${handoffUrl}#`)) {
-    sendResponse({ ok: false, error: "Origem não autorizada." });
+    sendResponse({ ok: false, code: "unauthorized-source", error: errorMessage("unauthorized-source", api) });
     return;
   }
 
   const original = sender.url.slice(handoffUrl.length + 1);
   const targetUrl = conversationUrl(original);
   if (!targetUrl) {
-    sendResponse({ ok: false, error: "Este link não contém um número ou uma mensagem de conversa válidos." });
+    sendResponse({ ok: false, code: "invalid-link", error: errorMessage("invalid-link", api) });
     return;
   }
 
@@ -49,7 +50,10 @@ api.runtime.onMessage.addListener((message, sender, sendResponse) => {
   );
   routing.then(
     () => sendResponse({ ok: true }),
-    error => sendResponse({ ok: false, error: error.message || "Não foi possível abrir a conversa. A aba não foi recarregada." })
+    error => {
+      const code = normalizeErrorCode(error?.code);
+      sendResponse({ ok: false, code, error: errorMessage(code, api) });
+    }
   );
   return true;
 });

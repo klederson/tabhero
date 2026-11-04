@@ -1,0 +1,80 @@
+{
+  "language": {
+    "message": "en"
+  },
+  "brandName": {
+    "message": "TabThere"
+  },
+  "extensionName": {
+    "message": "TabThere — New chat. Same tab."
+  },
+  "extensionDescription": {
+    "message": "Open WhatsApp conversation links in your existing WhatsApp Web tab, keeping the phone number and message."
+  },
+  "actionTitle": {
+    "message": "TabThere — open WhatsApp Web"
+  },
+  "activationFailed": {
+    "message": "Couldn't activate. Reload the extension and check its permissions for WhatsApp websites."
+  },
+  "handoffTitle": {
+    "message": "TabThere — opening your conversation"
+  },
+  "headlineFirst": {
+    "message": "New chat."
+  },
+  "headlineSecond": {
+    "message": "Same tab."
+  },
+  "opening": {
+    "message": "Opening the conversation in WhatsApp Web…"
+  },
+  "opened": {
+    "message": "Conversation opened. You can close this tab."
+  },
+  "retry": {
+    "message": "Try again"
+  },
+  "openWhatsApp": {
+    "message": "Open WhatsApp Web"
+  },
+  "errorInvalidRequest": {
+    "message": "Invalid conversation link."
+  },
+  "errorUnavailable": {
+    "message": "This version of WhatsApp doesn't support the integration. Your tab wasn't reloaded."
+  },
+  "errorNotReady": {
+    "message": "Sign in to WhatsApp Web and wait for your chats to load. Then try again."
+  },
+  "errorContactNotFound": {
+    "message": "Couldn't open a conversation with this number. Check the number and your connection."
+  },
+  "errorOpenFailed": {
+    "message": "WhatsApp didn't confirm that the conversation opened. Your tab wasn't reloaded. Try again."
+  },
+  "errorInternal": {
+    "message": "Couldn't open the conversation inside WhatsApp. Your tab wasn't reloaded. Check your connection and try again."
+  },
+  "errorDocumentUnavailable": {
+    "message": "Couldn't access the loaded WhatsApp page. Your tab wasn't reloaded."
+  },
+  "errorInjectionFailed": {
+    "message": "Couldn't connect to the loaded WhatsApp page. Your tab wasn't reloaded. Check the extension's permissions and try again."
+  },
+  "errorLoadTimeout": {
+    "message": "Wait for WhatsApp to finish loading and try again. Your tab wasn't reloaded."
+  },
+  "errorUnauthorizedSource": {
+    "message": "This page isn't authorized to open a conversation."
+  },
+  "errorInvalidLink": {
+    "message": "This link doesn't contain a valid conversation number or message."
+  },
+  "errorRouting": {
+    "message": "Couldn't open the conversation. Your existing WhatsApp tab wasn't reloaded."
+  },
+  "errorExtensionUnavailable": {
+    "message": "Couldn't reach the extension. Reload the extension and try again."
+  }
+}

@@ -15,6 +15,7 @@ if (binary) options.setBinary(binary);
 const driver = await new Builder().forBrowser("firefox").setFirefoxOptions(options).build();
 const callbackErrors = [];
 const fixture = await readFile(new URL("./fixtures/whatsapp.html", import.meta.url), "utf8");
+const expectedUnavailable = JSON.parse(await readFile(new URL("../extension/_locales/en/messages.json", import.meta.url), "utf8")).errorUnavailable.message;
 let whatsappRequests = 0;
 
 try {
@@ -120,11 +121,11 @@ try {
     try {
       // Extension focus and WebDriver selection can race after a popup opens.
       await driver.switchTo().window(failureTab);
-      return (await driver.findElement(By.id("status")).getText()).includes("sem recarga");
+      return (await driver.findElement(By.id("status")).getText()) === expectedUnavailable;
     }
     catch { return false; }
   }, 15_000, "Página de erro deve oferecer nova tentativa");
-  assert.match(await driver.findElement(By.id("status")).getText(), /sem recarga/);
+  assert.equal(await driver.findElement(By.id("status")).getText(), expectedUnavailable);
   await driver.switchTo().window(whatsapp);
   await unchanged();
   assert.equal(await driver.executeScript("return appState.opens.length"), 2);

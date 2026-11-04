@@ -1,20 +1,20 @@
-# Apoio ao JáTá
+# Support TabThere
 
-A estratégia escolhida para o [JáTá](https://github.com/klederson/jata) é **GitHub Sponsors**, com contribuições a partir de **US$ 1**. Os valores sugeridos são **US$ 1, US$ 3, US$ 5 e US$ 10**, com valor personalizado na interface segura do GitHub. O apoio é voluntário e não condiciona o uso da extensão.
+The selected channel for [TabThere](https://github.com/klederson/jata) is **GitHub Sponsors**, with contributions starting at **US$ 1**. Suggested amounts are **US$ 1, US$ 3, US$ 5, and US$ 10**, with a custom amount in GitHub’s own interface. Support is voluntary and never a condition of using the extension.
 
-## Taxas e elegibilidade
+## Fees and eligibility
 
-O GitHub não cobra taxas sobre apoios feitos **por contas pessoais de quem patrocina**. Segundo a documentação, 100% desses apoios vai ao desenvolvedor ou à organização patrocinada. A regra depende da conta que **envia** o apoio, não de o destinatário ser pessoa física. Apoios feitos por contas de organizações têm tarifa de até 6%. Fonte: [taxas do GitHub Sponsors](https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/about-sponsorships-fees-and-taxes).
+GitHub charges no fee for sponsorships **sent from personal accounts**. Its documentation states that 100% of those sponsorships goes to the sponsored developer or organization. The rule depends on the account **sending** support, not whether the recipient is an individual. Sponsorships from organization accounts have a fee of up to 6%. Source: [GitHub Sponsors fees](https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/about-sponsorships-fees-and-taxes).
 
-O Brasil consta entre as regiões elegíveis para recebimento. Essa elegibilidade não substitui cadastro, verificações, formulários fiscais e aprovação. Fonte: [regiões aceitas](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors).
+Brazil is included among the eligible regions for receiving sponsorships. Eligibility does not replace enrollment, verification, tax forms, or approval. Source: [supported regions](https://docs.github.com/en/sponsors/getting-started-with-github-sponsors/about-github-sponsors).
 
-O mínimo adotado é US$ 1: a API oficial define valores em dólares inteiros entre 1 e 12.000 para tiers e patrocínios personalizados. Fonte: [referência Sponsors da API GraphQL](https://docs.github.com/en/graphql/reference/sponsors).
+The adopted minimum is US$ 1: the official API defines whole-dollar amounts from 1 to 12,000 for tiers and custom sponsorships. Source: [GraphQL Sponsors reference](https://docs.github.com/en/graphql/reference/sponsors).
 
-## Estado atual e configuração do site
+## Current state and website configuration
 
-Em 4 de novembro de 2026, a consulta pública a `https://github.com/sponsors/klederson` redirecionou ao perfil `https://github.com/klederson`. A página de recebimento ainda não está publicamente ativa. Não foi executada nenhuma mutação de cadastro, criação de tier ou pagamento durante esta documentação.
+On 4 November 2026, a public request to `https://github.com/sponsors/klederson` redirected to the profile at `https://github.com/klederson`. The receiving page was not publicly active. No enrollment, tier-creation, or payment mutation was performed while preparing this documentation.
 
-A configuração pública `funding.json` é:
+The public `funding.json` configuration is:
 
 ```json
 {
@@ -27,44 +27,44 @@ A configuração pública `funding.json` é:
 }
 ```
 
-Os valores internos estão em centavos; a interface apresenta dólares. A existência da URL em `githubSponsors` não comprova que o recebimento esteja ativo. Enquanto `enabled` for `false`, informar **“GitHub Sponsors em preparação”**, manter o botão de pagamento indisponível e oferecer a alternativa de dar uma estrela ao [repositório](https://github.com/klederson/jata).
+Internal values are in cents; the interface displays dollars. A URL in `githubSponsors` does not prove that receiving sponsorships is active. While `enabled` is `false`, show **“Financial support coming soon”**, keep the payment button unavailable, and offer starring the [repository](https://github.com/klederson/jata) as an alternative.
 
-O site estático no GitHub Pages não precisa de backend nem de cadastro próprio. Não armazenar dados bancários, fiscais, documentos, senhas ou tokens no site ou no repositório. O GitHub pode exigir login e dados de pagamento do apoiador em seu próprio fluxo.
+The static GitHub Pages site does not need a backend or its own account-registration system. Never store banking details, tax information, identity documents, passwords, or tokens in the website or repository. GitHub may require the supporter to sign in and provide payment details within its own flow.
 
-## Ativar o perfil pessoal de recebimento
+## Enable the personal receiving profile
 
-O caminho oficial é [GitHub Sponsors → Get sponsored](https://github.com/open-source/sponsors), cujo botão aponta para [github.com/sponsors/accounts](https://github.com/sponsors/accounts). Sem autenticação, esse endereço encaminha ao login. Selecionar a conta pessoal **klederson**.
+The official route is [GitHub Sponsors → Get sponsored](https://github.com/open-source/sponsors), whose button points to [github.com/sponsors/accounts](https://github.com/sponsors/accounts). Without authentication, that address leads to sign-in. Select the personal account **klederson**.
 
-O mantenedor deve concluir o onboarding diretamente no GitHub e no fluxo Stripe Connect apresentado por ele: contato, recebimento por banco, residência e país bancário, dados fiscais, autenticação de dois fatores e solicitação de aprovação. Para recebimento bancário, a documentação exige que a região da conta bancária coincida com a região de residência. Usar os dados e o banco pessoal do próprio titular; não inserir essas informações em arquivos do projeto. Após a aprovação, verificar se a página pública realmente oferece patrocínio. Fonte: [configuração de Sponsors para conta pessoal](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/setting-up-github-sponsors-for-your-personal-account).
+The maintainer must complete onboarding directly on GitHub and the Stripe Connect flow it presents: contact information, bank payouts, residence and bank country, tax details, two-factor authentication, and the approval request. For bank payouts, the documentation requires the bank-account region to match the region of residence. Use the account holder’s own personal details and bank account; do not put them in project files. After approval, verify that the public page actually offers sponsorship. Source: [setting up Sponsors for a personal account](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/setting-up-github-sponsors-for-your-personal-account).
 
-No Dashboard, em **Sponsor tiers**, criar quatro tiers **One-time** de US$ 1, US$ 3, US$ 5 e US$ 10. Em **Custom amounts**, configurar mínimo de US$ 1 e uma sugestão de valor. O mínimo personalizado também se aplica a apoios recorrentes. Não prometer benefícios ainda inexistentes na descrição dos tiers. Fonte: [gerenciamento de tiers e valores personalizados](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/managing-your-sponsorship-tiers).
+In the dashboard’s **Sponsor tiers**, create four **One-time** tiers: US$ 1, US$ 3, US$ 5, and US$ 10. Under **Custom amounts**, configure a US$ 1 minimum and a suggested amount. The custom minimum also applies to recurring sponsorships. Do not promise benefits that do not exist in tier descriptions. Source: [managing tiers and custom amounts](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/managing-your-sponsorship-tiers).
 
-## Fluxo da pessoa que apoia
+## Supporter flow
 
-A página do projeto informa os quatro valores sugeridos e oferece **“Escolher valor no GitHub”**. O destino canônico é `https://github.com/sponsors/klederson`. A escolha efetiva do tier, do valor livre e da modalidade avulsa acontece no GitHub antes da confirmação. Não apresentar um campo no site como se o valor digitado fosse transferido automaticamente ao checkout. Fonte: [como escolher tier ou valor personalizado](https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/sponsoring-an-open-source-contributor-through-github).
+The project page shows the four suggested amounts and offers **“Choose an amount on GitHub”**. The canonical destination is `https://github.com/sponsors/klederson`. The actual tier, custom amount, and one-time option are selected on GitHub before confirmation. Do not present a field on the project website as though its value were automatically transferred to checkout. Source: [choosing a tier or custom amount](https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/sponsoring-an-open-source-contributor-through-github).
 
-Não foi encontrada nas fontes oficiais consultadas uma especificação de parâmetros de URL para preencher preço ou selecionar modalidade avulsa. Portanto, esta integração não acrescenta parâmetros como `amount`, `tier_id` ou `frequency=one-time`, nem promete que um preset do site já estará selecionado no GitHub. A documentação de URLs consultada descreve metadados de rastreamento; esses metadados não configuram o valor do apoio. Fonte: [metadados em URLs de Sponsors](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/viewing-your-sponsors-and-sponsorships).
+No specification for URL parameters that prefill a price or select one-time sponsorship was found in the official sources consulted. This integration therefore does not append parameters such as `amount`, `tier_id`, or `frequency=one-time`, or promise that a website preset will already be selected on GitHub. The URL documentation consulted describes tracking metadata; that metadata does not configure the contribution amount. Source: [metadata in Sponsors URLs](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/viewing-your-sponsors-and-sponsorships).
 
-Antes de alterar `enabled` para `true`, conferir em sessão pública que a URL permanece em Sponsors, identifica Klederson Bueno, mostra o trabalho do JáTá, oferece os quatro tiers avulsos e permite valor personalizado a partir de US$ 1. Conferir o resumo da cobrança antes de confirmar qualquer pagamento. Perfil existente, abertura da página e testes com interface simulada não comprovam pagamento ou recebimento bancário.
+Before changing `enabled` to `true`, check publicly that the URL stays on Sponsors, identifies Klederson Bueno, describes TabThere’s work, offers all four one-time tiers, and allows custom amounts starting at US$ 1. Review the billing summary before confirming any payment. An existing profile, a page opening, and simulated-interface tests do not prove a payment or bank payout.
 
-## O que pode ser feito com GitHub CLI
+## What GitHub CLI can do
 
-A CLI permite consultas e operações GraphQL por `gh api graphql`. É possível consultar somente o estado público da listing, sem solicitar e-mails, conta Stripe ou informações bancárias:
+The CLI supports GraphQL queries and operations through `gh api graphql`. Query only the public listing state without requesting email addresses, Stripe accounts, or banking information:
 
 ```sh
 gh api graphql -f query='query { user(login: "klederson") { sponsorsListing { isPublic url } } }'
 ```
 
-Uma listing ausente ou não pública mantém `enabled: false`. A API também documenta `createSponsorsListing`, `createSponsorsTier` e `publishSponsorsTier`. Essas operações podem ajudar a preparar o perfil e os quatro tiers, mediante autorização, mas não foram executadas aqui. A criação da listing exige confirmação de residência e país bancário; não inferir esses campos somente pelo perfil público. Informações bancárias, formulários fiscais, verificações e aprovação continuam no onboarding do titular. A referência consultada não oferece uma operação que substitua todo esse processo. Fontes: [API Sponsors](https://docs.github.com/en/graphql/reference/sponsors) e [manual de gh api](https://cli.github.com/manual/gh_api).
+An absent or nonpublic listing keeps `enabled: false`. The API also documents `createSponsorsListing`, `createSponsorsTier`, and `publishSponsorsTier`. With authorization, those operations can help prepare the profile and four tiers, but they were not executed here. Creating a listing requires confirming residence and bank country; do not infer them from a public profile. Banking information, tax forms, verification, and approval remain part of the account holder’s onboarding. The consulted reference offers no operation that replaces that entire process. Sources: [Sponsors API](https://docs.github.com/en/graphql/reference/sponsors) and [gh api manual](https://cli.github.com/manual/gh_api).
 
-## Botão Sponsor do repositório
+## Repository Sponsor button
 
-Enquanto a listing estiver inativa, não declarar `github: klederson` em `.github/FUNDING.yml` como canal pronto para recebimento. Esse destino atualmente volta ao perfil. Usar `custom` com a URL pública real do site seguida de `/#apoie`, ou manter no README um link explicativo para essa seção. Não inventar uma URL de publicação.
+While the listing is inactive, do not declare `github: klederson` in `.github/FUNDING.yml` as a ready-to-use payment channel. That destination currently returns to the profile. Use `custom` with the actual public website URL followed by `/#apoie`, or keep an explanatory README link to that section. Do not invent a publication URL.
 
-Depois que a página de Sponsors estiver ativa e verificada, pode-se adicionar:
+After the Sponsors page is active and verified, the following can be added:
 
 ```yaml
 github: klederson
 ```
 
-Fonte: [configuração do botão Sponsor](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository).
+Source: [configuring a Sponsor button](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository).

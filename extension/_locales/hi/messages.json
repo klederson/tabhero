@@ -1,0 +1,80 @@
+{
+  "language": {
+    "message": "hi"
+  },
+  "brandName": {
+    "message": "TabThere"
+  },
+  "extensionName": {
+    "message": "TabThere — नई चैट। वही टैब।"
+  },
+  "extensionDescription": {
+    "message": "WhatsApp Web के पहले से खुले टैब में चैट के लिंक खोलें। फ़ोन नंबर और मैसेज भी साथ रहें।"
+  },
+  "actionTitle": {
+    "message": "TabThere — WhatsApp Web खोलें"
+  },
+  "activationFailed": {
+    "message": "एक्सटेंशन चालू नहीं हो सका। एक्सटेंशन फिर से लोड करें और WhatsApp की वेबसाइटों के लिए इसकी अनुमतियाँ जाँचें।"
+  },
+  "handoffTitle": {
+    "message": "TabThere — चैट खुल रही है"
+  },
+  "headlineFirst": {
+    "message": "नई चैट।"
+  },
+  "headlineSecond": {
+    "message": "वही टैब।"
+  },
+  "opening": {
+    "message": "WhatsApp Web में चैट खोली जा रही है…"
+  },
+  "opened": {
+    "message": "चैट खुल गई है। आप यह टैब बंद कर सकते हैं।"
+  },
+  "retry": {
+    "message": "फिर कोशिश करें"
+  },
+  "openWhatsApp": {
+    "message": "WhatsApp Web खोलें"
+  },
+  "errorInvalidRequest": {
+    "message": "चैट का लिंक मान्य नहीं है।"
+  },
+  "errorUnavailable": {
+    "message": "WhatsApp के इस वर्शन के साथ इंटीग्रेशन उपलब्ध नहीं है। आपका टैब फिर से लोड नहीं किया गया।"
+  },
+  "errorNotReady": {
+    "message": "WhatsApp Web में लॉग इन करें और चैट की सूची लोड होने दें। फिर कोशिश करें।"
+  },
+  "errorContactNotFound": {
+    "message": "इस नंबर के साथ चैट नहीं खुल सकी। नंबर और अपना इंटरनेट कनेक्शन जाँचें।"
+  },
+  "errorOpenFailed": {
+    "message": "WhatsApp ने चैट खुलने की पुष्टि नहीं की। आपका टैब फिर से लोड नहीं किया गया। फिर कोशिश करें।"
+  },
+  "errorInternal": {
+    "message": "WhatsApp के अंदर चैट नहीं खुल सकी। आपका टैब फिर से लोड नहीं किया गया। अपना इंटरनेट कनेक्शन जाँचें और फिर कोशिश करें।"
+  },
+  "errorDocumentUnavailable": {
+    "message": "पहले से लोड हुए WhatsApp पेज तक पहुँच नहीं हो सकी। आपका टैब फिर से लोड नहीं किया गया।"
+  },
+  "errorInjectionFailed": {
+    "message": "पहले से लोड हुए WhatsApp पेज से कनेक्ट नहीं हो सका। आपका टैब फिर से लोड नहीं किया गया। एक्सटेंशन की अनुमतियाँ जाँचें और फिर कोशिश करें।"
+  },
+  "errorLoadTimeout": {
+    "message": "WhatsApp पूरी तरह लोड होने दें और फिर कोशिश करें। आपका टैब फिर से लोड नहीं किया गया।"
+  },
+  "errorUnauthorizedSource": {
+    "message": "इस पेज को चैट खोलने की अनुमति नहीं है।"
+  },
+  "errorInvalidLink": {
+    "message": "इस लिंक में चैट के लिए मान्य नंबर या मैसेज नहीं है।"
+  },
+  "errorRouting": {
+    "message": "चैट नहीं खुल सकी। WhatsApp का पहले से खुला टैब फिर से लोड नहीं किया गया।"
+  },
+  "errorExtensionUnavailable": {
+    "message": "एक्सटेंशन से संपर्क नहीं हो सका। एक्सटेंशन फिर से लोड करें और फिर कोशिश करें।"
+  }
+}

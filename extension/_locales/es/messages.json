@@ -1,0 +1,80 @@
+{
+  "language": {
+    "message": "es"
+  },
+  "brandName": {
+    "message": "TabThere"
+  },
+  "extensionName": {
+    "message": "TabThere — Chat nuevo. Misma pestaña."
+  },
+  "extensionDescription": {
+    "message": "Abre enlaces de conversación en tu pestaña de WhatsApp Web ya abierta y conserva el número y el mensaje."
+  },
+  "actionTitle": {
+    "message": "TabThere — abrir WhatsApp Web"
+  },
+  "activationFailed": {
+    "message": "No se pudo activar. Vuelve a cargar la extensión y revisa sus permisos para los sitios de WhatsApp."
+  },
+  "handoffTitle": {
+    "message": "TabThere — abriendo la conversación"
+  },
+  "headlineFirst": {
+    "message": "Chat nuevo."
+  },
+  "headlineSecond": {
+    "message": "Misma pestaña."
+  },
+  "opening": {
+    "message": "Abriendo la conversación en WhatsApp Web…"
+  },
+  "opened": {
+    "message": "Conversación abierta. Puedes cerrar esta pestaña."
+  },
+  "retry": {
+    "message": "Intentar de nuevo"
+  },
+  "openWhatsApp": {
+    "message": "Abrir WhatsApp Web"
+  },
+  "errorInvalidRequest": {
+    "message": "El enlace de conversación no es válido."
+  },
+  "errorUnavailable": {
+    "message": "La integración no está disponible para esta versión de WhatsApp. Tu pestaña no se volvió a cargar."
+  },
+  "errorNotReady": {
+    "message": "Inicia sesión en WhatsApp Web y espera a que cargue la lista de chats. Luego, intenta de nuevo."
+  },
+  "errorContactNotFound": {
+    "message": "No se pudo abrir una conversación con este número. Revisa el número y tu conexión."
+  },
+  "errorOpenFailed": {
+    "message": "WhatsApp no confirmó que se abriera la conversación. Tu pestaña no se volvió a cargar. Intenta de nuevo."
+  },
+  "errorInternal": {
+    "message": "No se pudo abrir la conversación dentro de WhatsApp. Tu pestaña no se volvió a cargar. Revisa tu conexión e intenta de nuevo."
+  },
+  "errorDocumentUnavailable": {
+    "message": "No se pudo acceder a la página de WhatsApp que ya estaba cargada. Tu pestaña no se volvió a cargar."
+  },
+  "errorInjectionFailed": {
+    "message": "No se pudo conectar con la página de WhatsApp que ya estaba cargada. Tu pestaña no se volvió a cargar. Revisa los permisos de la extensión e intenta de nuevo."
+  },
+  "errorLoadTimeout": {
+    "message": "Espera a que WhatsApp termine de cargar e intenta de nuevo. Tu pestaña no se volvió a cargar."
+  },
+  "errorUnauthorizedSource": {
+    "message": "Esta página no tiene permiso para abrir una conversación."
+  },
+  "errorInvalidLink": {
+    "message": "Este enlace no contiene un número o un mensaje de conversación válidos."
+  },
+  "errorRouting": {
+    "message": "No se pudo abrir la conversación. Tu pestaña de WhatsApp ya abierta no se volvió a cargar."
+  },
+  "errorExtensionUnavailable": {
+    "message": "No se pudo acceder a la extensión. Vuelve a cargar la extensión e intenta de nuevo."
+  }
+}

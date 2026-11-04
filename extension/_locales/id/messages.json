@@ -1,0 +1,80 @@
+{
+  "language": {
+    "message": "id"
+  },
+  "brandName": {
+    "message": "TabThere"
+  },
+  "extensionName": {
+    "message": "TabThere — Chat baru. Tab yang sama."
+  },
+  "extensionDescription": {
+    "message": "Buka tautan percakapan di tab WhatsApp Web yang sudah terbuka, dengan nomor dan pesan tetap utuh."
+  },
+  "actionTitle": {
+    "message": "TabThere — buka WhatsApp Web"
+  },
+  "activationFailed": {
+    "message": "Tidak dapat mengaktifkan ekstensi. Muat ulang ekstensi dan periksa izinnya untuk situs WhatsApp."
+  },
+  "handoffTitle": {
+    "message": "TabThere — membuka percakapan"
+  },
+  "headlineFirst": {
+    "message": "Chat baru."
+  },
+  "headlineSecond": {
+    "message": "Tab yang sama."
+  },
+  "opening": {
+    "message": "Membuka percakapan di WhatsApp Web…"
+  },
+  "opened": {
+    "message": "Percakapan sudah terbuka. Anda dapat menutup tab ini."
+  },
+  "retry": {
+    "message": "Coba lagi"
+  },
+  "openWhatsApp": {
+    "message": "Buka WhatsApp Web"
+  },
+  "errorInvalidRequest": {
+    "message": "Tautan percakapan tidak valid."
+  },
+  "errorUnavailable": {
+    "message": "Integrasi tidak tersedia untuk versi WhatsApp ini. Tab Anda tidak dimuat ulang."
+  },
+  "errorNotReady": {
+    "message": "Masuk ke WhatsApp Web dan tunggu hingga daftar percakapan selesai dimuat. Lalu coba lagi."
+  },
+  "errorContactNotFound": {
+    "message": "Tidak dapat membuka percakapan dengan nomor ini. Periksa nomor dan koneksi Anda."
+  },
+  "errorOpenFailed": {
+    "message": "WhatsApp belum mengonfirmasi bahwa percakapan terbuka. Tab Anda tidak dimuat ulang. Coba lagi."
+  },
+  "errorInternal": {
+    "message": "Tidak dapat membuka percakapan di dalam WhatsApp. Tab Anda tidak dimuat ulang. Periksa koneksi Anda dan coba lagi."
+  },
+  "errorDocumentUnavailable": {
+    "message": "Tidak dapat mengakses halaman WhatsApp yang sudah dimuat. Tab Anda tidak dimuat ulang."
+  },
+  "errorInjectionFailed": {
+    "message": "Tidak dapat terhubung ke halaman WhatsApp yang sudah dimuat. Tab Anda tidak dimuat ulang. Periksa izin ekstensi dan coba lagi."
+  },
+  "errorLoadTimeout": {
+    "message": "Tunggu hingga WhatsApp selesai dimuat, lalu coba lagi. Tab Anda tidak dimuat ulang."
+  },
+  "errorUnauthorizedSource": {
+    "message": "Halaman ini tidak memiliki izin untuk membuka percakapan."
+  },
+  "errorInvalidLink": {
+    "message": "Tautan ini tidak berisi nomor atau pesan percakapan yang valid."
+  },
+  "errorRouting": {
+    "message": "Tidak dapat membuka percakapan. Tab WhatsApp yang sudah terbuka tidak dimuat ulang."
+  },
+  "errorExtensionUnavailable": {
+    "message": "Tidak dapat menghubungi ekstensi. Muat ulang ekstensi dan coba lagi."
+  }
+}

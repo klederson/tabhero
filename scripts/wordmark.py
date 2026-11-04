@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build portable JáTá logos from the local OFL font and existing symbol.
+"""Build portable TabThere logos from the local OFL font and existing symbol.
 
 Run with a Python environment containing fonttools. No network or external font
 references are used in the resulting SVGs. Font license: see the existing
@@ -31,7 +31,7 @@ def main():
     outline = SVGPathPen(glyphs)
     bounds = BoundsPen(glyphs)
     cursor = 0
-    for char in "játá.":
+    for char in "tabthere.":
         glyph = glyphs[cmap[ord(char)]]
         matrix = (1, 0, 0, 1, cursor, 0)
         glyph.draw(TransformPen(outline, matrix))
@@ -55,10 +55,10 @@ def main():
             "viewBox": f"0 0 {width} 128", "role": "img",
             "aria-labelledby": "logo-title", "fill": "none",
         })
-        ET.SubElement(svg, f"{{{NS}}}title", {"id": "logo-title"}).text = "JáTá"
+        ET.SubElement(svg, f"{{{NS}}}title", {"id": "logo-title"}).text = "TabThere"
         ET.SubElement(svg, f"{{{NS}}}desc").text = (
-            "Aba de navegador com seta retornando para dentro e palavra játá. "
-            "Bricolage Grotesque 800 convertida em contornos. Klederson Bueno, 2026."
+            "Browser tab with an arrow returning inside and the wordmark tabthere. "
+            "Bricolage Grotesque 800 converted to outlines. Klederson Bueno, 2026."
         )
         symbol = ET.parse(ROOT / "website/assets/symbol.svg").getroot()
         for child in symbol:

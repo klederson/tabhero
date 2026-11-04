@@ -1,69 +1,69 @@
-<p align="center"><img src="brand/logo.svg" width="230" alt="JáTá"></p>
+<p align="center"><img src="brand/logo.svg" width="280" alt="TabThere"></p>
 
-<h1 align="center">Uma conversa nova. A aba de sempre.</h1>
+<h1 align="center">New chat. Same tab.</h1>
 
-<p align="center">Outra aba? Poxa, já tá aberto.</p>
+<p align="center">Another tab? It’s already open.</p>
 
-<p align="center"><a href="https://klederson.github.io/jata/">Site</a> · <a href="https://github.com/klederson/jata/releases">Downloads</a> · <a href="docs/brand-strategy.md">Marca e estratégia</a> · <a href="docs/research.md">Pesquisa pública</a> · <a href="docs/funding.md">Apoio</a></p>
+<p align="center"><a href="https://klederson.github.io/jata/">Website</a> · <a href="https://github.com/klederson/jata/releases">Downloads</a> · <a href="docs/brand-strategy.md">Brand strategy</a> · <a href="docs/research.md">Public research</a> · <a href="docs/internationalization.md">Languages</a> · <a href="docs/funding.md">Support</a></p>
 
-**JáTá** is an independent, MIT-licensed browser extension for Chrome and Firefox. It opens chat links inside an already loaded WhatsApp Web tab, preserving its document and session. It does not send messages automatically. **Experimental:** browser integration tests use a simulated app; an authenticated WhatsApp session has not been validated in this development session.
+**TabThere** is an independent, MIT-licensed browser extension for Chrome and Firefox. It opens chat links inside an already loaded WhatsApp Web tab, preserving the document and session and preparing a draft for manual sending. It does not send messages automatically.
 
-Projeto independente, sem vínculo, patrocínio ou endosso de WhatsApp ou Meta. WhatsApp é marca de seus respectivos titulares.
+**Experimental — version 1.3.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
 
-Extensão para Chrome e Firefox que intercepta links de conversa e troca a conversa dentro do WhatsApp Web já carregado, preservando o documento da aba e preenchendo o rascunho sem enviar mensagens.
+Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta. WhatsApp is a trademark of its respective owners.
 
-## Atualizar uma instalação existente
+## Update an existing installation
 
-Recarregue **somente a extensão**: no Chrome, use o botão de recarregar do cartão em `chrome://extensions`; no Firefox, use **Recarregar** ao lado da extensão em `about:debugging`. A marca agora aparece como **JáTá — a conversa na aba de sempre**, versão **1.2.0**. Não é necessário atualizar a aba do WhatsApp, pois a integração é executada sob demanda.
+Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabThere**, version **1.3.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
 
-## Instalar no Chrome
+## Install in Chrome
 
-Os arquivos prontos estão em `dist/chrome`. Não é necessário instalar Node ou executar comandos para usar a extensão.
+Ready-to-use files are in `dist/chrome`. Using the extension does not require Node or terminal commands.
 
-1. Abra `chrome://extensions`.
-2. Ative **Modo do desenvolvedor**.
-3. Clique em **Carregar sem compactação**.
-4. Selecione a pasta `dist/chrome` deste projeto.
-5. Deixe o WhatsApp Web aberto e clique em um link `wa.me` ou `api.whatsapp.com/send`.
+1. Open `chrome://extensions`.
+2. Turn on **Developer mode**.
+3. Click **Load unpacked**.
+4. Select this project’s `dist/chrome` folder.
+5. Keep WhatsApp Web open and click a `wa.me` or `api.whatsapp.com/send` link.
 
-Se usar o pacote `artifacts/whatsapp-mesma-aba-chrome.zip`, extraia o ZIP antes de selecionar a pasta. Chrome 120 ou superior.
+If you downloaded `artifacts/tabthere-chrome.zip`, extract it first and select the extracted folder. Requires Chrome 120 or later. This is a local installation, not a Chrome Web Store listing.
 
-## Instalar no Firefox
+## Install in Firefox
 
-1. Abra `about:debugging#/runtime/this-firefox`.
-2. Clique em **Carregar extensão temporária**.
-3. Selecione `dist/firefox/manifest.json` deste projeto.
-4. Deixe o WhatsApp Web aberto e clique em um link de conversa.
+1. Open `about:debugging#/runtime/this-firefox`.
+2. Click **Load Temporary Add-on**.
+3. Select `dist/firefox/manifest.json`.
+4. Keep WhatsApp Web open and try a chat link.
 
-Firefox 142 ou superior. Essa instalação é temporária e precisa ser repetida após reiniciar o Firefox. A instalação permanente no Firefox comum requer assinatura da Mozilla; o ZIP fornecido ainda não é assinado nem publicado em uma loja.
+If using `artifacts/tabthere-firefox.zip`, extract it first. Requires Firefox 142 or later. This temporary installation must be repeated after restarting Firefox. Permanent installation in standard Firefox requires Mozilla signing; the supplied package is not signed or published in an add-on store.
 
-## Comportamento
+## Behavior
 
-- Captura `https://wa.me/NUMERO`, `https://api.whatsapp.com/send?phone=NUMERO` e `https://www.whatsapp.com/send?phone=NUMERO`, incluindo variantes com barra final e HTTP.
-- Preserva a mensagem de `text`, incluindo acentos, emojis, quebras de linha e caracteres especiais. Sem `text`, preserva o rascunho existente do destinatário.
-- Reutiliza uma aba do WhatsApp na mesma janela quando possível. Se estiver em outra janela, foca essa janela. Troca de conversa pelo comando interno do aplicativo, sem navegar, trocar a URL ou recarregar a aba.
-- Se não houver uma aba do WhatsApp, transforma a aba intermediária no WhatsApp Web.
-- Fecha uma aba intermediária nova. Quando há histórico anterior, volta à página de origem para preservá-la. Ao digitar um link em uma aba vazia já existente, ela pode voltar para uma página em branco.
-- O botão da extensão também abre ou foca o WhatsApp Web.
-- A mensagem fica preenchida para envio manual. A extensão não envia mensagens automaticamente.
+- Captures `https://wa.me/NUMBER`, `https://api.whatsapp.com/send?phone=NUMBER`, and `https://www.whatsapp.com/send?phone=NUMBER`, including trailing-slash and HTTP variants.
+- Preserves the `text` message, including accents, emojis, line breaks, and special characters. Without `text`, it preserves the recipient’s existing draft.
+- Prefers an existing WhatsApp tab in the same window; otherwise, focuses its window. It switches chats through internal app commands, without navigating, changing the URL, or reloading the loaded tab.
+- If no WhatsApp tab exists, opens WhatsApp Web in the intermediary tab.
+- Closes a newly created intermediary tab. When that tab has prior history, returns to the source page instead. A link typed into an existing blank tab may return to a blank page.
+- The extension button also opens or focuses WhatsApp Web.
+- Prepares the message for manual sending. It never sends it automatically.
 
-A aba precisa pertencer ao mesmo navegador e perfil da extensão. Se você usa WhatsApp no Chrome e clica no Firefox, uma extensão comum do Firefox não consegue controlar a aba do Chrome. Esta versão é destinada a janelas normais; navegação privada não foi validada.
+The tab must be in the same browser and profile as the extension. A Firefox extension cannot control a WhatsApp tab in Chrome. This release targets normal windows; private browsing has not been validated.
 
-A integração usa os módulos internos já carregados do WhatsApp para localizar o contato, abrir a conversa e preencher o campo de mensagem. Essas interfaces não são uma API pública estável. Se os módulos estiverem indisponíveis, a extensão apresenta um erro na página intermediária e mantém a aba existente sem recarga; não há fallback de navegação. O código não carrega bibliotecas ou scripts remotos e não altera o carregador de módulos do aplicativo.
+The integration uses WhatsApp’s already loaded internal modules to resolve a contact, open the chat, and fill in the draft. These interfaces are not a stable public API. If unavailable, the extension shows an error on the intermediary page and leaves the existing WhatsApp tab intact. **There is no navigation or reload fallback.** It does not load remote scripts or libraries or modify the app’s module loader.
 
-A rota `https://web.whatsapp.com/send` é usada somente para a primeira abertura, quando nenhuma aba do WhatsApp existe. Se o WhatsApp estiver desconectado, será necessário vincular a conta normalmente.
+`https://web.whatsapp.com/send` is used only for the initial opening when no WhatsApp tab exists. If signed out, link the account through the normal WhatsApp flow.
 
-Convites de grupo, canais, links de compartilhamento sem número e códigos de negócio (`wa.me/message/...`) seguem seu fluxo normal. Se esse fluxo depois chegar a um link de conversa compatível, a extensão o intercepta nesse ponto. Links já direcionados a `web.whatsapp.com` seguem seu fluxo normal.
+Group invitations, channels, numberless sharing links, and business codes such as `wa.me/message/...` follow their normal flow. If that flow later reaches a supported numbered chat link, TabThere intercepts it then. Links already pointing to `web.whatsapp.com` follow their normal flow.
 
-## Permissões e privacidade
+## Permissions and privacy
 
-O acesso é limitado a `wa.me`, `api.whatsapp.com`, `www.whatsapp.com` e `web.whatsapp.com`. A extensão usa `declarativeNetRequestWithHostAccess` para redirecionar navegações antes da página intermediária e `scripting` para executar a abertura da conversa dentro do documento carregado. O navegador pode pedir a concessão de acesso a esses sites; no Chrome, deixe o acesso aos sites declarados habilitado para a captura automática.
+Host access is limited to `wa.me`, `api.whatsapp.com`, `www.whatsapp.com`, and `web.whatsapp.com`. `declarativeNetRequestWithHostAccess` redirects navigations before the intermediary page; `scripting` opens the chat within the loaded document. The browser may ask for site access. Keep access to the declared sites enabled in Chrome for automatic interception.
 
-Apenas a página intermediária local é declarada acessível por outros sites, permitindo que um link de qualquer site chegue a ela. Isso não concede acesso de leitura a outros sites. A execução sob demanda é restrita ao WhatsApp Web e usa o modelo do contato de destino para abrir a conversa e preencher seu rascunho; não consulta o histórico das mensagens. Não há telemetria, servidores próprios ou armazenamento de números e mensagens pela extensão.
+Only the local intermediary page is web-accessible, allowing links from any site to reach it. This does not grant access to read other sites. On-demand execution is restricted to WhatsApp Web and uses the destination contact model to open the chat and fill in its draft. It does not query message history. The extension has no telemetry, server, or storage of phone numbers and messages.
 
-## Desenvolver e testar
+## Develop and test
 
-Node 22 ou superior:
+Node 22 or later:
 
 ```sh
 npm ci
@@ -71,9 +71,7 @@ npm test
 npm run build
 ```
 
-Os pacotes usam JavaScript nativo, sem bibliotecas de execução ou compilador. `npm run build` gera manifestos separados: service worker no Chrome e background script modular no Firefox.
-
-Testes de integração:
+Packages use native JavaScript without runtime libraries or a compiler. The build generates separate manifests: a Chrome service worker and a modular Firefox background script.
 
 ```sh
 npx playwright install chromium
@@ -81,34 +79,36 @@ npm run test:browser
 npm run test:firefox
 ```
 
-O teste do Firefox usa Selenium, Firefox instalado e geckodriver. Selenium Manager procura o driver; `FIREFOX_BINARY` permite especificar um executável. Os testes abrem perfis isolados e simulam as respostas de páginas comuns e os contratos dos módulos internos do WhatsApp. O redirecionamento, a injeção no contexto da página e as APIs de abas são exercitados pelos navegadores reais.
+Firefox tests use Selenium, an installed Firefox, and geckodriver. Selenium Manager locates the driver; `FIREFOX_BINARY` selects a custom browser executable. Tests launch isolated profiles and simulate ordinary pages and WhatsApp’s internal module contracts. Real browsers exercise redirects, execution in the page context, and tab APIs.
 
-As verificações conferem que o documento original, seu identificador em memória, o rascunho anterior e a URL permanecem intactos; que a conversa e o rascunho de destino mudam; e que nenhum novo documento do WhatsApp é solicitado. Também verificam que uma falha da integração preserva a aba sem fallback de navegação. Esses testes **não comprovam compatibilidade com uma sessão autenticada real** e não enviam mensagens.
+Checks verify that the original document, its in-memory identity, prior draft, and URL remain intact while the target chat and draft change. They also check that no new WhatsApp document is requested and an integration failure preserves the tab without navigation fallback. These tests **do not prove compatibility with a real authenticated session** and do not send messages.
 
-Para validar o manifesto do Firefox e gerar os ZIPs (o empacotamento requer `zip`):
+Validate the Firefox manifest and generate ZIPs (`zip` is required for packaging):
 
 ```sh
 npx web-ext lint --source-dir dist/firefox
 npm run package
 ```
 
-Validação manual com sua conta:
+For a separate manual validation, use an authorized test account:
 
-1. Abra e autentique o WhatsApp Web.
-2. Em outra aba, clique em um link `wa.me/NUMERO?text=Ol%C3%A1` para um número de teste seu.
-3. Confira que a conversa muda dentro da interface já carregada, sem tela de carregamento, navegação ou recarga, e que o texto está preenchido sem envio automático.
-4. Repita com `api.whatsapp.com/send/?phone=NUMERO&text=Ol%C3%A1`.
+1. Open WhatsApp Web and sign in.
+2. In another tab, open `wa.me/NUMBER?text=Hello` using a test number you control.
+3. Confirm that the chat changes inside the loaded interface and the text is drafted without sending. Verify document identity and state, unchanged URL, and no navigation, reload, or new document request; a reused tab ID alone is insufficient.
+4. Repeat with `api.whatsapp.com/send/?phone=NUMBER&text=Hello`, and record browser, app version, date, and results without personal data.
 
-Referências: [regras de redirecionamento no Chrome](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest), [background scripts no Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/background), [instalação temporária no Firefox](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/).
+References: [Chrome redirect rules](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest), [Firefox background scripts](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/background), [temporary Firefox installation](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/).
 
-Contratos internos consultados no código público de WPPConnect/WA-JS: [abertura de conversa](https://github.com/wppconnect-team/wa-js/blob/main/src/chat/functions/openChatBottom.ts), [preenchimento do rascunho](https://github.com/wppconnect-team/wa-js/blob/main/src/chat/functions/setInputText.ts), [resolução do contato](https://github.com/wppconnect-team/wa-js/blob/main/src/whatsapp/functions/findOrCreateLatestChat.ts). O adaptador local é independente dessas bibliotecas e não as inclui na extensão.
+Internal contracts were consulted in public WPPConnect/WA-JS code: [opening a chat](https://github.com/wppconnect-team/wa-js/blob/main/src/chat/functions/openChatBottom.ts), [setting a draft](https://github.com/wppconnect-team/wa-js/blob/main/src/chat/functions/setInputText.ts), [resolving a contact](https://github.com/wppconnect-team/wa-js/blob/main/src/whatsapp/functions/findOrCreateLatestChat.ts). The local adapter is independent of those libraries and does not bundle them.
 
-## Site, identidade e apoio
+## Website, identity, and support
 
-O site é estático, sem framework ou backend, e publicado no GitHub Pages pela ação [pages.yml](.github/workflows/pages.yml). O código fica em `website/`; os vetores, guia PDF e cartão social ficam em `brand/`. As fontes são auto-hospedadas com suas licenças OFL. Execute `npm run package` e `npm run build:site` para gerar `website/dist/`. O kit de marca e os dois pacotes são incluídos nos downloads do site.
+The static website has no framework or backend and is deployed to GitHub Pages by [pages.yml](.github/workflows/pages.yml). Source is in `website/`; vectors, the PDF guide, and social artwork are in `brand/`. Fonts are self-hosted with their OFL licenses. Run `npm run package` and `npm run build:site` to generate `website/dist/`. Website downloads include `tabthere-chrome.zip`, `tabthere-firefox.zip`, and `tabthere-brand-kit.zip`.
 
-`npm run build:brand` regenera ícones, cartão social e guia PDF com o Chromium do Playwright. Para regenerar os contornos dos wordmarks, instale `fonttools` num ambiente Python e execute `scripts/wordmark.py`. Não é necessário regenerar esses arquivos para construir ou publicar o site: os assets finais estão versionados.
+`npm run build:brand` regenerates icons, social artwork, and the PDF guide with Playwright Chromium. To regenerate outlined wordmarks, install `fonttools` in a Python environment and run `scripts/wordmark.py`. The final assets are versioned; regenerating them is not required to build or publish the site.
 
-O apoio escolhido é **GitHub Sponsors a partir de US$ 1**, com opções de valores e campo livre no próprio GitHub. Enquanto o perfil de recebimento do mantenedor não estiver habilitado, o site mostra o estado de preparação e não oferece uma cobrança inexistente. Depois da inscrição, `node scripts/enable-sponsors.mjs` verifica a página pública antes de ativar a configuração local. Veja [funding.md](docs/funding.md).
+English is primary at the site root. Localized static pages are available at `es/`, `pt-br/`, `id/`, and `hi/`, with a visible language selector and matching privacy pages. Website copy lives in `website/locales/`, the shared page structure in `website/template.html`, and native extension messages in `extension/_locales/`. The extension follows the browser UI language with English as its fallback. The website does not redirect based on location or browser language; a language choice stays in its URL. See the [internationalization plan](docs/internationalization.md) for language-review requirements and the limits of market research.
 
-O código e os assets originais são distribuídos sob [licença MIT](LICENSE); as fontes mantêm suas licenças próprias. Contribuições são bem-vindas: [CONTRIBUTING.md](CONTRIBUTING.md).
+Support is optional through **GitHub Sponsors, from US$ 1**. Receiving payments is not enabled yet; the website shows a pending state and does not offer a nonexistent checkout. Once enrollment is complete, `node scripts/enable-sponsors.mjs` checks the public page before enabling local configuration. Amount and payment type are confirmed on GitHub. GitHub charges no fee for sponsorships from personal accounts; sponsorships from organizations may incur a fee of up to 6%. A GitHub account is required. See [funding.md](docs/funding.md).
+
+**The best version of TabThere? The one you never have to install.** Native adoption would be a welcome outcome. This is not an acquisition request or a claim of interest from Meta. The [MIT license](LICENSE) permits reuse under its terms, without obliging anyone to adopt or acquire the project. Fonts retain their own licenses. Contributions are welcome: [CONTRIBUTING.md](CONTRIBUTING.md).

@@ -1,94 +1,102 @@
-# Estratégia de marca — JáTá
+# Brand strategy — TabThere
 
-Autoria: Klederson Bueno, 2026. Proposta de identidade e lançamento, 4 de novembro de 2026.
+Author: Klederson Bueno, 2026. Identity and launch direction, 4 November 2026. Current product identity: TabThere 1.3.0.
 
-## Resultado que a marca deve tornar claro
+## Make the desired outcome clear
 
-Uma pessoa clica em um link para começar uma conversa e quer continuar no WhatsApp Web que já usa. A JáTá existe para encurtar esse caminho: abrir a conversa dentro da interface carregada, preservar a sessão e preparar o rascunho para envio manual. A comunicação deve explicar esse resultado antes de falar de arquitetura.
+Someone clicks a link to start a chat and wants to keep using the WhatsApp Web page already open. TabThere shortens that path: open the chat within the loaded interface, preserve the session, and prepare a draft for manual sending. Explain that result before discussing architecture.
 
-Nome proposto: **JáTá**. Forma técnica sem acento: **jata**. Repositório de destino proposto: **klederson/jata**. Esses nomes são decisões de identidade e destino, não confirmação de disponibilidade de marca, domínio ou criação do repositório.
+Selected name: **TabThere**. Displayed wordmark: **tabthere.** Repository: [klederson/jata](https://github.com/klederson/jata). Choosing a name and visual direction does not establish trademark or domain availability or legal clearance.
 
-Frase principal: **“Outra aba? Poxa, já tá aberto.”**
+Primary line: **“Another tab? It’s already open.”**
 
-Promessa complementar: **“Uma conversa nova. A aba de sempre.”**
+Tagline: **“New chat. Same tab.”**
 
-A graça está no desvio desnecessário do fluxo, com uma observação falada e fácil de reconhecer. A marca não depende de xingar uma empresa, hostilizar quem construiu o produto ou exagerar o tamanho do problema.
+Supporting copy: **“You wanted to start a chat. Not open a franchise of WhatsApp tabs.”**
 
-## Posição e voz
+The joke is about an unnecessary detour, expressed in language people recognize. The brand does not depend on swearing at a company, attacking the people who built the software, or exaggerating the size of the problem.
 
-Usuários primeiro: servir quem trabalha, compra, atende ou combina algo pelo navegador. Uma pequena melhoria verificável vale mais que um manifesto de indignação. A [pesquisa pública](research.md) dá contexto histórico, sem funcionar como prova de popularidade ou depoimento sobre a extensão.
+## Position and voice
 
-Tom: direto, brasileiro e levemente irreverente. Usar frases curtas, humor sobre abrir outra aba e instruções claras quando algo falhar. Evitar “revolucionário”, “a comunidade inteira pediu”, insultos, urgência fabricada e promessas universais.
+Users first: serve people working, shopping, supporting customers, or making plans in the browser. A small, verifiable improvement is more useful than a manifesto of outrage. The [public research](research.md) provides historical context, not proof of popularity or testimonials about the extension.
 
-Subtexto de adoção nativa: **“Se isso virar padrão, a gente aposenta a extensão feliz.”** A frase comunica uma aspiração: o melhor resultado é o próprio fluxo resolver o problema. Não é uma negociação, solicitação de compra, pedido de emprego, anúncio de parceria ou alegação de interesse da Meta. Uma formulação de apoio é: “Código aberto. A ideia também pode virar recurso.”
+Voice: warm, direct, and lightly irreverent. Use short sentences, humor about the extra tab, and clear guidance when something fails. Avoid “revolutionary,” “the whole community asked for this,” insults, manufactured urgency, and universal promises.
 
-A licença MIT permite usar, copiar e modificar o código dentro dos termos publicados. Isso inclui uma eventual adoção pela Meta sem obrigação de comprar o projeto. Portanto, a estratégia é construir utilidade, reputação e uma demonstração de capacidade de produto e manutenção; aquisição, contratação ou parceria seriam possibilidades separadas, nunca uma consequência prometida do open source.
+The subtle hope for native adoption is: **“The best version of TabThere? The one you never have to install.”** The best outcome would be for the original flow to solve the problem itself. This is not an acquisition request, job application, partnership announcement, or claim of interest from Meta. A supporting line is: “Open code. The idea can become a feature, too.”
 
-## Sistema visual
+The MIT license permits use, copying, and modification under its published terms. That includes potential adoption by Meta without an obligation to buy the project. Build usefulness, reputation, and evidence of product and maintenance capability; acquisition, hiring, or partnership would be separate possibilities, never a promised result of open source. No one is obliged to adopt or acquire the project.
 
-| Elemento | Direção |
+## Visual system
+
+| Element | Direction |
 | --- | --- |
-| Lima ácida — `#C7F65A` | Cor de assinatura, botões principais, destaque do retorno à aba. |
-| Ink — `#17231B` | Texto principal e formas do símbolo. |
-| Creme — `#F7F7EF` | Fundo claro, áreas de leitura e respiro. |
-| Coral — `#FF795A` | Pontuação visual, situações de atrito e destaques secundários. |
-| Símbolo | Aba de navegador com uma seta retornando para dentro. Desenho próprio, simples e legível em tamanho de ícone. |
-| Tipografia | Sans legível, com suporte correto a “JáTá”; hierarquia firme e linguagem de interface familiar. |
+| Acid lime — `#C7F65A` | Signature color, primary actions, and emphasis on returning to the existing tab. |
+| Ink — `#17231B` | Main text and symbol structure. |
+| Cream — `#F7F7EF` | Light background, reading areas, and breathing room. |
+| Coral — `#FF795A` | Visual punctuation, friction, and secondary emphasis. |
+| Symbol | A browser tab with an arrow returning inside. Original, simple, and legible at icon size. |
+| Typography | Bricolage Grotesque for the wordmark and headings; Manrope for body and interface text. Check language-specific character coverage and readable hierarchy. |
 
-Não usar balão de conversa, telefone, combinação derivada de logo do WhatsApp ou selo que pareça oficial. O símbolo precisa continuar reconhecível sem depender da cor. Nas aplicações, conferir contraste de texto e foco de teclado; o coral não deve ser o único sinal de erro. A palavra JáTá permanece como assinatura mais visível.
+Do not use a speech bubble, phone, WhatsApp-derived logo, or official-looking badge. The symbol should remain recognizable without relying on color. Check text contrast and keyboard focus; coral must not be the only indication of an error. TabThere remains the most prominent identity.
 
-## Landing: ordem da conversa
+## Landing-page narrative
 
-1. **Reconhecer o incômodo.** “Outra aba? Poxa, já tá aberto.” Seguir com uma frase concreta: “A JáTá abre o link de conversa no WhatsApp Web que você já deixou aberto.”
-2. **Demonstrar o resultado.** Mostrar origem do clique, conversa de destino e rascunho na mesma interface. Usar números e conteúdo fictícios. Demonstração de interface simulada deve trazer esse rótulo no próprio bloco; não apresentá-la como gravação autenticada.
-3. **Explicar o alcance.** Mensagem preparada, envio manual, mesmo navegador e perfil. Falha de integração vira erro visível e preserva a aba. Não prometer funcionar com todos os tipos de link ou todas as versões.
-4. **Dar confiança verificável.** Código disponível, instruções de instalação, permissões explicadas e limites de compatibilidade próximos da chamada de instalação. Licença de distribuição pretendida: **MIT**, acompanhada de arquivo de licença e aviso de autoria de 2026 Klederson Bueno nos artefatos publicados.
-5. **Convidar a contribuir.** “Ver o código” e “Relatar um problema” são chamadas úteis. Fechar com “Se isso virar padrão, a gente aposenta a extensão feliz.”
+1. **Recognize the friction.** “Another tab? It’s already open.” Follow with a concrete explanation: “TabThere opens the chat link in the WhatsApp Web page you already have loaded.”
+2. **Demonstrate the result.** Show the source click, destination chat, and draft within the same interface. Use fictional numbers and content. Label a simulated interface inside its demonstration block; do not present it as an authenticated recording.
+3. **Explain the scope.** A prepared draft, manual sending, the same browser and profile. Integration failure becomes a visible error and preserves the tab. Do not promise every link type or app version will work.
+4. **Offer verifiable confidence.** Available source, installation instructions, explained permissions, and compatibility limits near the installation action. Distribute under **MIT**, with the license file and © 2026 Klederson Bueno notice in published artifacts.
+5. **Invite useful contributions.** “View the code” and “Report a problem” are useful actions. Close with “The best version of TabThere? The one you never have to install.”
 
-O bloco de demonstração pode usar “Uma conversa nova. A aba de sempre.” Para casos de erro, preferir “Não consegui abrir a conversa. Sua aba continua como estava.” Somente usar esse texto quando o comportamento descrito estiver implementado.
+The demonstration can use “New chat. Same tab.” For an error, prefer “I couldn’t open the chat. Your tab is still as you left it.” Use that wording only when the implementation guarantees the described behavior.
 
-## Credibilidade técnica e limites
+## Technical credibility and limits
 
-**A integração com o aplicativo real autenticado não foi validada nesta sessão. Os testes de navegador simulam as interfaces do WhatsApp.** Essa informação deve estar legível na documentação e no bloco de compatibilidade; a landing não deve esconder a limitação em um rodapé genérico.
+**Integration with a real authenticated app has not been validated in this development session. Browser tests simulate WhatsApp interfaces.** Make that readable in the documentation and compatibility block; do not hide the limitation in a generic footer.
 
-O critério central é preservar o documento já carregado, sem navegar, atualizar URL ou recarregar a aba para trocar de conversa. Uma demonstração de reutilização do identificador da aba, sozinha, não comprova isso. A validação técnica deve conferir também identidade do documento e seu estado, conversa e rascunho, além da falha sem fallback de navegação.
+The central criterion is preserving the already loaded document, without navigating, updating its URL, or reloading the tab to switch chats. Showing that the tab ID is reused does not establish this. Technical validation must check document identity and state, destination chat and draft, and failure without a navigation fallback.
 
-Antes de apresentar compatibilidade real como comprovada, registrar uma sessão autenticada de teste autorizada com conta de teste, navegador e versão, data, links sintéticos e resultado. Qualquer gravação pública deve excluir dados pessoais. Até lá, tratar a proposta como implementação com testes simulados e compatibilidade real pendente. A dependência de interfaces internas torna necessário comunicar que atualizações do WhatsApp podem afetá-la.
+Before claiming proven real compatibility, record an authorized authenticated test session using a test account, browser and app version, date, synthetic links, and observed result. Exclude personal data from any public recording. Until then, describe an implementation with simulated tests and real compatibility pending. Explain that updates to WhatsApp’s internal interfaces can affect the integration.
 
-## Independência e cuidados de marca
+## Independence and brand care
 
-As [diretrizes oficiais da Meta para WhatsApp](https://www.meta.com/brand/resources/whatsapp/whatsapp-brand/) orientam preservar a grafia “WhatsApp”, evitar protagonismo de seus recursos de marca e não sugerir parceria ou endosso. Usar o nome apenas para explicar compatibilidade, em texto comum. A assinatura e o símbolo são da JáTá.
+[Meta’s official WhatsApp guidelines](https://www.meta.com/brand/resources/whatsapp/whatsapp-brand/) call for the correct “WhatsApp” spelling, avoiding prominence of its brand resources, and avoiding implications of partnership or endorsement. Use the name in ordinary text to explain compatibility. The signature and symbol belong to TabThere.
 
-Aviso sugerido: **“Projeto independente, sem vínculo, patrocínio ou endosso do WhatsApp ou da Meta.”**
+Suggested notice: **“Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta.”**
 
-Essas escolhas são mitigação editorial e visual, não garantia de aprovação, disponibilidade do nome JáTá ou liberação jurídica. Confirmar colisões de nome e adequação dos materiais antes da distribuição pública; a consulta realizada aqui não constitui pesquisa completa de marcas. Não usar “oficial”, “aprovado pela Meta” ou um cartão de parceria fictício.
+These choices mitigate editorial and visual confusion; they do not guarantee approval, name availability, or legal clearance. Check naming collisions and material suitability before public distribution. This research is not a complete trademark search. Do not use “official,” “approved by Meta,” or a fabricated partnership card.
 
-## Open source e documentação acessível
+## Open source and accessible documentation
 
-O projeto deve ser fácil de instalar, inspecionar e corrigir. Organizar README em português com acesso claro a uma versão em inglês; publicar instruções equivalentes, limites conhecidos, política de privacidade e orientação de contribuição. A voz brasileira pode continuar na marca, enquanto títulos técnicos e relatos de erro permanecem fáceis de entender por pessoas de fora do Brasil.
+Make the project easy to install, inspect, and repair. English is primary for documentation and shared source copy. Provide localized instructions, known limitations, privacy information, and contribution guidance. See [internationalization.md](internationalization.md) for initial priorities: English, Latin American Spanish, Brazilian Portuguese, Indonesian, and Hindi, including fluent-speaker review.
 
-Usar MIT de forma explícita nos arquivos de distribuição. Explicar permissões com relação ao que fazem pelo usuário. Distinguir release instalável, versão de desenvolvimento e qualquer assinatura exigida pelo navegador. Não apresentar cadastro, rastreamento ou compartilhamento de dados como condição para usar a extensão.
+Name MIT explicitly in distribution files. Connect permissions to what they do for the user. Distinguish installable releases, development versions, and any signing the browser requires. Do not make registration, tracking, or sharing data a condition of using the extension.
 
-O formulário de issue deve pedir versão do navegador, versão da extensão, tipo de link sem telefone real, resultado esperado e resultado observado. Orientar reprodução com dados fictícios. Não pedir número pessoal, texto real, conversas, QR de acesso, cookies ou exportação de perfil. Aceitar feedback em português e inglês e responder com respeito, inclusive quando a solução adequada for uma limitação documentada.
+Issue templates should request browser and extension versions, link type without a real phone number, expected result, and observed result. Encourage reproduction with fictional data. Do not request personal numbers, real text, conversations, sign-in QR codes, cookies, or profile exports. Welcome feedback in English and Portuguese and respond respectfully, including when a documented limitation is the appropriate answer.
 
-## Plano sugerido de lançamento
+## Optional support
 
-Este plano não autoriza publicações ou contato com terceiros; nenhuma postagem foi feita nesta pesquisa.
+GitHub Sponsors is the selected channel, from **US$ 1**, with suggested amounts of US$ 1, US$ 3, US$ 5, and US$ 10 and a custom amount on GitHub. The extension remains free without support. Receiving payments is currently pending, so the site must show that state and avoid offering an active checkout.
 
-| Etapa | Entrega e condição |
+When enabled, the supporter confirms amount and payment type on GitHub. Sponsorships from personal accounts have no GitHub fee; sponsorships from organizations may incur a fee of up to 6%. Do not describe recurring support as a one-time payment. Keep operational details and official references in [funding.md](funding.md).
+
+## Suggested launch plan
+
+This plan does not authorize posting or contacting third parties; no posts were made during this research.
+
+| Stage | Deliverable and condition |
 | --- | --- |
-| Preparar | Consolidar identidade, licença MIT, documentação bilíngue, artefatos instaláveis e explicação de permissões. Verificar links e instruções. |
-| Validar | Executar testes existentes e registrar separadamente a sessão real autenticada. Se ela continuar pendente, manter a limitação explícita e apresentar a versão como experimental. |
-| Demonstrar | Produzir uma demonstração curta com dados fictícios, indicando com precisão se a interface é simulada ou real. Mostrar resultado e comportamento em falha. |
-| Publicar, quando autorizado | Disponibilizar repositório e release; apresentar o projeto em espaços que aceitem esse tipo de contribuição, seguindo as regras locais e declarando autoria. Não repetir a mesma mensagem em massa. |
-| Escutar | Acompanhar issues voluntárias, agrupar causas reproduzíveis e publicar limites e correções. Oferecer detalhes técnicos úteis a quem quiser investigar a proposta. |
+| Prepare | Consolidate identity, MIT license, English-first documentation and localized catalogs, installable artifacts, and permission explanations. Check links and instructions. |
+| Validate | Run existing tests and record a real authenticated session separately. If it remains pending, make that explicit and describe the release as experimental. |
+| Demonstrate | Produce a short demonstration with fictional data, accurately identifying a simulated or real interface. Show both the outcome and failure behavior. |
+| Publish, when authorized | Make the repository and release available; share in spaces that welcome the contribution, following local rules and disclosing authorship. Do not repeat the same post in bulk. |
+| Listen | Monitor voluntary issues, group reproducible causes, and publish limitations and fixes. Offer useful technical detail to people investigating the idea. |
 
-Uma futura contribuição para adoção nativa pode reunir problema, reprodução, comportamento desejado e evidência de preservação do documento. A proposta aberta pode ser útil sem apelo público insistente ou marcação de funcionários.
+A future contribution toward native adoption can bring together the problem, reproduction, desired behavior, and evidence of document preservation. An open proposal can be useful without repeated public appeals or tagging employees.
 
-## Medir utilidade sem vigiar conversas
+## Measure usefulness without watching conversations
 
-Usar somente métricas agregadas já disponíveis na distribuição e contribuições voluntárias: downloads por release, issues por categoria, tempo de resposta e resultados de reprodução relatados com dados sintéticos. Identificar fonte, período e limites de cada total.
+Use only aggregate distribution metrics already available and voluntary contributions: downloads per release, issues by category, response time, and reproduction outcomes reported with synthetic data. Identify each total’s source, time period, and limitations.
 
-Não instrumentar links clicados, números, mensagens, destinatários, histórico, perfis, identificadores persistentes ou sessões do WhatsApp. Não instalar analytics comportamental como atalho para medir valor. Uma enquete opcional e anônima pode perguntar se a extensão resolveu o fluxo, deixando claro que é voluntária; suas respostas representam somente participantes.
+Do not instrument clicked links, phone numbers, messages, recipients, history, profiles, persistent identifiers, or WhatsApp sessions. Do not install behavioral analytics as a shortcut to measuring value. An optional anonymous survey may ask whether the extension resolved the flow, clearly identifying participation as voluntary; answers represent participants only.
 
-O sinal de utilidade é haver casos reproduzíveis resolvidos e instruções compreensíveis. Downloads não demonstram usuários ativos; estrelas não comprovam compatibilidade; poucas issues não demonstram ausência de falhas. Publicar aprendizados com contexto, sem fabricar prova social.
+Useful signals are resolved reproducible cases and understandable instructions. Downloads do not establish active users; stars do not establish compatibility; few issues do not establish an absence of failures. Publish learning with context, without manufactured social proof.

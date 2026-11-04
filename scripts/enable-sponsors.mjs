@@ -6,7 +6,7 @@ const query = 'query { user(login:"klederson") { sponsorsListing { isPublic url 
 const result = JSON.parse(execFileSync('gh', ['api', 'graphql', '-f', `query=${query}`], { encoding: 'utf8' }));
 const listing = result.data?.user?.sponsorsListing;
 if (!listing?.isPublic || listing.url !== 'https://github.com/sponsors/klederson') {
-  console.error('O perfil de recebimento ainda não está público. Habilite-o em https://github.com/sponsors/accounts e execute novamente.');
+  console.error('The receiving profile is not public yet. Enable it at https://github.com/sponsors/accounts, then run this command again.');
   process.exitCode = 1;
 } else {
   const configUrl = new URL('website/funding.json', root);
@@ -14,5 +14,5 @@ if (!listing?.isPublic || listing.url !== 'https://github.com/sponsors/klederson
   config.enabled = true;
   await writeFile(configUrl, `${JSON.stringify(config, null, 2)}\n`);
   await writeFile(new URL('.github/FUNDING.yml', root), 'github: klederson\ncustom: ["https://klederson.github.io/jata/#apoie"]\n');
-  console.log('Perfil público verificado. Configuração local de Sponsors ativada; publique o commit para atualizar o site.');
+  console.log('Public profile verified. Local Sponsors configuration enabled; publish the commit to update the website.');
 }

@@ -10,9 +10,9 @@ for (const browser of ["chrome", "firefox"]) {
     cwd: fileURLToPath(new URL(`dist/${browser}/`, root))
   });
   console.log(`Pacote criado: artifacts/whatsapp-mesma-aba-${browser}.zip`);
-  await cp(new URL(`artifacts/whatsapp-mesma-aba-${browser}.zip`, root), new URL(`artifacts/jata-${browser}.zip`, root));
+  await cp(new URL(`artifacts/whatsapp-mesma-aba-${browser}.zip`, root), new URL(`artifacts/tabthere-${browser}.zip`, root));
 }
-execFileSync("zip", ["-q", "-r", "-FS", fileURLToPath(new URL("artifacts/jata-brand-kit.zip", root)), "."], {
+execFileSync("zip", ["-q", "-r", "-FS", fileURLToPath(new URL("artifacts/tabthere-brand-kit.zip", root)), "."], {
   cwd: fileURLToPath(new URL("brand/", root))
 });
-console.log("Kit criado: artifacts/jata-brand-kit.zip");
+console.log("Kit criado: artifacts/tabthere-brand-kit.zip");

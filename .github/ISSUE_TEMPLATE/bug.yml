@@ -1,29 +1,29 @@
-name: Uma volta desnecessária
-description: Relatar um problema no fluxo de abrir uma conversa.
+name: An unnecessary detour
+description: Report a problem opening a conversation.
 title: "[Bug] "
 body:
   - type: dropdown
     id: browser
     attributes:
-      label: Qual navegador?
-      options: [Chrome, Firefox, Outro]
+      label: Which browser?
+      options: [Chrome, Firefox, Other]
     validations:
       required: true
   - type: input
     id: versions
     attributes:
-      label: Versões do navegador e da extensão
+      label: Browser and extension versions
     validations:
       required: true
   - type: textarea
     id: behavior
     attributes:
-      label: O que aconteceu e o que você esperava?
-      description: Informe se a aba foi preservada ou recarregou. Não inclua telefone real, mensagens, cookies, QR code ou dados de clientes.
+      label: What happened, and what did you expect?
+      description: Explain whether the document stayed loaded or reloaded. Do not include real phone numbers, messages, cookies, QR codes or customer data.
     validations:
       required: true
   - type: textarea
     id: error
     attributes:
-      label: Mensagem de erro, se apareceu
-      description: Remova dados pessoais antes de enviar.
+      label: Error message, if any
+      description: Remove personal information before submitting.

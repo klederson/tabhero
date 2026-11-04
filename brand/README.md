@@ -1,11 +1,15 @@
-# JáTá — kit de marca
+# TabThere — brand kit
 
-Uma conversa nova. A aba de sempre.
+New chat. Same tab.
 
-O símbolo representa uma aba de navegador e uma seta que volta para dentro dela. Não é um balão de conversa nem usa um telefone. Logos SVG têm letras convertidas em contornos para manter a forma sem instalar fontes.
+The symbol is a browser tab with an arrow returning inside it. It does not use a speech bubble or phone. The displayed wordmark is **tabthere.**; write **TabThere** in running text. SVG lettering is converted to outlines so the form does not depend on installed fonts.
 
-Arquivos: `logo.svg`, `logo-mono.svg`, `logo-on-dark.svg`, `symbol.svg`, `symbol-mono.svg`, `icon-512.png`, `social-card.png`, `brand-book.pdf` e `tokens.json`. O código da arte social também está incluído; suas fontes se encontram no repositório, em `website/assets/fonts/`.
+The kit contains `logo.svg`, `logo-mono.svg`, `logo-on-dark.svg`, `symbol.svg`, `symbol-mono.svg`, `icon-512.png`, `social-card.png`, `brand-book.pdf`, and `tokens.json`. The social artwork source is included; local fonts are in `website/assets/fonts/` in the repository. The downloadable archive is `tabthere-brand-kit.zip`.
 
-O guia traz cores, tipografia, respiro e voz. Não combine esta marca com o logo do WhatsApp. Use “compatível com WhatsApp Web” como descrição, sem sugerir parceria. A identidade própria reduz confusão, mas não constitui liberação jurídica de marca ou pesquisa registral completa.
+[The brand guide](https://klederson.github.io/jata/brand-book.html) covers color, typography, clear space, and voice. Its PDF title is **TabThere Brand Guide**. Do not combine the identity with the WhatsApp logo. Describe compatibility with WhatsApp Web without implying a partnership. An original identity reduces confusion; it does not establish trademark availability or legal clearance.
 
-Fontes: Bricolage Grotesque e Manrope, sob licença SIL Open Font License. As licenças estão no repositório ao lado das fontes. Marca e demais assets originais sob a licença MIT do projeto. © 2026 Klederson Bueno.
+TabThere 1.3.0 is experimental. Tests simulate WhatsApp interfaces; integration with a real signed-in session has not been validated in this development session. A simulated demonstration must be labeled as such.
+
+The best version of TabThere? The one you never have to install. That is a hope for native adoption, not an acquisition request. The MIT license permits reuse under its terms; nobody is obliged to adopt or acquire the project.
+
+Fonts: Bricolage Grotesque and Manrope, under the SIL Open Font License. Font licenses accompany the font files in the repository. Original brand assets use the project’s MIT license. © 2026 Klederson Bueno.

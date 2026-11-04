@@ -1,0 +1,80 @@
+{
+  "language": {
+    "message": "pt-BR"
+  },
+  "brandName": {
+    "message": "TabThere"
+  },
+  "extensionName": {
+    "message": "TabThere — Conversa nova. Mesma aba."
+  },
+  "extensionDescription": {
+    "message": "Abre links de conversa na aba já aberta do WhatsApp Web, preservando o número e a mensagem."
+  },
+  "actionTitle": {
+    "message": "TabThere — abrir o WhatsApp Web"
+  },
+  "activationFailed": {
+    "message": "Não foi possível ativar. Recarregue a extensão e confira as permissões para os sites do WhatsApp."
+  },
+  "handoffTitle": {
+    "message": "TabThere — abrindo a conversa"
+  },
+  "headlineFirst": {
+    "message": "Conversa nova."
+  },
+  "headlineSecond": {
+    "message": "Mesma aba."
+  },
+  "opening": {
+    "message": "Abrindo a conversa no WhatsApp Web…"
+  },
+  "opened": {
+    "message": "Conversa aberta. Você pode fechar esta aba."
+  },
+  "retry": {
+    "message": "Tentar novamente"
+  },
+  "openWhatsApp": {
+    "message": "Abrir o WhatsApp Web"
+  },
+  "errorInvalidRequest": {
+    "message": "Link de conversa inválido."
+  },
+  "errorUnavailable": {
+    "message": "A integração com esta versão do WhatsApp não está disponível. A aba não foi recarregada."
+  },
+  "errorNotReady": {
+    "message": "Conecte o WhatsApp Web e aguarde a lista de conversas carregar. Depois, tente novamente."
+  },
+  "errorContactNotFound": {
+    "message": "Não foi possível abrir uma conversa com este número. Confira o número e sua conexão."
+  },
+  "errorOpenFailed": {
+    "message": "O WhatsApp não confirmou a abertura da conversa. A aba não foi recarregada. Tente novamente."
+  },
+  "errorInternal": {
+    "message": "Não foi possível abrir a conversa dentro do WhatsApp. A aba não foi recarregada. Confira a conexão e tente novamente."
+  },
+  "errorDocumentUnavailable": {
+    "message": "Não foi possível acessar a página do WhatsApp já carregada. A aba não foi recarregada."
+  },
+  "errorInjectionFailed": {
+    "message": "Não foi possível conectar à página do WhatsApp já carregada. A aba não foi recarregada. Confira as permissões da extensão e tente novamente."
+  },
+  "errorLoadTimeout": {
+    "message": "Aguarde o WhatsApp terminar de carregar e tente novamente. A aba não foi recarregada."
+  },
+  "errorUnauthorizedSource": {
+    "message": "Esta página não tem permissão para abrir uma conversa."
+  },
+  "errorInvalidLink": {
+    "message": "Este link não contém um número ou uma mensagem de conversa válidos."
+  },
+  "errorRouting": {
+    "message": "Não foi possível abrir a conversa. A aba existente do WhatsApp não foi recarregada."
+  },
+  "errorExtensionUnavailable": {
+    "message": "Não foi possível acessar a extensão. Recarregue a extensão e tente novamente."
+  }
+}

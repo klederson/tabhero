@@ -129,7 +129,7 @@ try {
   await eventually(async () => context.pages().some(page => page.url().includes("/handoff.html#")), "página de erro");
   const handoff = context.pages().find(page => page.url().includes("/handoff.html#"));
   await handoff.locator("#retry").waitFor({ state: "visible" });
-  assert.match(await handoff.locator("#status").textContent(), /sem recarga/);
+  assert.equal(await handoff.locator("body").getAttribute("data-error-code"), "unavailable");
   assert.equal(await whatsapp.evaluate(() => appState.opens.length), 4);
   await unchanged();
   await whatsapp.evaluate(() => { window.integrationUnavailable = false; });

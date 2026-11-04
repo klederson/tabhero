@@ -1,4 +1,4 @@
-name: Site no GitHub Pages
+name: Publish website to GitHub Pages
 on:
   push:
     branches: [main]
