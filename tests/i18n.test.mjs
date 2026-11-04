@@ -33,10 +33,39 @@ test('native extension locales have complete messages and an English manifest fa
   for (const locale of ['en', 'es', 'pt_BR', 'id', 'hi']) {
     const catalog = await json(`../extension/_locales/${locale}/messages.json`);
     assert.deepEqual(Object.keys(catalog).sort(), Object.keys(englishMessages).sort(), locale);
-    assert.match(catalog.brandName.message, /^TabThere$/);
+    assert.match(catalog.brandName.message, /^TabHero$/);
     assert.equal(message('retry', { i18n: { getMessage: key => catalog[key]?.message ?? '' } }), catalog.retry.message);
   }
   assert.equal(message('retry', {}), 'Try again');
+});
+
+test('community translations preserve eight attributed reports, markup and substitutions', async () => {
+  const reference = (await json('../website/locales/en.json')).community;
+  const sources = await json('../website/research-sources.json');
+  assert.equal(sources.length, 8);
+  assert.equal(sources.filter(source => source.kind === 'direct').length, 4);
+  assert.equal(new Set(sources.map(source => source.id)).size, 8);
+  for (const source of sources) {
+    assert.equal(new URL(source.url).protocol, 'https:');
+    assert.match(source.date, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(source.author.length > 0);
+  }
+  const compare = (actual, expected, key) => {
+    if (typeof expected === 'string') {
+      assert.equal(typeof actual, 'string', key);
+      assert.ok(actual.trim(), key);
+      assert.deepEqual(placeholders(actual), placeholders(expected), key);
+      assert.deepEqual(markup(actual), markup(expected), key);
+    } else {
+      assert.deepEqual(Object.keys(actual), Object.keys(expected), key);
+      for (const child of Object.keys(expected)) compare(actual[child], expected[child], `${key}.${child}`);
+    }
+  };
+  for (const locale of ['en', 'es-419', 'pt-BR', 'id', 'hi']) {
+    const catalog = await json(`../website/locales/${locale}.json`);
+    compare(catalog.community, reference, locale);
+    assert.equal(catalog.community.reports.length, sources.length);
+  }
 });
 
 test('localization preserves stable error codes without exposing internal exceptions', () => {

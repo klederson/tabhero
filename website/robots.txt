@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://klederson.github.io/jata/sitemap.xml
+Sitemap: https://klederson.github.io/tabhero/sitemap.xml

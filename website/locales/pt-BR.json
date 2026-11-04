@@ -3,9 +3,9 @@
   "label": "Português",
   "path": "pt-br",
   "meta": {
-    "title": "TabThere — Outra aba? Poxa, já tá aberto.",
-    "description": "Uma conversa nova. A aba de sempre. TabThere abre links de conversa no WhatsApp Web já carregado, preservando a sessão.",
-    "ogTitle": "TabThere. Outra aba? Poxa, já tá aberto.",
+    "title": "TabHero — Outra aba? Poxa, já tá aberto.",
+    "description": "Uma conversa nova. A aba de sempre. TabHero abre links de conversa no WhatsApp Web já carregado, preservando a sessão.",
+    "ogTitle": "TabHero. Outra aba? Poxa, já tá aberto.",
     "ogDescription": "Uma conversa nova. A aba de sempre. Uma pequena extensão open source contra uma grande volta desnecessária."
   },
   "strings": {
@@ -14,7 +14,7 @@
     "header_a_003": "O ranço",
     "header_a_004": "O quase-café",
     "header_a_005": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 24\"></path></svg>Código aberto <span aria-hidden=\"true\">↗</span>",
-    "hero_p_006": "<span class=\"status-dot\"></span> PEQUENA EXTENSÃO. GRANDE SUSPIRO.",
+    "hero_p_006": "<span class=\"status-dot\"></span> NEM TODO HERÓI ABRE OUTRA ABA.",
     "hero_h1_007": "Outra aba?<br>Poxa, <span class=\"highlight\">já tá</span><br>aberto<span class=\"period\">.</span>",
     "common_span_008": "já tá",
     "hero_p_009": "Você queria abrir uma conversa.<br>Não uma filial do WhatsApp no navegador.",
@@ -84,7 +84,7 @@
     "common_span_073": "SUPER USER <span>2021</span>",
     "common_h3_074": "O link era para o Web. O desktop resolveu aparecer.",
     "common_p_075": "Uma pessoa com contas diferentes tenta manter o atendimento no navegador, mas recebe o aplicativo.",
-    "o_problema_p_076": "Resumos editoriais de relatos históricos, não depoimentos sobre o __BRAND__. <a href=\"https://github.com/klederson/jata/blob/main/docs/research.md\">Veja as 8 fontes e os limites da pesquisa ↗</a>",
+    "o_problema_p_076": "Resumos editoriais de relatos históricos, não depoimentos sobre o __BRAND__. <a href=\"https://github.com/klederson/tabhero/blob/main/docs/research.md\">Veja as 8 fontes e os limites da pesquisa ↗</a>",
     "common_a_077": "Veja as 8 fontes e os limites da pesquisa ↗",
     "instalar_p_078": "04 / BORA DESCOMPLICAR",
     "instalar_h2_079": "Instala.<br>Respira.<br><span>Conversa.</span>",
@@ -195,12 +195,12 @@
     "supportPendingStatus": "O recebimento ainda não foi ativado. Nenhuma cobrança será feita."
   },
   "privacy": {
-    "title": "Privacidade — TabThere",
+    "title": "Privacidade — TabHero",
     "kicker": "ATUALIZADO EM 4 DE NOVEMBRO DE 2026",
     "back": "Voltar ao site ↵",
     "heading": "Conversa sua.<br>O resto, claro.",
     "extensionHeading": "A extensão",
-    "extensionP1": "O TabThere encaminha o número e o texto de links de conversa para a aba do WhatsApp Web no mesmo navegador e perfil. Usa os módulos internos do aplicativo para abrir o contato e preencher seu rascunho. Não consulta o histórico nem envia mensagens automaticamente.",
+    "extensionP1": "O TabHero encaminha o número e o texto de links de conversa para a aba do WhatsApp Web no mesmo navegador e perfil. Usa os módulos internos do aplicativo para abrir o contato e preencher seu rascunho. Não consulta o histórico nem envia mensagens automaticamente.",
     "extensionP2": "A extensão não inclui telemetria, publicidade, analytics ou servidor do desenvolvedor recebendo conversas. Não armazena números nem mensagens em arquivos, banco ou storage da extensão. O WhatsApp processa o contato e o rascunho dentro do serviço dele, conforme suas próprias políticas.",
     "siteHeading": "Este site",
     "siteP1": "Os arquivos e as fontes ficam hospedados com o site. Nosso código não cria cookies, não inclui rastreadores e não pede telefone, conversas ou cadastro. A escolha de idioma fica na URL da página; não a armazenamos em um perfil. A demonstração é local e não se conecta ao WhatsApp.",
@@ -208,7 +208,81 @@
     "fundingHeading": "Apoio opcional",
     "fundingP": "Quando o perfil de recebimento estiver ativo, o botão leva ao GitHub Sponsors. O valor, a modalidade e o pagamento são escolhidos e confirmados lá. Este site não recebe dados de cartão nem confirma pagamentos. Enquanto o perfil estiver indisponível, a ação de pagamento fica desabilitada.",
     "reportHeading": "Relatar problemas",
-    "reportP": "Abra uma <a href=\"https://github.com/klederson/jata/issues\">issue</a> com versões e o comportamento observado, sem telefone real, mensagens, QR code, cookies ou credenciais. Para segurança, veja <a href=\"https://github.com/klederson/jata/blob/main/SECURITY.md\">SECURITY.md</a>.",
+    "reportP": "Abra uma <a href=\"https://github.com/klederson/tabhero/issues\">issue</a> com versões e o comportamento observado, sem telefone real, mensagens, QR code, cookies ou credenciais. Para segurança, veja <a href=\"https://github.com/klederson/tabhero/blob/main/SECURITY.md\">SECURITY.md</a>.",
     "maintainerP": "Mantido por <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Projeto independente, sem vínculo, patrocínio ou endosso de WhatsApp ou Meta."
+  },
+  "community": {
+    "title": "Relatos da comunidade — TabHero",
+    "description": "Oito relatos históricos, as reclamações por trás deles e as ideias de produto que tiramos daí. Com fontes e limites da pesquisa.",
+    "back": "Voltar para o TabHero",
+    "kicker": "O DRAMA DAS ABAS TEM FONTES.",
+    "heading": "Reclamações reais.<br>Lições úteis.",
+    "lede": "Oito relatos públicos de 2020 a 2025. São resumos editoriais, não citações, depoimentos de clientes ou prova do comportamento atual.",
+    "all": "Todos os relatos",
+    "direct": "Relatos diretos",
+    "related": "Pedidos relacionados",
+    "reported": "O que foi relatado",
+    "insight": "O que isso sugere",
+    "context": "O contexto importa",
+    "original": "Ler o original",
+    "count": "{count} relatos exibidos",
+    "methods": "Ver a curadoria completa e a metodologia",
+    "limits": "Esses autores não avaliaram o TabHero. Esta é uma pequena seleção histórica, não um estudo de frequência do problema. Nossas interpretações são decisões de produto, não citações. A compatibilidade em uma sessão autenticada real ainda não foi verificada.",
+    "topLabel": "A PRINCIPAL LIÇÃO",
+    "topHeading": "O contexto certo importa mais que a contagem de abas.",
+    "topBody": "A conversa deve chegar à conta e ao contexto de navegador que a pessoa escolheu. Preservar o documento carregado é nosso critério de engenharia; os relatos não comprovam esse comportamento.",
+    "cta": "Experimente a ideia ↵",
+    "mainLink": "Explore os relatos da comunidade ↗",
+    "brandNote": "Aba. Aqui. Herói. Um pequeno resgate de uma volta desnecessária.",
+    "reports": [
+      {
+        "title": "Já estava aberto. Abriu de novo.",
+        "summary": "A opção Web inicia outra instância, mesmo com uma aba já aberta.",
+        "insight": "Preservar o contexto carregado; só colocar uma aba em foco não basta.",
+        "context": "Relato histórico. Conferido novamente na discussão original; sem medição da identidade do documento."
+      },
+      {
+        "title": "Conversa certa. Conta errada.",
+        "summary": "Um fluxo comercial na Web chama o aplicativo associado a uma conta pessoal.",
+        "insight": "Deixar claros os limites de navegador e perfil. O destino precisa respeitar a conta escolhida pela pessoa.",
+        "context": "Contas pessoal e comercial separadas; não é um teste de seleção arbitrária entre várias contas."
+      },
+      {
+        "title": "Dois perfis. Um aplicativo de desktop intrometido.",
+        "summary": "O encaminhamento para o aplicativo de desktop atrapalha links de contatos não salvos, antes usados com perfis separados no navegador.",
+        "insight": "Facilitar o início de conversas ocasionais sem obrigar a pessoa a mexer na agenda de contatos.",
+        "context": "Perfis de navegador no computador. Não há afirmação de acesso entre perfis nem de perda de rascunhos."
+      },
+      {
+        "title": "Atendimento ao cliente, conheça mais uma tela de carregamento.",
+        "summary": "Uma equipe relata outra instância Web e uma espera para carregar ao abrir o contato pelo seu painel.",
+        "insight": "Demonstrar continuidade em um fluxo real. Sem inventar estatísticas de tempo economizado.",
+        "context": "Mais tarde, o autor disse que um problema anterior de redirecionamento parecia resolvido em junho de 2020."
+      },
+      {
+        "title": "Encontre a aba que já está ali.",
+        "summary": "Um usuário pede que a aba Web existente seja ativada antes de criar outra.",
+        "insight": "Reutilizar a aba e preservar o documento são critérios de aceite diferentes.",
+        "context": "Personalização do Tridactyl. As atualizações de URL propostas não comprovam a preservação do estado."
+      },
+      {
+        "title": "Fechar a issue não responde tudo.",
+        "summary": "Uma biblioteca ignora uma aba ativa; depois, outra pessoa pergunta onde está a correção.",
+        "insight": "Ao resolver um relato, incluir o link da correção, a versão afetada e os passos de verificação.",
+        "context": "Automação de terceiros; issue fechada como duplicada, não um teste do TabHero."
+      },
+      {
+        "title": "Abrir com… o quê, exatamente?",
+        "summary": "O Firefox no Ubuntu mostra um seletor de aplicativos sem uma opção funcional para abrir o link.",
+        "insight": "Tornar o destino previsível e os erros compreensíveis.",
+        "context": "O relato não informa se havia uma aba Web aberta. É uma dúvida sobre encaminhamento, não prova de abas duplicadas."
+      },
+      {
+        "title": "A ideia era conversar, não instalar mais uma coisa.",
+        "summary": "O Firefox no Android sugere uma instalação; depois, o autor relata uma variação do link que funciona.",
+        "insight": "Entender a tarefa e o ambiente da pessoa antes de recomendar mudanças na configuração.",
+        "context": "Caso em dispositivo móvel marcado como resolvido. Não demonstra um defeito do WhatsApp Web no computador."
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 // English remains usable in tests and environments without WebExtension i18n.
 export const englishMessages = Object.freeze({
   language: "en",
-  brandName: "TabThere",
-  extensionName: "TabThere — New chat. Same tab.",
+  brandName: "TabHero",
+  extensionName: "TabHero — New chat. Same tab.",
   extensionDescription: "Open WhatsApp conversation links in your existing WhatsApp Web tab, keeping the phone number and message.",
-  actionTitle: "TabThere — open WhatsApp Web",
+  actionTitle: "TabHero — open WhatsApp Web",
   activationFailed: "Couldn't activate. Reload the extension and check its permissions for WhatsApp websites.",
-  handoffTitle: "TabThere — opening your conversation",
+  handoffTitle: "TabHero — opening your conversation",
   headlineFirst: "New chat.",
   headlineSecond: "Same tab.",
   opening: "Opening the conversation in WhatsApp Web…",

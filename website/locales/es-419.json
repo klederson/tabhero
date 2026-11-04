@@ -3,9 +3,9 @@
   "label": "Español",
   "path": "es",
   "meta": {
-    "title": "TabThere — ¿Otra pestaña? Pero si ya está abierto.",
-    "description": "Nueva conversación. La misma pestaña. TabThere abre enlaces de chat en WhatsApp Web ya cargado y conserva tu sesión.",
-    "ogTitle": "TabThere. ¿Otra pestaña? Pero si ya está abierto.",
+    "title": "TabHero — ¿Otra pestaña? Pero si ya está abierto.",
+    "description": "Nueva conversación. La misma pestaña. TabHero abre enlaces de chat en WhatsApp Web ya cargado y conserva tu sesión.",
+    "ogTitle": "TabHero. ¿Otra pestaña? Pero si ya está abierto.",
     "ogDescription": "Nueva conversación. La misma pestaña. Una pequeña extensión de código abierto para ahorrarte una gran vuelta innecesaria."
   },
   "strings": {
@@ -14,7 +14,7 @@
     "header_a_003": "El hartazgo",
     "header_a_004": "El casi café",
     "header_a_005": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 24\"></path></svg>Código abierto <span aria-hidden=\"true\">↗</span>",
-    "hero_p_006": "<span class=\"status-dot\"></span> PEQUEÑA EXTENSIÓN. GRAN SUSPIRO.",
+    "hero_p_006": "<span class=\"status-dot\"></span> NO TODOS LOS HÉROES ABREN OTRA PESTAÑA.",
     "hero_h1_007": "¿Otra pestaña?<br>Pero si <span class=\"highlight\">ya está</span><br>abierto<span class=\"period\">.</span>",
     "common_span_008": "ya está",
     "hero_p_009": "Querías abrir una conversación.<br>No una sucursal de WhatsApp en tu navegador.",
@@ -84,7 +84,7 @@
     "common_span_073": "SUPER USER <span>2021</span>",
     "common_h3_074": "El enlace era para la web. Apareció la aplicación de escritorio.",
     "common_p_075": "Una persona con distintas cuentas intenta atender desde el navegador, pero se abre la aplicación.",
-    "o_problema_p_076": "Resúmenes editoriales de reportes históricos, no testimonios sobre __BRAND__. <a href=\"https://github.com/klederson/jata/blob/main/docs/research.md\">Consulta las 8 fuentes y los límites de la investigación ↗</a>",
+    "o_problema_p_076": "Resúmenes editoriales de reportes históricos, no testimonios sobre __BRAND__. <a href=\"https://github.com/klederson/tabhero/blob/main/docs/research.md\">Consulta las 8 fuentes y los límites de la investigación ↗</a>",
     "common_a_077": "Consulta las 8 fuentes y los límites de la investigación ↗",
     "instalar_p_078": "04 / VAMOS A SIMPLIFICARLO",
     "instalar_h2_079": "Instala.<br>Respira.<br><span>Conversa.</span>",
@@ -195,12 +195,12 @@
     "supportPendingStatus": "La recepción de aportes aún no está activada. No se realizará ningún cobro."
   },
   "privacy": {
-    "title": "Privacidad — TabThere",
+    "title": "Privacidad — TabHero",
     "kicker": "ACTUALIZADO EL 4 DE NOVIEMBRE DE 2026",
     "back": "Volver al sitio ↵",
     "heading": "Tus conversaciones.<br>Los detalles, claros.",
     "extensionHeading": "La extensión",
-    "extensionP1": "TabThere lleva el número y el texto de un enlace de conversación a tu pestaña de WhatsApp Web en el mismo navegador y perfil. Usa los módulos internos de la aplicación para abrir el contacto y completar el borrador. No consulta el historial de mensajes ni envía mensajes automáticamente.",
+    "extensionP1": "TabHero lleva el número y el texto de un enlace de conversación a tu pestaña de WhatsApp Web en el mismo navegador y perfil. Usa los módulos internos de la aplicación para abrir el contacto y completar el borrador. No consulta el historial de mensajes ni envía mensajes automáticamente.",
     "extensionP2": "La extensión no tiene telemetría, publicidad, analítica ni un servidor del desarrollador que reciba conversaciones. No guarda números de teléfono ni mensajes en archivos, bases de datos o el almacenamiento de la extensión. WhatsApp procesa el contacto y el borrador dentro de su propio servicio, de acuerdo con sus propias políticas.",
     "siteHeading": "Este sitio web",
     "siteP1": "Los archivos y las fuentes se alojan junto con el sitio. Nuestro código no crea cookies, no incluye rastreadores ni te pide conversaciones, números de teléfono o una cuenta. El idioma que eliges queda en la URL de la página; no lo guardamos en un perfil. La ilustración interactiva se ejecuta localmente y no se conecta a WhatsApp.",
@@ -208,7 +208,81 @@
     "fundingHeading": "Apoyo opcional",
     "fundingP": "Cuando el perfil de recepción esté activo, el botón de apoyo te llevará a GitHub Sponsors. Allí eliges y confirmas el monto, la frecuencia y el pago. Este sitio no recibe datos de tarjetas ni confirma pagos. Mientras el perfil no esté disponible, la opción de pago permanece desactivada.",
     "reportHeading": "Reportar un problema",
-    "reportP": "Abre un <a href=\"https://github.com/klederson/jata/issues\">issue</a> con las versiones y el comportamiento que observaste. No incluyas números de teléfono reales, mensajes, códigos QR, cookies ni credenciales. Para reportes de seguridad, consulta <a href=\"https://github.com/klederson/jata/blob/main/SECURITY.md\">SECURITY.md</a>.",
+    "reportP": "Abre un <a href=\"https://github.com/klederson/tabhero/issues\">issue</a> con las versiones y el comportamiento que observaste. No incluyas números de teléfono reales, mensajes, códigos QR, cookies ni credenciales. Para reportes de seguridad, consulta <a href=\"https://github.com/klederson/tabhero/blob/main/SECURITY.md\">SECURITY.md</a>.",
     "maintainerP": "Mantenido por <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Proyecto independiente. Sin vínculo, patrocinio ni respaldo de WhatsApp o Meta."
+  },
+  "community": {
+    "title": "Reportes de la comunidad — TabHero",
+    "description": "Ocho reportes históricos, las quejas detrás de ellos y las ideas de producto que extraemos. Con fuentes y límites de la investigación.",
+    "back": "Volver a TabHero",
+    "kicker": "EL DRAMA DE LAS PESTAÑAS VIENE CON FUENTES.",
+    "heading": "Quejas reales.<br>Lecciones útiles.",
+    "lede": "Ocho reportes públicos de 2020 a 2025. Son resúmenes editoriales, no citas, testimonios de clientes ni pruebas del comportamiento actual.",
+    "all": "Todos los reportes",
+    "direct": "Reportes directos",
+    "related": "Solicitudes relacionadas",
+    "reported": "Qué se reportó",
+    "insight": "Qué nos sugiere",
+    "context": "El contexto importa",
+    "original": "Leer el original",
+    "count": "{count} reportes mostrados",
+    "methods": "Ver la selección completa y la metodología",
+    "limits": "Estos autores no evaluaron TabHero. Esta es una pequeña selección histórica, no un estudio sobre la frecuencia del problema. Nuestras interpretaciones son decisiones de producto, no citas. La compatibilidad en una sesión autenticada real sigue sin verificarse.",
+    "topLabel": "LA LECCIÓN PRINCIPAL",
+    "topHeading": "El contexto correcto importa más que el número de pestañas.",
+    "topBody": "La conversación debe llegar a la cuenta y al contexto del navegador que eligió la persona. Conservar el documento cargado es nuestro criterio de ingeniería; los reportes no demuestran ese comportamiento.",
+    "cta": "Prueba la idea ↵",
+    "mainLink": "Explora los reportes de la comunidad ↗",
+    "brandNote": "Pestaña. Aquí. Héroe. Un pequeño rescate de una vuelta innecesaria.",
+    "reports": [
+      {
+        "title": "Ya estaba abierto. Se abrió otra vez.",
+        "summary": "La opción Web inicia otra instancia, aunque ya hay una pestaña abierta.",
+        "insight": "Conservar el contexto cargado; enfocar una pestaña no basta.",
+        "context": "Reporte histórico. Revisado de nuevo en la discusión original; sin medición de la identidad del documento."
+      },
+      {
+        "title": "Conversación correcta. Cuenta equivocada.",
+        "summary": "Un flujo comercial en la web intenta abrir la aplicación asociada a una cuenta personal.",
+        "insight": "Dejar claros los límites entre navegadores y perfiles. El destino debe respetar la cuenta que eligió la persona.",
+        "context": "Cuentas personal y comercial separadas; no es una prueba de selección arbitraria entre varias cuentas."
+      },
+      {
+        "title": "Dos perfiles. Una aplicación de escritorio entrometida.",
+        "summary": "El envío a la aplicación de escritorio interrumpe los enlaces a contactos no guardados que antes se usaban con perfiles separados del navegador.",
+        "insight": "Facilitar las conversaciones ocasionales sin obligar a modificar la libreta de contactos.",
+        "context": "Perfiles del navegador en computadora. No se afirma que haya acceso entre perfiles ni pérdida de borradores."
+      },
+      {
+        "title": "Atención al cliente, te presentamos otra pantalla de carga.",
+        "summary": "Un equipo reporta otra instancia web y una espera de carga al abrir el contacto desde su panel.",
+        "insight": "Demostrar continuidad en un flujo real. Sin inventar estadísticas de tiempo ahorrado.",
+        "context": "Más tarde, el autor dijo que un problema anterior de redirección parecía resuelto en junio de 2020."
+      },
+      {
+        "title": "Encuentra la pestaña que ya está ahí.",
+        "summary": "Un usuario pide activar la pestaña web existente antes de crear otra.",
+        "insight": "Reutilizar la pestaña y conservar el documento son criterios de aceptación distintos.",
+        "context": "Personalización de Tridactyl. Los cambios de URL propuestos no demuestran que se conserve el estado."
+      },
+      {
+        "title": "Cerrar el issue no lo responde todo.",
+        "summary": "Una biblioteca ignora una pestaña activa; después, otra persona pregunta dónde está la solución.",
+        "insight": "Al resolver un reporte, incluir el enlace a la corrección, la versión afectada y los pasos de verificación.",
+        "context": "Automatización de terceros; issue cerrado como duplicado, no una prueba de TabHero."
+      },
+      {
+        "title": "Abrir con… ¿qué, exactamente?",
+        "summary": "Firefox en Ubuntu muestra un selector de aplicaciones sin una opción funcional para abrir el enlace.",
+        "insight": "Hacer que el destino sea predecible y los errores, comprensibles.",
+        "context": "El reporte no indica que hubiera una pestaña web abierta. Es incertidumbre sobre el destino, no prueba de pestañas duplicadas."
+      },
+      {
+        "title": "La idea era conversar, no instalar otra cosa.",
+        "summary": "Firefox en Android sugiere una instalación; después, el autor reporta una variante del enlace que funciona.",
+        "insight": "Entender la tarea y el entorno de la persona antes de recomendar cambios de configuración.",
+        "context": "Caso en un dispositivo móvil marcado como resuelto. No demuestra un defecto de WhatsApp Web en computadora."
+      }
+    ]
   }
 }

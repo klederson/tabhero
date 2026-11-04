@@ -1,0 +1,67 @@
+[
+  {
+    "id": "existing-instance",
+    "source": "Hacker News",
+    "author": "dearjames",
+    "date": "2021-01-06",
+    "kind": "direct",
+    "url": "https://news.ycombinator.com/item?id=25657603",
+    "permalink": "https://news.ycombinator.com/item?id=25661105"
+  },
+  {
+    "id": "right-account",
+    "source": "Super User",
+    "author": "Robot Boy",
+    "date": "2021-03-19",
+    "kind": "direct",
+    "url": "https://superuser.com/questions/1634477/stop-whatsapp-desktop-app-from-opening-on-api-whatsapp-com-links-run-whatsapp-w"
+  },
+  {
+    "id": "separate-profiles",
+    "source": "Reddit · r/chrome",
+    "author": "TrainingSource",
+    "date": "2022-08-06",
+    "kind": "direct",
+    "url": "https://www.reddit.com/r/chrome/comments/whk4wd/disable_whatsapp_protocol_handler_in_specific/"
+  },
+  {
+    "id": "customer-workflow",
+    "source": "Stack Overflow",
+    "author": "sznrbrt",
+    "date": "2020-02-17",
+    "kind": "direct",
+    "url": "https://stackoverflow.com/questions/60254713/whatapp-click-to-chat-links-do-not-work-with-osx-native-client-and-whatsapp-web"
+  },
+  {
+    "id": "reuse-request",
+    "source": "GitHub · Tridactyl",
+    "author": "GodSaveEarth",
+    "date": "2025-09-29",
+    "kind": "related",
+    "url": "https://github.com/tridactyl/tridactyl/discussions/5275"
+  },
+  {
+    "id": "automation",
+    "source": "GitHub · PyWhatKit",
+    "author": "ICreateYank",
+    "date": "2022-03-02",
+    "kind": "related",
+    "url": "https://github.com/Ankit404butfound/PyWhatKit/issues/190"
+  },
+  {
+    "id": "protocol-prompt",
+    "source": "Reddit · r/whatsapp",
+    "author": "goister",
+    "date": "2023-09-23",
+    "kind": "related",
+    "url": "https://www.reddit.com/r/whatsapp/comments/16pyo5e/unable_to_open_chat_using_wame_url_on_firefox/"
+  },
+  {
+    "id": "mobile-routing",
+    "source": "Mozilla Support",
+    "author": "gayatriaditya.italypics",
+    "date": "2021-06-25",
+    "kind": "related",
+    "url": "https://support.mozilla.org/en-US/questions/1341933"
+  }
+]

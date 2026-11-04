@@ -7,7 +7,8 @@ if (select) {
     const root = new URL('./', import.meta.url);
     const path = languages[select.value];
     const target = new URL(path ? `${path}/` : './', root);
-    if (location.pathname.endsWith('/privacy.html')) target.pathname += 'privacy.html';
+    const subpage = ['privacy.html', 'research.html'].find(name => location.pathname.endsWith(`/${name}`));
+    if (subpage) target.pathname += subpage;
     target.hash = location.hash;
     location.assign(target.href);
   });

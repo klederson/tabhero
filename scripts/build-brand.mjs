@@ -34,5 +34,5 @@ try {
   await page.pdf({ path: path('brand/brand-book.pdf'), format: 'A4', printBackground: true, preferCSSPageSize: true });
   await cp(new URL('brand/brand-book.pdf', root), new URL('website/assets/brand-book.pdf', root));
 } finally { await browser.close(); }
-execFileSync('zip', ['-q', '-r', '-FS', path('artifacts/tabthere-brand-kit.zip'), '.'], { cwd: path('brand/') });
+execFileSync('zip', ['-q', '-r', '-FS', path('artifacts/tabhero-brand-kit.zip'), '.'], { cwd: path('brand/') });
 console.log('Símbolos, ícones, logos, cartão social, guia PDF e kit de marca prontos.');

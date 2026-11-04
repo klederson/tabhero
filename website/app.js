@@ -10,7 +10,7 @@ const loadCatalog = async language => {
 const catalog = await loadCatalog(locale).catch(() => loadCatalog('en'));
 const t = (key, replacements = {}) => {
   if (typeof catalog.ui[key] !== 'string') throw new Error(`Missing UI translation: ${key}`);
-  return catalog.ui[key].replaceAll('__BRAND__', 'TabThere').replace(/\{(\w+)\}/g, (match, name) => replacements[name] ?? match);
+  return catalog.ui[key].replaceAll('__BRAND__', 'TabHero').replace(/\{(\w+)\}/g, (match, name) => replacements[name] ?? match);
 };
 let toastTimer;
 function toast(message) {
@@ -56,7 +56,7 @@ all('[data-browser]').forEach(button => button.addEventListener('click', () => {
   $('#install-title').textContent = t(`${browser}Title`);
   $('#install-steps').innerHTML = t(`${browser}Steps`);
   $('#install-note').textContent = t(`${browser}Note`);
-  $('#download-extension').href = new URL(`downloads/tabthere-${browser}.zip`, import.meta.url).href;
+  $('#download-extension').href = new URL(`downloads/tabhero-${browser}.zip`, import.meta.url).href;
   $('#download-extension').textContent = t('download', { browser: name });
 }));
 let funding = null;

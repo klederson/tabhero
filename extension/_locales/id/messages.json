@@ -3,22 +3,22 @@
     "message": "id"
   },
   "brandName": {
-    "message": "TabThere"
+    "message": "TabHero"
   },
   "extensionName": {
-    "message": "TabThere — Chat baru. Tab yang sama."
+    "message": "TabHero — Chat baru. Tab yang sama."
   },
   "extensionDescription": {
     "message": "Buka tautan percakapan di tab WhatsApp Web yang sudah terbuka, dengan nomor dan pesan tetap utuh."
   },
   "actionTitle": {
-    "message": "TabThere — buka WhatsApp Web"
+    "message": "TabHero — buka WhatsApp Web"
   },
   "activationFailed": {
     "message": "Tidak dapat mengaktifkan ekstensi. Muat ulang ekstensi dan periksa izinnya untuk situs WhatsApp."
   },
   "handoffTitle": {
-    "message": "TabThere — membuka percakapan"
+    "message": "TabHero — membuka percakapan"
   },
   "headlineFirst": {
     "message": "Chat baru."

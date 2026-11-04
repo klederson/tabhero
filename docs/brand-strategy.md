@@ -1,12 +1,14 @@
-# Brand strategy — TabThere
+# Brand strategy — TabHero
 
-Author: Klederson Bueno, 2026. Identity and launch direction, 4 November 2026. Current product identity: TabThere 1.3.0.
+Author: Klederson Bueno, 2026. Identity and launch direction, 4 November 2026. Current product identity: TabHero 1.4.0.
 
 ## Make the desired outcome clear
 
-Someone clicks a link to start a chat and wants to keep using the WhatsApp Web page already open. TabThere shortens that path: open the chat within the loaded interface, preserve the session, and prepare a draft for manual sending. Explain that result before discussing architecture.
+Someone clicks a link to start a chat and wants to keep using the WhatsApp Web page already open. TabHero shortens that path: open the chat within the loaded interface, preserve the session, and prepare a draft for manual sending. Explain that result before discussing architecture.
 
-Selected name: **TabThere**. Displayed wordmark: **tabthere.** Repository: [klederson/jata](https://github.com/klederson/jata). Choosing a name and visual direction does not establish trademark or domain availability or legal clearance.
+Selected name: **TabHero**. Displayed wordmark: **tabhero.** Repository: [klederson/tabhero](https://github.com/klederson/tabhero). Choosing a name and visual direction does not establish trademark or domain availability or legal clearance.
+
+The name connects **tab / here / hero**: the small rescue is keeping the chat right here, in the tab already loaded. Supporting brand line: **“Not all heroes open new tabs.”** The functional tagline remains the clearest promise.
 
 Primary line: **“Another tab? It’s already open.”**
 
@@ -22,7 +24,7 @@ Users first: serve people working, shopping, supporting customers, or making pla
 
 Voice: warm, direct, and lightly irreverent. Use short sentences, humor about the extra tab, and clear guidance when something fails. Avoid “revolutionary,” “the whole community asked for this,” insults, manufactured urgency, and universal promises.
 
-The subtle hope for native adoption is: **“The best version of TabThere? The one you never have to install.”** The best outcome would be for the original flow to solve the problem itself. This is not an acquisition request, job application, partnership announcement, or claim of interest from Meta. A supporting line is: “Open code. The idea can become a feature, too.”
+The subtle hope for native adoption is: **“The best version of TabHero? The one you never have to install.”** The best outcome would be for the original flow to solve the problem itself. This is not an acquisition request, job application, partnership announcement, or claim of interest from Meta. A supporting line is: “Open code. The idea can become a feature, too.”
 
 The MIT license permits use, copying, and modification under its published terms. That includes potential adoption by Meta without an obligation to buy the project. Build usefulness, reputation, and evidence of product and maintenance capability; acquisition, hiring, or partnership would be separate possibilities, never a promised result of open source. No one is obliged to adopt or acquire the project.
 
@@ -37,15 +39,15 @@ The MIT license permits use, copying, and modification under its published terms
 | Symbol | A browser tab with an arrow returning inside. Original, simple, and legible at icon size. |
 | Typography | Bricolage Grotesque for the wordmark and headings; Manrope for body and interface text. Check language-specific character coverage and readable hierarchy. |
 
-Do not use a speech bubble, phone, WhatsApp-derived logo, or official-looking badge. The symbol should remain recognizable without relying on color. Check text contrast and keyboard focus; coral must not be the only indication of an error. TabThere remains the most prominent identity.
+Do not use a speech bubble, phone, WhatsApp-derived logo, or official-looking badge. The symbol should remain recognizable without relying on color. Check text contrast and keyboard focus; coral must not be the only indication of an error. TabHero remains the most prominent identity.
 
 ## Landing-page narrative
 
-1. **Recognize the friction.** “Another tab? It’s already open.” Follow with a concrete explanation: “TabThere opens the chat link in the WhatsApp Web page you already have loaded.”
+1. **Recognize the friction.** “Another tab? It’s already open.” Follow with a concrete explanation: “TabHero opens the chat link in the WhatsApp Web page you already have loaded.”
 2. **Demonstrate the result.** Show the source click, destination chat, and draft within the same interface. Use fictional numbers and content. Label a simulated interface inside its demonstration block; do not present it as an authenticated recording.
 3. **Explain the scope.** A prepared draft, manual sending, the same browser and profile. Integration failure becomes a visible error and preserves the tab. Do not promise every link type or app version will work.
 4. **Offer verifiable confidence.** Available source, installation instructions, explained permissions, and compatibility limits near the installation action. Distribute under **MIT**, with the license file and © 2026 Klederson Bueno notice in published artifacts.
-5. **Invite useful contributions.** “View the code” and “Report a problem” are useful actions. Close with “The best version of TabThere? The one you never have to install.”
+5. **Invite useful contributions.** “View the code” and “Report a problem” are useful actions. Close with “The best version of TabHero? The one you never have to install.”
 
 The demonstration can use “New chat. Same tab.” For an error, prefer “I couldn’t open the chat. Your tab is still as you left it.” Use that wording only when the implementation guarantees the described behavior.
 
@@ -59,7 +61,7 @@ Before claiming proven real compatibility, record an authorized authenticated te
 
 ## Independence and brand care
 
-[Meta’s official WhatsApp guidelines](https://www.meta.com/brand/resources/whatsapp/whatsapp-brand/) call for the correct “WhatsApp” spelling, avoiding prominence of its brand resources, and avoiding implications of partnership or endorsement. Use the name in ordinary text to explain compatibility. The signature and symbol belong to TabThere.
+[Meta’s official WhatsApp guidelines](https://www.meta.com/brand/resources/whatsapp/whatsapp-brand/) call for the correct “WhatsApp” spelling, avoiding prominence of its brand resources, and avoiding implications of partnership or endorsement. Use the name in ordinary text to explain compatibility. The signature and symbol belong to TabHero.
 
 Suggested notice: **“Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta.”**
 
@@ -100,3 +102,7 @@ Use only aggregate distribution metrics already available and voluntary contribu
 Do not instrument clicked links, phone numbers, messages, recipients, history, profiles, persistent identifiers, or WhatsApp sessions. Do not install behavioral analytics as a shortcut to measuring value. An optional anonymous survey may ask whether the extension resolved the flow, clearly identifying participation as voluntary; answers represent participants only.
 
 Useful signals are resolved reproducible cases and understandable instructions. Downloads do not establish active users; stars do not establish compatibility; few issues do not establish an absence of failures. Publish learning with context, without manufactured social proof.
+
+## Naming collision recorded
+
+A separate tab-management extension called [Tab Hero](https://chromewebstore.google.com/detail/tab-hero/oghoncpoemgefilccmophihoebjmbgfl) is listed in the Chrome Web Store. The project owner selected TabHero and was informed of this existing use. The identity and chat-link scope are independent; no affiliation with that extension is claimed. This name is not presented as exclusive, registered, or legally cleared.

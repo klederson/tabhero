@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://klederson.github.io/jata/</loc></url>
-  <url><loc>https://klederson.github.io/jata/brand-book.html</loc></url>
-  <url><loc>https://klederson.github.io/jata/privacy.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/privacy.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/research.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/es/</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/es/privacy.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/es/research.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/pt-br/</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/pt-br/privacy.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/pt-br/research.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/id/</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/id/privacy.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/id/research.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/hi/</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/hi/privacy.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/hi/research.html</loc></url>
+  <url><loc>https://klederson.github.io/tabhero/brand-book.html</loc></url>
 </urlset>

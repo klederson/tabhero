@@ -3,9 +3,9 @@
   "label": "Indonesia",
   "path": "id",
   "meta": {
-    "title": "TabThere — Tab lagi? Ini sudah terbuka.",
-    "description": "Chat baru. Tab yang sama. TabThere membuka tautan chat di WhatsApp Web yang sudah dimuat, tanpa memulai ulang sesi.",
-    "ogTitle": "TabThere. Tab lagi? Ini sudah terbuka.",
+    "title": "TabHero — Tab lagi? Ini sudah terbuka.",
+    "description": "Chat baru. Tab yang sama. TabHero membuka tautan chat di WhatsApp Web yang sudah dimuat, tanpa memulai ulang sesi.",
+    "ogTitle": "TabHero. Tab lagi? Ini sudah terbuka.",
     "ogDescription": "Chat baru. Tab yang sama. Ekstensi kecil berkode terbuka untuk memangkas jalan memutar yang tak perlu."
   },
   "strings": {
@@ -14,7 +14,7 @@
     "header_a_003": "Bikin kesal",
     "header_a_004": "Traktir sedikit",
     "header_a_005": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 24\"></path></svg>Kode terbuka <span aria-hidden=\"true\">↗</span>",
-    "hero_p_006": "<span class=\"status-dot\"></span> EKSTENSI KECIL. LEGA BESAR.",
+    "hero_p_006": "<span class=\"status-dot\"></span> TIDAK SEMUA PAHLAWAN MEMBUKA TAB BARU.",
     "hero_h1_007": "Tab lagi?<br>Ini <span class=\"highlight\">sudah</span><br>terbuka<span class=\"period\">.</span>",
     "common_span_008": "sudah",
     "hero_p_009": "Anda cuma ingin membuka chat.<br>Bukan membuka cabang WhatsApp di setiap tab.",
@@ -84,7 +84,7 @@
     "common_span_073": "SUPER USER <span>2021</span>",
     "common_h3_074": "Tautan untuk Web. Aplikasi desktop ikut muncul.",
     "common_p_075": "Seseorang dengan akun berbeda ingin tetap melayani lewat browser, tetapi tautannya membuka aplikasi desktop.",
-    "o_problema_p_076": "Ringkasan editorial dari laporan lama, bukan testimoni tentang __BRAND__. <a href=\"https://github.com/klederson/jata/blob/main/docs/research.md\">Lihat 8 sumber dan batas penelitiannya ↗</a>",
+    "o_problema_p_076": "Ringkasan editorial dari laporan lama, bukan testimoni tentang __BRAND__. <a href=\"https://github.com/klederson/tabhero/blob/main/docs/research.md\">Lihat 8 sumber dan batas penelitiannya ↗</a>",
     "common_a_077": "Lihat 8 sumber dan batas penelitiannya ↗",
     "instalar_p_078": "04 / BIKIN SIMPEL",
     "instalar_h2_079": "Pasang.<br>Tarik napas.<br><span>Mulai chat.</span>",
@@ -195,12 +195,12 @@
     "supportPendingStatus": "Penerimaan dukungan belum diaktifkan. Tidak ada tagihan yang akan dibuat."
   },
   "privacy": {
-    "title": "Privasi — TabThere",
+    "title": "Privasi — TabHero",
     "kicker": "DIPERBARUI 4 NOVEMBER 2026",
     "back": "Kembali ke situs ↵",
     "heading": "Chat milik Anda.<br>Penjelasannya terbuka.",
     "extensionHeading": "Ekstensi",
-    "extensionP1": "TabThere meneruskan nomor dan teks dari tautan chat ke tab WhatsApp Web dalam browser dan profil yang sama. Ekstensi memakai modul internal aplikasi untuk membuka kontak dan mengisi draf. Ekstensi tidak mengakses riwayat pesan atau mengirim pesan secara otomatis.",
+    "extensionP1": "TabHero meneruskan nomor dan teks dari tautan chat ke tab WhatsApp Web dalam browser dan profil yang sama. Ekstensi memakai modul internal aplikasi untuk membuka kontak dan mengisi draf. Ekstensi tidak mengakses riwayat pesan atau mengirim pesan secara otomatis.",
     "extensionP2": "Ekstensi tidak memiliki telemetri, iklan, analitik, atau server yang dioperasikan pengembang untuk menerima chat. Nomor telepon dan pesan tidak disimpan di berkas, basis data, atau penyimpanan ekstensi. WhatsApp memproses kontak dan draf di dalam layanannya sendiri, sesuai kebijakannya sendiri.",
     "siteHeading": "Situs ini",
     "siteP1": "Berkas dan font dihosting bersama situs. Kode kami tidak membuat cookie, tidak menyertakan pelacak, dan tidak meminta chat, nomor telepon, atau akun. Pilihan bahasa Anda tetap ada di URL halaman; kami tidak menyimpannya dalam profil. Ilustrasi interaktif berjalan secara lokal dan tidak terhubung ke WhatsApp.",
@@ -208,7 +208,81 @@
     "fundingHeading": "Dukungan opsional",
     "fundingP": "Setelah profil penerimaan aktif, tombol dukungan membawa Anda ke GitHub Sponsors. Anda memilih dan mengonfirmasi nilai, frekuensi, serta pembayarannya di sana. Situs ini tidak menerima detail kartu dan tidak mengonfirmasi pembayaran. Selama profil belum tersedia, tindakan pembayaran tetap dinonaktifkan.",
     "reportHeading": "Melaporkan masalah",
-    "reportP": "Buka <a href=\"https://github.com/klederson/jata/issues\">issue</a> dengan informasi versi dan perilaku yang Anda amati. Jangan sertakan nomor telepon asli, pesan, kode QR, cookie, atau kredensial. Untuk laporan keamanan, lihat <a href=\"https://github.com/klederson/jata/blob/main/SECURITY.md\">SECURITY.md</a>.",
+    "reportP": "Buka <a href=\"https://github.com/klederson/tabhero/issues\">issue</a> dengan informasi versi dan perilaku yang Anda amati. Jangan sertakan nomor telepon asli, pesan, kode QR, cookie, atau kredensial. Untuk laporan keamanan, lihat <a href=\"https://github.com/klederson/tabhero/blob/main/SECURITY.md\">SECURITY.md</a>.",
     "maintainerP": "Dikelola oleh <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Proyek independen. Tidak berafiliasi, disponsori, atau didukung secara resmi oleh WhatsApp maupun Meta."
+  },
+  "community": {
+    "title": "Catatan komunitas — TabHero",
+    "description": "Delapan laporan lama, keluhan di baliknya, dan pelajaran produk yang kami ambil. Sumber serta batasannya disertakan.",
+    "back": "Kembali ke TabHero",
+    "kicker": "DRAMA TAB INI PUNYA CATATAN.",
+    "heading": "Keluhan nyata.<br>Pelajaran berguna.",
+    "lede": "Delapan laporan publik dari 2020–2025. Ini ringkasan editorial, bukan kutipan, testimoni pelanggan, atau bukti perilaku saat ini.",
+    "all": "Semua laporan",
+    "direct": "Laporan langsung",
+    "related": "Permintaan terkait",
+    "reported": "Yang dilaporkan",
+    "insight": "Pelajaran yang bisa diambil",
+    "context": "Konteksnya penting",
+    "original": "Baca sumber aslinya",
+    "count": "{count} laporan ditampilkan",
+    "methods": "Baca kurasi dan metodologi lengkap",
+    "limits": "Para penulis ini tidak mengulas TabHero. Ini kumpulan kecil laporan lama, bukan penelitian tentang seberapa umum masalahnya. Interpretasi kami adalah keputusan produk, bukan kutipan. Kompatibilitas dengan sesi nyata yang terautentikasi masih belum diverifikasi.",
+    "topLabel": "PELAJARAN TERBESAR",
+    "topHeading": "Konteks yang tepat lebih penting daripada jumlah tab.",
+    "topBody": "Chat seharusnya berada di akun dan konteks browser yang dipilih penggunanya. Mempertahankan dokumen yang sudah dimuat adalah kriteria teknis kami; laporan-laporan ini tidak membuktikan perilaku tersebut.",
+    "cta": "Coba idenya ↵",
+    "mainLink": "Jelajahi catatan komunitas ↗",
+    "brandNote": "Tab. Here. Hero. Bantuan kecil untuk menghindari jalan memutar yang tak perlu.",
+    "reports": [
+      {
+        "title": "Sudah terbuka. Dibuka lagi.",
+        "summary": "Opsi Web menjalankan instans baru meskipun tabnya sudah ada.",
+        "insight": "Pertahankan konteks yang sudah dimuat; sekadar memfokuskan tab belum cukup.",
+        "context": "Laporan lama. Diperiksa kembali dalam diskusi induknya; tidak ada pengukuran identitas dokumen."
+      },
+      {
+        "title": "Chat yang tepat. Akun yang salah.",
+        "summary": "Alur bisnis di Web meminta membuka aplikasi yang terkait dengan akun pribadi.",
+        "insight": "Jelaskan batas antar-browser dan profil. Tujuannya harus menghormati pilihan akun pengguna.",
+        "context": "Akun pribadi dan bisnis terpisah; bukan pengujian pemilihan akun secara bebas."
+      },
+      {
+        "title": "Dua profil. Satu aplikasi desktop yang ngotot.",
+        "summary": "Pengalihan ke desktop mengganggu tautan kontak belum tersimpan yang sebelumnya dipakai lewat profil browser terpisah.",
+        "insight": "Permudah menghubungi kontak sesekali tanpa memaksa perubahan buku alamat.",
+        "context": "Profil Web di desktop. Tidak ada klaim akses lintas profil atau draf yang hilang."
+      },
+      {
+        "title": "Melayani pelanggan, menunggu layar pemuatan lagi.",
+        "summary": "Sebuah tim melaporkan instans Web tambahan dan waktu tunggu pemuatan dari dasbor mereka.",
+        "insight": "Tunjukkan kesinambungan dalam alur kerja nyata. Jangan mengarang statistik penghematan waktu.",
+        "context": "Penulis kemudian menyatakan bahwa masalah pengalihan sebelumnya tampaknya telah diperbaiki pada Juni 2020."
+      },
+      {
+        "title": "Temukan tab yang sudah ada.",
+        "summary": "Seorang pengguna meminta agar tab Web yang sudah ada diaktifkan sebelum membuat tab baru.",
+        "insight": "Penggunaan ulang tab dan pemeliharaan dokumen adalah dua kriteria penerimaan yang berbeda.",
+        "context": "Penyesuaian Tridactyl. Usulan pembaruan URL tidak membuktikan status aplikasi tetap terjaga."
+      },
+      {
+        "title": "Menutup issue bukan berarti tuntas menjawab.",
+        "summary": "Sebuah pustaka mengabaikan tab aktif; pemberi komentar berikutnya menanyakan letak perbaikannya.",
+        "insight": "Saat menyelesaikan laporan, sertakan tautan perbaikan, versi terkait, dan langkah verifikasi.",
+        "context": "Otomatisasi pihak ketiga; ditutup sebagai duplikat, bukan pengujian TabHero."
+      },
+      {
+        "title": "Buka dengan… apa, tepatnya?",
+        "summary": "Firefox di Ubuntu membuka pemilih aplikasi tanpa penangan tautan yang berfungsi.",
+        "insight": "Buat tujuan tautan mudah diprediksi dan pesan kesalahan mudah dipahami.",
+        "context": "Tidak disebutkan adanya tab Web yang sudah terbuka. Ini ketidakpastian pengalihan, bukan bukti tab duplikat."
+      },
+      {
+        "title": "Tujuannya chat, bukan instalasi lagi.",
+        "summary": "Firefox Android menyarankan pemasangan aplikasi; penulis kemudian melaporkan varian tautan yang berfungsi.",
+        "insight": "Pahami tugas dan lingkungan pengguna sebelum menyarankan perubahan pengaturan.",
+        "context": "Kasus seluler yang ditandai selesai. Ini tidak menunjukkan cacat pada Web di desktop."
+      }
+    ]
   }
 }

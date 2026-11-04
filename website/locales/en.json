@@ -3,9 +3,9 @@
   "label": "English",
   "path": "",
   "meta": {
-    "title": "TabThere — Another tab? It’s already open.",
-    "description": "New chat. Same tab. TabThere opens chat links inside the WhatsApp Web page you already have loaded, preserving your session.",
-    "ogTitle": "TabThere. Another tab? It’s already open.",
+    "title": "TabHero — Another tab? It’s already open.",
+    "description": "New chat. Same tab. TabHero opens chat links inside the WhatsApp Web page you already have loaded, preserving your session.",
+    "ogTitle": "TabHero. Another tab? It’s already open.",
     "ogDescription": "New chat. Same tab. A small open-source extension for one less unnecessary detour."
   },
   "strings": {
@@ -14,7 +14,7 @@
     "header_a_003": "The detour",
     "header_a_004": "The almost-coffee",
     "header_a_005": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 24\"></path></svg>Open source <span aria-hidden=\"true\">↗</span>",
-    "hero_p_006": "<span class=\"status-dot\"></span> TINY EXTENSION. BIG SIGH OF RELIEF.",
+    "hero_p_006": "<span class=\"status-dot\"></span> NOT ALL HEROES OPEN NEW TABS.",
     "hero_h1_007": "Another tab?<br>It’s <span class=\"highlight\">already</span><br>open<span class=\"period\">.</span>",
     "common_span_008": "already",
     "hero_p_009": "You wanted to start a chat.<br>Not open a franchise of WhatsApp tabs.",
@@ -84,7 +84,7 @@
     "common_span_073": "SUPER USER <span>2021</span>",
     "common_h3_074": "A link for the web. An unexpected desktop guest.",
     "common_p_075": "A person using separate accounts wants to keep business chats in the browser, but the desktop app gets in the way.",
-    "o_problema_p_076": "Editorial summaries of historical reports, not testimonials about __BRAND__. <a href=\"https://github.com/klederson/jata/blob/main/docs/research.md\">See all 8 sources and the research limits ↗</a>",
+    "o_problema_p_076": "Editorial summaries of historical reports, not testimonials about __BRAND__. <a href=\"https://github.com/klederson/tabhero/blob/main/docs/research.md\">See all 8 sources and the research limits ↗</a>",
     "common_a_077": "See all 8 sources and the research limits ↗",
     "instalar_p_078": "04 / LET’S MAKE THIS EASIER",
     "instalar_h2_079": "Install.<br>Exhale.<br><span>Chat.</span>",
@@ -195,12 +195,12 @@
     "supportPendingStatus": "Payments haven’t been enabled yet. You won’t be charged."
   },
   "privacy": {
-    "title": "Privacy — TabThere",
+    "title": "Privacy — TabHero",
     "kicker": "UPDATED NOVEMBER 4, 2026",
     "back": "Back to the site ↵",
     "heading": "Your chats.<br>The details, clear.",
     "extensionHeading": "The extension",
-    "extensionP1": "TabThere passes the number and text from a conversation link to your WhatsApp Web tab in the same browser and profile. It uses the app’s internal modules to open the contact and fill the draft. It does not query message history or send messages automatically.",
+    "extensionP1": "TabHero passes the number and text from a conversation link to your WhatsApp Web tab in the same browser and profile. It uses the app’s internal modules to open the contact and fill the draft. It does not query message history or send messages automatically.",
     "extensionP2": "The extension has no telemetry, advertising, analytics or developer-operated server receiving chats. It does not store phone numbers or messages in files, databases or extension storage. WhatsApp processes the contact and draft within its own service, under its own policies.",
     "siteHeading": "This website",
     "siteP1": "The files and fonts are hosted with the site. Our code creates no cookies, includes no trackers and asks for no chats, phone numbers or account. Your language choice stays in the page URL; we do not store it in a profile. The interactive illustration runs locally and does not connect to WhatsApp.",
@@ -208,7 +208,81 @@
     "fundingHeading": "Optional support",
     "fundingP": "When the receiving profile is active, the support button takes you to GitHub Sponsors. You choose and confirm the amount, frequency and payment there. This site receives no card details and does not confirm payments. While the profile is unavailable, the payment action stays disabled.",
     "reportHeading": "Reporting a problem",
-    "reportP": "Open an <a href=\"https://github.com/klederson/jata/issues\">issue</a> with versions and the behavior you observed. Do not include real phone numbers, messages, QR codes, cookies or credentials. For security reports, see <a href=\"https://github.com/klederson/jata/blob/main/SECURITY.md\">SECURITY.md</a>.",
+    "reportP": "Open an <a href=\"https://github.com/klederson/tabhero/issues\">issue</a> with versions and the behavior you observed. Do not include real phone numbers, messages, QR codes, cookies or credentials. For security reports, see <a href=\"https://github.com/klederson/tabhero/blob/main/SECURITY.md\">SECURITY.md</a>.",
     "maintainerP": "Maintained by <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Independent project. Not affiliated with, sponsored by, or endorsed by WhatsApp or Meta."
+  },
+  "community": {
+    "title": "Community notes — TabHero",
+    "description": "Eight historical reports, the complaints behind them and the product insights we draw from them. Sources and limits included.",
+    "back": "Back to TabHero",
+    "kicker": "THE TAB DRAMA HAS RECEIPTS.",
+    "heading": "Real complaints.<br>Useful lessons.",
+    "lede": "Eight public reports from 2020–2025. These are editorial summaries, not quotes, customer testimonials or proof of current behavior.",
+    "all": "All reports",
+    "direct": "Direct reports",
+    "related": "Related requests",
+    "reported": "What was reported",
+    "insight": "What it suggests",
+    "context": "Context matters",
+    "original": "Read the original",
+    "count": "{count} reports shown",
+    "methods": "Read the full curation and methodology",
+    "limits": "These authors did not review TabHero. This is a small historical collection, not a prevalence study. Our interpretations are product decisions, not quotations. Real authenticated compatibility remains unverified.",
+    "topLabel": "THE BIGGEST TAKEAWAY",
+    "topHeading": "The right context beats the right tab count.",
+    "topBody": "A chat belongs in the account and browser context the person chose. Preserving the loaded document is our engineering criterion; the reports do not prove that behavior.",
+    "cta": "Try the idea ↵",
+    "mainLink": "Explore the community notes ↗",
+    "brandNote": "Tab. Here. Hero. A small rescue from an unnecessary detour.",
+    "reports": [
+      {
+        "title": "Already open. Opened again.",
+        "summary": "The Web option starts another instance despite an existing tab.",
+        "insight": "Preserve the loaded context; focusing a tab alone is not enough.",
+        "context": "Historical report. Rechecked in the parent discussion; no document-identity measurement."
+      },
+      {
+        "title": "Right conversation. Wrong account.",
+        "summary": "A business Web flow prompts the app associated with a personal account.",
+        "insight": "Make browser and profile boundaries explicit. The destination must respect the person’s account choice.",
+        "context": "Separate personal and business accounts; not a test of arbitrary multi-account selection."
+      },
+      {
+        "title": "Two profiles. One pushy desktop app.",
+        "summary": "Desktop routing disrupts unsaved-contact links previously used with separate browser profiles.",
+        "insight": "Keep occasional contact initiation simple without forcing address-book changes.",
+        "context": "Desktop Web profiles. No claim of cross-profile access or lost drafts."
+      },
+      {
+        "title": "Customer work, meet another loading screen.",
+        "summary": "A team reports another Web instance and a loading wait from its dashboard.",
+        "insight": "Demonstrate continuity in a real workflow. Do not invent time-saving statistics.",
+        "context": "The author later said an earlier redirection problem appeared fixed in June 2020."
+      },
+      {
+        "title": "Find the tab that is already there.",
+        "summary": "A user asks to activate an existing Web tab before creating another.",
+        "insight": "Reuse and document preservation are different acceptance criteria.",
+        "context": "Tridactyl customization. Proposed URL updates do not prove state preservation."
+      },
+      {
+        "title": "A closed issue is not the whole answer.",
+        "summary": "A library ignores an active tab; a later commenter asks where the fix is.",
+        "insight": "Link the fix, affected version and verification steps when resolving a report.",
+        "context": "Third-party automation; closed as a duplicate, not a TabHero test."
+      },
+      {
+        "title": "Open with… what, exactly?",
+        "summary": "Firefox on Ubuntu reaches an app chooser without a working handler.",
+        "insight": "Make the destination predictable and errors understandable.",
+        "context": "No existing Web tab is stated. This is routing uncertainty, not proof of duplicate tabs."
+      },
+      {
+        "title": "The goal was a chat, not another installation.",
+        "summary": "Firefox Android suggests installation; the author later reports a working link variant.",
+        "insight": "Diagnose the person’s task and environment before recommending setup changes.",
+        "context": "Mobile case marked solved. It does not demonstrate a desktop Web defect."
+      }
+    ]
   }
 }

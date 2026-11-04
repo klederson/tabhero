@@ -1,6 +1,6 @@
-# Support TabThere
+# Support TabHero
 
-The selected channel for [TabThere](https://github.com/klederson/jata) is **GitHub Sponsors**, with contributions starting at **US$ 1**. Suggested amounts are **US$ 1, US$ 3, US$ 5, and US$ 10**, with a custom amount in GitHub’s own interface. Support is voluntary and never a condition of using the extension.
+The selected channel for [TabHero](https://github.com/klederson/tabhero) is **GitHub Sponsors**, with contributions starting at **US$ 1**. Suggested amounts are **US$ 1, US$ 3, US$ 5, and US$ 10**, with a custom amount in GitHub’s own interface. Support is voluntary and never a condition of using the extension.
 
 ## Fees and eligibility
 
@@ -27,7 +27,7 @@ The public `funding.json` configuration is:
 }
 ```
 
-Internal values are in cents; the interface displays dollars. A URL in `githubSponsors` does not prove that receiving sponsorships is active. While `enabled` is `false`, show **“Financial support coming soon”**, keep the payment button unavailable, and offer starring the [repository](https://github.com/klederson/jata) as an alternative.
+Internal values are in cents; the interface displays dollars. A URL in `githubSponsors` does not prove that receiving sponsorships is active. While `enabled` is `false`, show **“Financial support coming soon”**, keep the payment button unavailable, and offer starring the [repository](https://github.com/klederson/tabhero) as an alternative.
 
 The static GitHub Pages site does not need a backend or its own account-registration system. Never store banking details, tax information, identity documents, passwords, or tokens in the website or repository. GitHub may require the supporter to sign in and provide payment details within its own flow.
 
@@ -45,7 +45,7 @@ The project page shows the four suggested amounts and offers **“Choose an amou
 
 No specification for URL parameters that prefill a price or select one-time sponsorship was found in the official sources consulted. This integration therefore does not append parameters such as `amount`, `tier_id`, or `frequency=one-time`, or promise that a website preset will already be selected on GitHub. The URL documentation consulted describes tracking metadata; that metadata does not configure the contribution amount. Source: [metadata in Sponsors URLs](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/viewing-your-sponsors-and-sponsorships).
 
-Before changing `enabled` to `true`, check publicly that the URL stays on Sponsors, identifies Klederson Bueno, describes TabThere’s work, offers all four one-time tiers, and allows custom amounts starting at US$ 1. Review the billing summary before confirming any payment. An existing profile, a page opening, and simulated-interface tests do not prove a payment or bank payout.
+Before changing `enabled` to `true`, check publicly that the URL stays on Sponsors, identifies Klederson Bueno, describes TabHero’s work, offers all four one-time tiers, and allows custom amounts starting at US$ 1. Review the billing summary before confirming any payment. An existing profile, a page opening, and simulated-interface tests do not prove a payment or bank payout.
 
 ## What GitHub CLI can do
 

@@ -1,20 +1,20 @@
-<p align="center"><img src="brand/logo.svg" width="280" alt="TabThere"></p>
+<p align="center"><img src="brand/logo.svg" width="280" alt="TabHero"></p>
 
 <h1 align="center">New chat. Same tab.</h1>
 
-<p align="center">Another tab? It’s already open.</p>
+<p align="center">Not all heroes open new tabs.</p>
 
-<p align="center"><a href="https://klederson.github.io/jata/">Website</a> · <a href="https://github.com/klederson/jata/releases">Downloads</a> · <a href="docs/brand-strategy.md">Brand strategy</a> · <a href="docs/research.md">Public research</a> · <a href="docs/internationalization.md">Languages</a> · <a href="docs/funding.md">Support</a></p>
+<p align="center"><a href="https://klederson.github.io/tabhero/">Website</a> · <a href="https://github.com/klederson/tabhero/releases">Downloads</a> · <a href="docs/brand-strategy.md">Brand strategy</a> · <a href="docs/community-insights.md">Community insights</a> · <a href="docs/research.md">Research methodology</a> · <a href="docs/internationalization.md">Languages</a> · <a href="docs/funding.md">Support</a></p>
 
-**TabThere** is an independent, MIT-licensed browser extension for Chrome and Firefox. It opens chat links inside an already loaded WhatsApp Web tab, preserving the document and session and preparing a draft for manual sending. It does not send messages automatically.
+**TabHero** is an independent, MIT-licensed browser extension for Chrome and Firefox. It opens chat links inside an already loaded WhatsApp Web tab, preserving the document and session and preparing a draft for manual sending. It does not send messages automatically.
 
-**Experimental — version 1.3.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
+**Experimental — version 1.4.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
 
 Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta. WhatsApp is a trademark of its respective owners.
 
 ## Update an existing installation
 
-Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabThere**, version **1.3.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
+Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.4.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
 
 ## Install in Chrome
 
@@ -26,7 +26,7 @@ Ready-to-use files are in `dist/chrome`. Using the extension does not require No
 4. Select this project’s `dist/chrome` folder.
 5. Keep WhatsApp Web open and click a `wa.me` or `api.whatsapp.com/send` link.
 
-If you downloaded `artifacts/tabthere-chrome.zip`, extract it first and select the extracted folder. Requires Chrome 120 or later. This is a local installation, not a Chrome Web Store listing.
+If you downloaded `artifacts/tabhero-chrome.zip`, extract it first and select the extracted folder. Requires Chrome 120 or later. This is a local installation, not a Chrome Web Store listing.
 
 ## Install in Firefox
 
@@ -35,7 +35,7 @@ If you downloaded `artifacts/tabthere-chrome.zip`, extract it first and select t
 3. Select `dist/firefox/manifest.json`.
 4. Keep WhatsApp Web open and try a chat link.
 
-If using `artifacts/tabthere-firefox.zip`, extract it first. Requires Firefox 142 or later. This temporary installation must be repeated after restarting Firefox. Permanent installation in standard Firefox requires Mozilla signing; the supplied package is not signed or published in an add-on store.
+If using `artifacts/tabhero-firefox.zip`, extract it first. Requires Firefox 142 or later. This temporary installation must be repeated after restarting Firefox. Permanent installation in standard Firefox requires Mozilla signing; the supplied package is not signed or published in an add-on store.
 
 ## Behavior
 
@@ -53,7 +53,7 @@ The integration uses WhatsApp’s already loaded internal modules to resolve a c
 
 `https://web.whatsapp.com/send` is used only for the initial opening when no WhatsApp tab exists. If signed out, link the account through the normal WhatsApp flow.
 
-Group invitations, channels, numberless sharing links, and business codes such as `wa.me/message/...` follow their normal flow. If that flow later reaches a supported numbered chat link, TabThere intercepts it then. Links already pointing to `web.whatsapp.com` follow their normal flow.
+Group invitations, channels, numberless sharing links, and business codes such as `wa.me/message/...` follow their normal flow. If that flow later reaches a supported numbered chat link, TabHero intercepts it then. Links already pointing to `web.whatsapp.com` follow their normal flow.
 
 ## Permissions and privacy
 
@@ -103,12 +103,12 @@ Internal contracts were consulted in public WPPConnect/WA-JS code: [opening a ch
 
 ## Website, identity, and support
 
-The static website has no framework or backend and is deployed to GitHub Pages by [pages.yml](.github/workflows/pages.yml). Source is in `website/`; vectors, the PDF guide, and social artwork are in `brand/`. Fonts are self-hosted with their OFL licenses. Run `npm run package` and `npm run build:site` to generate `website/dist/`. Website downloads include `tabthere-chrome.zip`, `tabthere-firefox.zip`, and `tabthere-brand-kit.zip`.
+The static website has no framework or backend and is deployed to GitHub Pages by [pages.yml](.github/workflows/pages.yml). Source is in `website/`; vectors, the PDF guide, and social artwork are in `brand/`. Fonts are self-hosted with their OFL licenses. Run `npm run package` and `npm run build:site` to generate `website/dist/`. Website downloads include `tabhero-chrome.zip`, `tabhero-firefox.zip`, and `tabhero-brand-kit.zip`.
 
 `npm run build:brand` regenerates icons, social artwork, and the PDF guide with Playwright Chromium. To regenerate outlined wordmarks, install `fonttools` in a Python environment and run `scripts/wordmark.py`. The final assets are versioned; regenerating them is not required to build or publish the site.
 
-English is primary at the site root. Localized static pages are available at `es/`, `pt-br/`, `id/`, and `hi/`, with a visible language selector and matching privacy pages. Website copy lives in `website/locales/`, the shared page structure in `website/template.html`, and native extension messages in `extension/_locales/`. The extension follows the browser UI language with English as its fallback. The website does not redirect based on location or browser language; a language choice stays in its URL. See the [internationalization plan](docs/internationalization.md) for language-review requirements and the limits of market research.
+English is primary at the site root. Localized static pages are available at `es/`, `pt-br/`, `id/`, and `hi/`, with a visible language selector and matching privacy and community-research pages. `research.html` presents eight attributed historical reports with filters and separates reported experiences from our product interpretations. Website copy lives in `website/locales/`, the shared page structure in `website/template.html`, and native extension messages in `extension/_locales/`. The extension follows the browser UI language with English as its fallback. The website does not redirect based on location or browser language; a language choice stays in its URL. See the [internationalization plan](docs/internationalization.md) for language-review requirements and the limits of market research.
 
 Support is optional through **GitHub Sponsors, from US$ 1**. Receiving payments is not enabled yet; the website shows a pending state and does not offer a nonexistent checkout. Once enrollment is complete, `node scripts/enable-sponsors.mjs` checks the public page before enabling local configuration. Amount and payment type are confirmed on GitHub. GitHub charges no fee for sponsorships from personal accounts; sponsorships from organizations may incur a fee of up to 6%. A GitHub account is required. See [funding.md](docs/funding.md).
 
-**The best version of TabThere? The one you never have to install.** Native adoption would be a welcome outcome. This is not an acquisition request or a claim of interest from Meta. The [MIT license](LICENSE) permits reuse under its terms, without obliging anyone to adopt or acquire the project. Fonts retain their own licenses. Contributions are welcome: [CONTRIBUTING.md](CONTRIBUTING.md).
+**The best version of TabHero? The one you never have to install.** Native adoption would be a welcome outcome. This is not an acquisition request or a claim of interest from Meta. The [MIT license](LICENSE) permits reuse under its terms, without obliging anyone to adopt or acquire the project. Fonts retain their own licenses. Contributions are welcome: [CONTRIBUTING.md](CONTRIBUTING.md).

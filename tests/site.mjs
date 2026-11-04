@@ -43,7 +43,7 @@ try {
     assert.equal(await page.locator('html').getAttribute('lang'), locale);
     assert.equal(await page.locator('#language-select').inputValue(), locale);
     assert.equal(await page.locator('link[rel="alternate"]').count(), 6);
-    assert.match(await page.title(), /TabThere/);
+    assert.match(await page.title(), /TabHero/);
     assert.equal(await page.locator('[data-version]').textContent(), version);
     assert.doesNotMatch(await page.locator('body').textContent(), /__(?:BRAND|WORDMARK|I18N|META|LANG)/);
     assert.equal(await page.locator('#support-submit').isDisabled(), true, 'Unverified receiving profile must stay disabled');
@@ -59,7 +59,7 @@ try {
     await page.locator('[data-browser="firefox"]').click();
     assert.match(await page.locator('#install-steps').textContent(), /manifest.json/);
     assert.equal(await page.locator('#install-title').textContent(), catalog.ui.firefoxTitle);
-    assert.match(await page.locator('#download-extension').getAttribute('href'), /tabthere-firefox.zip$/);
+    assert.match(await page.locator('#download-extension').getAttribute('href'), /tabhero-firefox.zip$/);
     await page.locator('[data-browser="chrome"]').click();
     await page.locator('[data-amount="custom"]').click();
     assert.equal(await page.locator('#custom-note').isVisible(), true);
@@ -80,7 +80,27 @@ try {
     assert.equal(await page.locator('html').getAttribute('lang'), locale);
     assert.equal(await page.title(), catalog.privacy.title);
     assert.equal(await page.locator('h1').innerHTML(), catalog.privacy.heading);
-    console.log(`OK site ${locale}: localized static page, interactive UI, downloads, privacy and responsive layout.`);
+    await page.goto(new URL(`${path}research.html`, url).href);
+    await page.waitForFunction(() => document.documentElement.dataset.researchReady === 'true');
+    await page.evaluate(() => document.fonts.ready);
+    assert.equal(await page.title(), catalog.community.title);
+    assert.equal(await page.locator('html').getAttribute('lang'), locale);
+    assert.equal(await page.locator('[data-report]:visible').count(), 8);
+    assert.equal(await page.locator('link[rel="alternate"]').count(), 6);
+    assert.doesNotMatch(await page.locator('body').textContent(), /__[A-Z_]+__/);
+    await page.locator('[data-filter="direct"]').click();
+    assert.equal(await page.locator('[data-report]:visible').count(), 4);
+    assert.equal(await page.locator('#report-count').textContent(), catalog.community.count.replace('{count}', new Intl.NumberFormat(locale).format(4)));
+    await page.locator('[data-filter="related"]').click();
+    assert.equal(await page.locator('[data-report]:visible').count(), 4);
+    assert.equal(await page.locator('[data-kind="direct"]:visible').count(), 0);
+    await page.locator('[data-filter="all"]').click();
+    for (const width of [390, 768, 1440]) {
+      await page.setViewportSize({ width, height: 1000 });
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `${locale}: community no overflow at ${width}px`);
+      if (locale === 'en' || locale === 'pt-BR') await page.screenshot({ path: `artifacts/community-${locale}-${width}.png`, fullPage: true });
+    }
+    console.log(`OK site ${locale}: UI, downloads, privacy, community filters and responsive layout.`);
   }
   await load('');
   await Promise.all([page.waitForURL(new URL('es/', url).href), page.locator('#language-select').selectOption('es-419')]);
@@ -90,14 +110,18 @@ try {
   await Promise.all([page.waitForURL(new URL('hi/privacy.html', url).href), page.locator('#language-select').selectOption('hi')]);
   assert.equal(await page.locator('html').getAttribute('lang'), 'hi');
   console.log('OK site: language selector preserves the privacy route.');
-  for (const file of ['tabthere-chrome.zip','tabthere-firefox.zip','tabthere-brand-kit.zip','jata-chrome.zip']) {
+  await page.goto(new URL('es/research.html', url).href);
+  await Promise.all([page.waitForURL(new URL('pt-br/research.html', url).href), page.locator('#language-select').selectOption('pt-BR')]);
+  assert.equal(await page.locator('html').getAttribute('lang'), 'pt-BR');
+  console.log('OK site: language selector preserves the research route.');
+  for (const file of ['tabhero-chrome.zip','tabhero-firefox.zip','tabhero-brand-kit.zip','jata-chrome.zip']) {
     const archive = await page.request.get(new URL(`downloads/${file}`, url).href);
     assert.equal(archive.ok(), true);
     assert.equal((await archive.body()).subarray(0, 2).toString(), 'PK');
   }
   await page.goto(new URL('brand-book.html', url).href);
   await page.evaluate(() => document.fonts.ready);
-  assert.match(await page.title(), /TabThere/);
+  assert.match(await page.title(), /TabHero/);
   assert.equal((await page.request.get(new URL('assets/brand-book.pdf',url).href)).ok(), true);
   await page.route('**/funding.json', route => route.fulfill({ json: { provider: 'github', enabled: true, githubSponsors: 'https://github.com/sponsors/klederson' } }));
   await page.route('https://github.com/sponsors/klederson', route => route.fulfill({ contentType: 'text/html', body: '<h1>Mock checkout</h1>' }));

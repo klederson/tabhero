@@ -3,22 +3,22 @@
     "message": "hi"
   },
   "brandName": {
-    "message": "TabThere"
+    "message": "TabHero"
   },
   "extensionName": {
-    "message": "TabThere — नई चैट। वही टैब।"
+    "message": "TabHero — नई चैट। वही टैब।"
   },
   "extensionDescription": {
     "message": "WhatsApp Web के पहले से खुले टैब में चैट के लिंक खोलें। फ़ोन नंबर और मैसेज भी साथ रहें।"
   },
   "actionTitle": {
-    "message": "TabThere — WhatsApp Web खोलें"
+    "message": "TabHero — WhatsApp Web खोलें"
   },
   "activationFailed": {
     "message": "एक्सटेंशन चालू नहीं हो सका। एक्सटेंशन फिर से लोड करें और WhatsApp की वेबसाइटों के लिए इसकी अनुमतियाँ जाँचें।"
   },
   "handoffTitle": {
-    "message": "TabThere — चैट खुल रही है"
+    "message": "TabHero — चैट खुल रही है"
   },
   "headlineFirst": {
     "message": "नई चैट।"

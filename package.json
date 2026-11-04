@@ -1,12 +1,12 @@
 {
-  "name": "tabthere",
-  "version": "1.3.0",
+  "name": "tabhero",
+  "version": "1.4.0",
   "license": "MIT",
   "author": "Klederson Bueno",
-  "homepage": "https://klederson.github.io/jata/",
+  "homepage": "https://klederson.github.io/tabhero/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/klederson/jata.git"
+    "url": "https://github.com/klederson/tabhero.git"
   },
   "private": true,
   "type": "module",

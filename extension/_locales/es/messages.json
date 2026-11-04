@@ -3,22 +3,22 @@
     "message": "es"
   },
   "brandName": {
-    "message": "TabThere"
+    "message": "TabHero"
   },
   "extensionName": {
-    "message": "TabThere — Chat nuevo. Misma pestaña."
+    "message": "TabHero — Chat nuevo. Misma pestaña."
   },
   "extensionDescription": {
     "message": "Abre enlaces de conversación en tu pestaña de WhatsApp Web ya abierta y conserva el número y el mensaje."
   },
   "actionTitle": {
-    "message": "TabThere — abrir WhatsApp Web"
+    "message": "TabHero — abrir WhatsApp Web"
   },
   "activationFailed": {
     "message": "No se pudo activar. Vuelve a cargar la extensión y revisa sus permisos para los sitios de WhatsApp."
   },
   "handoffTitle": {
-    "message": "TabThere — abriendo la conversación"
+    "message": "TabHero — abriendo la conversación"
   },
   "headlineFirst": {
     "message": "Chat nuevo."

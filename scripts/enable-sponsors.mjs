@@ -13,6 +13,6 @@ if (!listing?.isPublic || listing.url !== 'https://github.com/sponsors/klederson
   const config = JSON.parse(await readFile(configUrl, 'utf8'));
   config.enabled = true;
   await writeFile(configUrl, `${JSON.stringify(config, null, 2)}\n`);
-  await writeFile(new URL('.github/FUNDING.yml', root), 'github: klederson\ncustom: ["https://klederson.github.io/jata/#apoie"]\n');
+  await writeFile(new URL('.github/FUNDING.yml', root), 'github: klederson\ncustom: ["https://klederson.github.io/tabhero/#apoie"]\n');
   console.log('Public profile verified. Local Sponsors configuration enabled; publish the commit to update the website.');
 }
