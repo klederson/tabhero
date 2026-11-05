@@ -10,13 +10,13 @@
 
 The toolbar's **Quick reply** panel also lets you choose a loaded conversation and send a deliberate reply without leaving your work tab. Use free text, saved replies, or an editable AI suggestion through your own OpenRouter key. Sending always requires your Send click. The silent icon badge shows unread messages for the selected regular WhatsApp tab.
 
-**Experimental — version 1.5.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
+**Experimental — version 1.5.1.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
 
 Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta. WhatsApp is a trademark of its respective owners.
 
 ## Update an existing installation
 
-Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.5.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
+Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.5.1**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
 
 ## Install in Chrome
 
@@ -94,10 +94,13 @@ Packages use native JavaScript without runtime libraries or a compiler. The buil
 npx playwright install chromium
 npm run test:browser
 npm run test:firefox
+npm run test:popup:firefox
 npm run test:quick-reply
 ```
 
 Firefox tests use Selenium, an installed Firefox, and geckodriver. Selenium Manager locates the driver; `FIREFOX_BINARY` selects a custom browser executable. Tests launch isolated profiles and simulate ordinary pages and WhatsApp’s internal module contracts. Real browsers exercise redirects, execution in the page context, and tab APIs.
+
+`npm run test:popup:firefox` also opens the real Firefox toolbar popup in an isolated profile and checks its width and height after closing and reopening. This catches popup sizing defects that loading `popup.html` in a browser tab cannot reproduce.
 
 Link-routing checks verify that the original document, its in-memory identity, prior state, and URL remain intact while the target chat and draft change. Quick-reply checks verify the selected recipient, exact outgoing text, unchanged active WhatsApp chat and composer, unchanged work-tab selection, duplicate prevention, draft recovery and AI suggestions without sending. Both verify no navigation or reload fallback. These tests use **simulated WhatsApp and AI interfaces**, not authenticated accounts or a paid API. They do not establish real-world compatibility or recipient delivery.
 
