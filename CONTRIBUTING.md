@@ -11,3 +11,7 @@ For website work, run `npm run build:site` and `npm run test:site`. Static outpu
 English is the source language. Translation contributions should preserve catalog keys, HTML structure and attributes, URLs, brand tokens, and interpolation placeholders. Keep the meaning of error, privacy, and experimental-status messages intact. See [internationalization.md](docs/internationalization.md) for language priorities and fluent-speaker review. Be warm toward people and playful about friction; avoid swearing, personal attacks, invented endorsements, and claims of universal reliability.
 
 Contributions follow the project’s MIT license. Do not introduce third-party logos, remote scripts, telemetry, or a fallback that navigates or reloads the loaded WhatsApp tab. Native adoption is welcome under the license; it creates no obligation to adopt, sponsor, or acquire the project.
+
+## Financial support
+
+You can [support TabHero through GitHub Sponsors](https://github.com/sponsors/klederson), from US$ 1. Sponsorship is optional; using the extension, contributing code and reporting bugs never requires payment. A star or a useful bug report also helps.

@@ -10,6 +10,7 @@ const context = await chromium.launchPersistentContext(profile, { channel: 'chro
 const errors = [];
 context.on('weberror', error => errors.push(error.error().message));
 const fixture = await readFile(new URL('./fixtures/whatsapp.html', import.meta.url), 'utf8');
+const receivingEnabled = JSON.parse(await readFile(new URL('../website/funding.json', import.meta.url), 'utf8')).enabled === true;
 let requests = 0;
 try {
   await context.route('https://web.whatsapp.com/**', route => { requests++; return route.fulfill({ contentType: 'text/html', body: fixture }); });
@@ -73,8 +74,8 @@ try {
   await popup.waitForFunction(() => document.documentElement.dataset.supportReady === 'true');
   await popup.locator('#support').click();
   assert.equal(await popup.locator('#support-panel').isVisible(), true);
-  assert.equal(await popup.locator('#sponsor-button').isDisabled(), true, 'Private receiving profile must not offer checkout');
-  assert.equal(await popup.locator('#support-pending').isVisible(), true);
+  assert.equal(await popup.locator('#sponsor-button').isDisabled(), !receivingEnabled, 'Support availability must match the bundled receiving state');
+  assert.equal(await popup.locator('#support-pending').isVisible(), !receivingEnabled);
   assert.match(await popup.locator('.support-price').textContent(), /US\$ 1/);
   await mkdir('artifacts', { recursive: true });
   await popup.setViewportSize({ width: 390, height: 600 });
@@ -147,6 +148,26 @@ try {
   assert.equal(await whatsapp.evaluate(() => appState.messages[1].text), 'Confirmo às quatro.');
   console.log('OK quick reply: AI only suggests; edited free text sends on click without changing focus.');
 
+  await whatsapp.evaluate(() => {
+    const target = require('WAWebChatCollection').ChatCollection.getModelsArray().find(chat => chat.id._serialized === '12025550141@c.us');
+    target.msgs.getModelsArray = () => [{ type: 'chat', body: 'Older text', id: { fromMe: false } }, { type: 'image', caption: 'Bolo <sem HTML>', id: { fromMe: false } }];
+  });
+  await popup.locator('#refresh').click();
+  await popup.waitForFunction(() => !document.querySelector('#refresh').disabled);
+  assert.equal(await popup.locator('.received-media').textContent(), '▧ Photo');
+  assert.equal(await popup.locator('.received-text').textContent(), 'Bolo <sem HTML>');
+  assert.equal(await popup.locator('#received').locator('img,script').count(), 0);
+  await whatsapp.evaluate(() => {
+    const target = require('WAWebChatCollection').ChatCollection.getModelsArray().find(chat => chat.id._serialized === '12025550141@c.us');
+    target.msgs.getModelsArray = () => [{ type: 'ptt', id: { fromMe: false } }];
+  });
+  await popup.locator('#refresh').click();
+  await popup.waitForFunction(() => !document.querySelector('#refresh').disabled);
+  assert.equal(await popup.locator('.received-media').textContent(), '◉ Voice message');
+  assert.equal(await popup.locator('#suggest').isDisabled(), true, 'AI cannot pretend to hear a media placeholder');
+  await popup.screenshot({ path: 'artifacts/extension-media.png', fullPage: true });
+  console.log('OK preview: latest photo caption and voice placeholder; no media download or automatic send.');
+
   await whatsapp.evaluate(() => { integrationUnavailable = true; });
   await popup.locator('#reply').fill('Guardado na falha');
   await work.bringToFront(); await popup.evaluate(() => document.querySelector('#send').click());
@@ -193,6 +214,9 @@ try {
   await popup.locator('#support').click();
   assert.equal(await popup.locator('#sponsor-button').isEnabled(), true);
   assert.equal(await popup.locator('#support-pending').isVisible(), false);
+  await popup.locator('[data-support-amount="5"]').click();
+  assert.equal(await popup.locator('[data-support-amount="5"]').getAttribute('aria-pressed'), 'true');
+  assert.equal(await popup.locator('#support-selected-amount').textContent(), 'US$ 5');
   // tabs.create can start navigation before Playwright attaches interception.
   // Defer this test tab's navigation, preserving and checking the requested URL.
   await popup.evaluate(() => {
@@ -202,15 +226,25 @@ try {
       return create({ ...options, url: 'about:blank' });
     };
   });
-  const sponsorTabPromise = context.waitForEvent('page');
-  await popup.locator('#sponsor-button').click();
-  const sponsorTab = await sponsorTabPromise;
-  const requestedSupportUrl = await popup.evaluate(() => requestedSupportUrl);
-  assert.equal(requestedSupportUrl, 'https://github.com/sponsors/klederson');
-  await sponsorTab.goto(requestedSupportUrl);
-  assert.equal(await sponsorTab.locator('h1').textContent(), 'Simulated Sponsors page');
-  await sponsorTab.close(); await work.bringToFront(); await unchanged();
-  console.log('OK support: pending receiver blocks checkout; simulated public receiver opens only GitHub Sponsors. No payment.');
+  const checkSupportAmount = async amount => {
+    const sponsorTabPromise = context.waitForEvent('page');
+    await popup.locator('#sponsor-button').click();
+    const sponsorTab = await sponsorTabPromise;
+    const requestedSupportUrl = await popup.evaluate(() => requestedSupportUrl);
+    assert.equal(requestedSupportUrl, `https://github.com/sponsors/klederson/sponsorships?amount=${amount}&frequency=one-time`);
+    await sponsorTab.goto(requestedSupportUrl);
+    assert.equal(await sponsorTab.locator('h1').textContent(), 'Simulated Sponsors page');
+    await sponsorTab.close();
+  };
+  await checkSupportAmount(5);
+  await popup.locator('[data-support-amount="custom"]').click();
+  await popup.locator('#support-custom-amount').fill('0');
+  assert.equal(await popup.locator('#sponsor-button').isDisabled(), true);
+  await popup.locator('#support-custom-amount').fill('27');
+  assert.equal(await popup.locator('#sponsor-button').isEnabled(), true);
+  await checkSupportAmount(27);
+  await work.bringToFront(); await unchanged();
+  console.log('OK support: bundled receiving state respected; simulated handoff opens only GitHub Sponsors. No payment.');
   assert.deepEqual(errors, []);
   console.log('OK quick reply: stale document rejected, no navigation fallback. All tests used simulated services.');
 } finally { await context.close(); await rm(profile, { recursive: true, force: true }); }

@@ -15,6 +15,7 @@ const { version } = JSON.parse(await readFile(new URL('package.json', root), 'ut
 const catalogs = await Promise.all(locales.map(async locale => JSON.parse(await readFile(new URL(`website/locales/${locale}.json`, root), 'utf8'))));
 await rm(destination, { recursive: true, force: true });
 await mkdir(destination, { recursive: true });
+await cp(new URL('extension/sponsorship.js', root), new URL('sponsorship.js', destination));
 for (const entry of await readdir(new URL('website/', root))) {
   if (['dist', 'index.html', 'template.html', 'privacy.html', 'privacy-template.html', 'research-template.html'].includes(entry)) continue;
   await cp(new URL(`website/${entry}`, root), new URL(entry, destination), { recursive: true });
@@ -32,7 +33,7 @@ for (const catalog of catalogs) {
   });
   const replacements = { __LANG__: catalog.locale, __META_TITLE__: catalog.meta.title, __META_DESCRIPTION__: catalog.meta.description, __OG_TITLE__: catalog.meta.ogTitle, __OG_DESCRIPTION__: catalog.meta.ogDescription, __OG_URL__: canonical, __OG_IMAGE__: `${origin}assets/social-card.png`, __CANONICAL__: canonical };
   for (const [token, value] of Object.entries(replacements)) html = html.replaceAll(token, escape(brand(value)));
-  html = brand(html).replaceAll('__COMMUNITY_LINK__', escape(catalog.community.mainLink)).replace('</head>', `${alternates}\n<script type="module" src="language.js"></script>\n</head>`);
+  html = brand(html).replaceAll('__COMMUNITY_LINK__', escape(catalog.community.mainLink)).replaceAll('__SUPPORT_CUSTOM_LABEL__', escape(catalog.ui.supportCustomLabel)).replace('</head>', `${alternates}\n<script type="module" src="language.js"></script>\n</head>`);
   html = html.replace(/(<strong data-version(?:="")?>)[^<]+/g, `$1${version}`);
   html = html.replace(/(<label[^>]+for="language-select"[^>]*>)[\s\S]*?(<\/label>)/, `$1${languageLabels[catalog.locale]}$2`);
   html = html.replace(/<option value="([^"]+)">/g, (match, locale) => `<option value="${locale}"${locale === catalog.locale ? ' selected' : ''}>`);

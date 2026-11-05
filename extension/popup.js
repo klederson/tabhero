@@ -2,6 +2,7 @@ import { popupMessages } from './popup-i18n.js';
 import { aiPermissions } from './quick-reply-ai.js';
 import { createRecipientPicker } from './recipient-picker.js';
 import { loadSupport } from './support.js';
+import { sponsorshipUrl } from './sponsorship.js';
 const api = globalThis.browser ?? globalThis.chrome;
 const language = api.i18n.getMessage('language') || api.i18n.getUILanguage();
 const t = popupMessages(language);
@@ -56,7 +57,9 @@ function controls() {
   recipientPicker.setDisabled(state.busy);
   $('#reply').disabled = state.busy || state.uncertain;
   $('#send').disabled = state.busy || state.searching || state.uncertain || !chat() || !$('#reply').value.trim();
-  $('#suggest').disabled = state.busy || state.uncertain || !chat();
+  const mediaWithoutContext = chat()?.receivedType && chat().receivedType !== 'chat' && !chat().received && !$('#reply').value.trim();
+  $('#suggest').disabled = state.busy || state.uncertain || !chat() || (state.aiConnected && mediaWithoutContext);
+  $('#suggest').title = mediaWithoutContext ? t.mediaAiHint : t.suggest;
   for (const button of document.querySelectorAll('#saved-chips button')) button.disabled = state.busy || state.uncertain;
   $('#checked').hidden = !state.uncertain;
   $('#send').textContent = state.busy === 'send' ? t.sending : t.send;
@@ -114,10 +117,22 @@ async function restoreDraft() {
   if (draft?.documentId && draft.documentId !== state.snapshot?.documentId && $('#reply').value) status(t.stale, true);
   controls();
 }
+function renderReceived(item) {
+  const preview = $('#received');
+  preview.replaceChildren();
+  if (item?.receivedType && item.receivedType !== 'chat') {
+    const kinds = { image: ['▧', 'mediaImage'], video: ['▷', 'mediaVideo'], ptt: ['◉', 'mediaVoice'], audio: ['♫', 'mediaAudio'], document: ['▤', 'mediaFile'], sticker: ['◇', 'mediaSticker'], location: ['⌖', 'mediaLocation'], vcard: ['♙', 'mediaContact'], multi_vcard: ['♙', 'mediaContact'], view_once: ['◉', 'mediaViewOnce'], revoked: ['⊘', 'mediaDeleted'] };
+    const [symbol, key] = kinds[item.receivedType] ?? ['▧', 'mediaOther'];
+    const placeholder = document.createElement('span'); placeholder.className = 'received-media'; placeholder.textContent = `${symbol} ${t[key]}`; preview.append(placeholder);
+  }
+  if (item?.received) {
+    const text = document.createElement('span'); text.className = 'received-text'; text.textContent = item.received; preview.append(text);
+  } else if (!preview.childElementCount) preview.textContent = t.noPreview;
+}
 async function selectChat(id, restore = true) {
   state.chatId = id;
   recipientPicker.setSelected(chat());
-  $('#received').textContent = chat()?.received || t.noPreview;
+  renderReceived(chat());
   if (restore) await restoreDraft();
   controls();
 }
@@ -156,12 +171,30 @@ for (const id of ['support', 'support-footer']) $(`#${id}`).addEventListener('cl
   await persist().catch(() => {});
   panel('support-panel');
 });
+let supportConfig = { enabled: false };
+let supportAmount = '1';
+const selectedSupportUrl = () => supportConfig.enabled ? sponsorshipUrl(supportAmount === 'custom' ? $('#support-custom-amount').value : supportAmount) : null;
+function updateSupport() {
+  $('#support-custom-field').hidden = supportAmount !== 'custom';
+  const value = supportAmount === 'custom' ? $('#support-custom-amount').value : supportAmount;
+  $('#support-selected-amount').textContent = sponsorshipUrl(value) ? `US$ ${new Intl.NumberFormat(language.replace('_', '-')).format(Number(value))}` : 'US$ —';
+  $('#sponsor-button').disabled = !selectedSupportUrl();
+}
+for (const button of document.querySelectorAll('[data-support-amount]')) button.addEventListener('click', () => {
+  supportAmount = button.dataset.supportAmount;
+  for (const other of document.querySelectorAll('[data-support-amount]')) other.setAttribute('aria-pressed', String(other === button));
+  updateSupport();
+  if (supportAmount === 'custom') $('#support-custom-amount').focus();
+});
+$('#support-custom-amount').addEventListener('input', updateSupport);
 loadSupport().then(config => {
+  supportConfig = config;
   $('#support-pending').hidden = config.enabled;
-  $('#sponsor-button').disabled = !config.enabled;
+  updateSupport();
   $('#sponsor-button').addEventListener('click', async () => {
-    if (!config.enabled || !config.url) return;
-    try { await api.tabs.create({ url: config.url }); }
+    const url = selectedSupportUrl();
+    if (!url) return;
+    try { await api.tabs.create({ url }); }
     catch { status(t.checkFailed, true); }
   });
   document.documentElement.dataset.supportReady = 'true';

@@ -1,3 +1,4 @@
+import { sponsorshipUrl } from './sponsorship.js';
 const $ = selector => document.querySelector(selector);
 const all = selector => [...document.querySelectorAll(selector)];
 const supported = new Set(['en', 'es-419', 'pt-BR', 'id', 'hi']);
@@ -66,12 +67,13 @@ function selectedLink() {
   try {
     const url = new URL(funding.githubSponsors);
     if (url.origin !== 'https://github.com' || url.pathname !== '/sponsors/klederson' || url.search || url.hash) return null;
-    return url.href;
+    return sponsorshipUrl(selectedAmount === 'custom' ? $('#support-custom-amount').value : String(Number(selectedAmount) / 100));
   } catch { return null; }
 }
 function updateSupport() {
   const link = selectedLink();
   $('#custom-note').hidden = selectedAmount !== 'custom';
+  $('#support-custom-field').hidden = selectedAmount !== 'custom';
   $('#support-submit').disabled = !link;
   $('#support-submit').textContent = link ? t('supportReady') : t('supportPending');
   $('#support-status').textContent = link ? t('supportReadyStatus') : t('supportPendingStatus');
@@ -81,12 +83,13 @@ all('[data-amount]').forEach(button => button.addEventListener('click', () => {
   all('[data-amount]').forEach(item => { const selected = item === button; item.classList.toggle('selected', selected); item.setAttribute('aria-pressed', String(selected)); });
   updateSupport();
 }));
+$('#support-custom-amount').addEventListener('input', updateSupport);
 $('#support-form').addEventListener('submit', event => {
   event.preventDefault();
   const link = selectedLink();
   if (link) window.location.assign(link);
 });
-fetch(new URL('funding.json', import.meta.url)).then(response => {
+fetch(new URL('funding.json', import.meta.url), { cache: 'no-store' }).then(response => {
   if (!response.ok) throw new Error('Funding configuration unavailable');
   return response.json();
 }).then(config => { funding = config; updateSupport(); }).catch(() => updateSupport());

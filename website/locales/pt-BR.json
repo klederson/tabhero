@@ -118,8 +118,8 @@
     "apoie_button_107": "US$ 5",
     "apoie_button_108": "US$ 10",
     "apoie_button_109": "Outro valor ↗",
-    "apoie_p_110": "Sugestões de apoio. O valor final é escolhido e confirmado no GitHub.",
-    "apoie_p_111": "O campo de valor livre fica no GitHub Sponsors, a partir de US$ 1. Você confirma lá o valor e a modalidade do apoio.",
+    "apoie_p_110": "Escolha um valor e continue para o GitHub. O valor será levado para você revisar antes de confirmar.",
+    "apoie_p_111": "Apoio único. Você pode escolher mensal no GitHub antes de confirmar.",
     "apoie_button_112": "Apoio financeiro em preparação",
     "apoie_p_113": "O recebimento ainda não foi ativado. Nenhuma cobrança será feita.",
     "apoie_a_114": "Uma estrela no GitHub também dá um gás <span aria-hidden=\"true\">☆</span>",
@@ -191,8 +191,9 @@
     "download": "Baixar para {browser} ↓",
     "supportReady": "Escolher valor no GitHub Sponsors ↗",
     "supportPending": "Apoio financeiro em preparação",
-    "supportReadyStatus": "Você escolhe o valor e a modalidade na página do GitHub. Nenhuma cobrança ocorre neste site.",
-    "supportPendingStatus": "O recebimento ainda não foi ativado. Nenhuma cobrança será feita."
+    "supportReadyStatus": "Apoio único. Você pode escolher mensal no GitHub antes de confirmar.",
+    "supportPendingStatus": "O recebimento ainda não foi ativado. Nenhuma cobrança será feita.",
+    "supportCustomLabel": "Seu valor (USD)"
   },
   "privacy": {
     "title": "Privacidade — TabHero",

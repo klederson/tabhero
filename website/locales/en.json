@@ -118,8 +118,8 @@
     "apoie_button_107": "US$ 5",
     "apoie_button_108": "US$ 10",
     "apoie_button_109": "Another amount ↗",
-    "apoie_p_110": "Suggested amounts. You choose and confirm the final amount on GitHub.",
-    "apoie_p_111": "The custom amount field is on GitHub Sponsors, starting at US$ 1. You confirm the amount and type of sponsorship there.",
+    "apoie_p_110": "Choose an amount and continue to GitHub. The amount is passed along for you to review before confirming.",
+    "apoie_p_111": "One-time support. You can choose monthly on GitHub before confirming.",
     "apoie_button_112": "Financial support coming soon",
     "apoie_p_113": "Payments haven’t been enabled yet. You won’t be charged.",
     "apoie_a_114": "A GitHub star gives us a boost, too <span aria-hidden=\"true\">☆</span>",
@@ -191,8 +191,9 @@
     "download": "Download for {browser} ↓",
     "supportReady": "Choose an amount on GitHub Sponsors ↗",
     "supportPending": "Financial support coming soon",
-    "supportReadyStatus": "Choose the amount and type of sponsorship on GitHub. No charges are made on this site.",
-    "supportPendingStatus": "Payments haven’t been enabled yet. You won’t be charged."
+    "supportReadyStatus": "One-time support. You can choose monthly on GitHub before confirming.",
+    "supportPendingStatus": "Payments haven’t been enabled yet. You won’t be charged.",
+    "supportCustomLabel": "Your amount (USD)"
   },
   "privacy": {
     "title": "Privacy — TabHero",

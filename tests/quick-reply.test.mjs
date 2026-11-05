@@ -7,6 +7,7 @@ import { suggestReply, aiPermissions } from '../extension/quick-reply-ai.js';
 import { popupCatalogs } from '../extension/popup-i18n.js';
 import { createQuickReplyController, sameContext } from '../extension/quick-reply.js';
 import { loadSupport } from '../extension/support.js';
+import { sponsorshipUrl } from '../extension/sponsorship.js';
 const fixture = await readFile(new URL('./fixtures/whatsapp.html', import.meta.url), 'utf8');
 function app() {
   const elements = { contact: { textContent: 'Original contact' }, compose: { value: 'Unfinished original draft' } };
@@ -17,6 +18,37 @@ function app() {
   return { sandbox, elements, run: runInNewContext(`(${quickReplyInPage.toString()})`, sandbox) };
 }
 const operationId = 'aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa';
+test('selected and custom donation amounts reach GitHub as one-time review requests', () => {
+  for (const amount of [1, 3, 5, 10, 27, 12000]) {
+    const url = new URL(sponsorshipUrl(amount));
+    assert.equal(url.origin, 'https://github.com');
+    assert.equal(url.pathname, '/sponsors/klederson/sponsorships');
+    assert.equal(url.searchParams.get('amount'), String(amount));
+    assert.equal(url.searchParams.get('frequency'), 'one-time');
+  }
+  for (const amount of ['', 0, -1, 1.5, '3.99', 12001, '1e3', 'NaN']) assert.equal(sponsorshipUrl(amount), null);
+});
+test('latest incoming media replaces an older text preview without downloading or exposing media data', async () => {
+  const { sandbox, run } = app();
+  const chat = sandbox.require('WAWebChatCollection').ChatCollection.getModelsArray()[0];
+  const earlier = { type: 'chat', body: 'Old text', id: { fromMe: false } };
+  const media = { type: 'image', caption: 'Caption <safe text>', body: 'not-for-preview', mediaKey: 'not-for-preview', id: { fromMe: false } };
+  chat.msgs.getModelsArray = () => [earlier, media, { type: 'chat', body: 'Outgoing', id: { fromMe: true } }];
+  let snapshot = await run({ action: 'snapshot' });
+  assert.equal(snapshot.chats[0].receivedType, 'image');
+  assert.equal(snapshot.chats[0].received, 'Caption <safe text>');
+  assert.doesNotMatch(JSON.stringify(snapshot), /not-for-preview|Old text|Outgoing/);
+  media.type = 'ptt'; delete media.caption;
+  snapshot = await run({ action: 'snapshot' });
+  assert.equal(snapshot.chats[0].receivedType, 'ptt');
+  assert.equal(snapshot.chats[0].received, '');
+  media.type = 'image'; media.isViewOnce = true; media.caption = 'Hidden caption';
+  snapshot = await run({ action: 'snapshot' });
+  assert.equal(snapshot.chats[0].receivedType, 'view_once');
+  assert.equal(snapshot.chats[0].received, '');
+  assert.equal(sandbox.appState.messages.length, 0);
+  assert.equal(sandbox.appState.opens.length, 0);
+});
 test('support is available only with the verified GitHub receiving configuration', async () => {
   const config = { provider: 'github', currency: 'USD', minimum: 100, githubSponsors: 'https://github.com/sponsors/klederson', enabled: false };
   const fetchConfig = value => async () => ({ ok: true, json: async () => value });

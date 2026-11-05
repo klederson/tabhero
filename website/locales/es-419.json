@@ -118,8 +118,8 @@
     "apoie_button_107": "US$ 5",
     "apoie_button_108": "US$ 10",
     "apoie_button_109": "Otro monto ↗",
-    "apoie_p_110": "Montos sugeridos. El monto final se elige y confirma en GitHub.",
-    "apoie_p_111": "Puedes ingresar otro monto en GitHub Sponsors, desde US$ 1. Allí confirmas el monto y la modalidad del apoyo.",
+    "apoie_p_110": "Elige un importe y continúa a GitHub. Se llevará el importe para revisarlo antes de confirmar.",
+    "apoie_p_111": "Apoyo único. Puedes elegir mensual en GitHub antes de confirmar.",
     "apoie_button_112": "El apoyo económico está en preparación",
     "apoie_p_113": "La recepción de aportes aún no está activada. No se realizará ningún cobro.",
     "apoie_a_114": "Una estrella en GitHub también da impulso <span aria-hidden=\"true\">☆</span>",
@@ -191,8 +191,9 @@
     "download": "Descargar para {browser} ↓",
     "supportReady": "Elegir monto en GitHub Sponsors ↗",
     "supportPending": "El apoyo económico está en preparación",
-    "supportReadyStatus": "Elige el monto y la modalidad en la página de GitHub. En este sitio no se realiza ningún cobro.",
-    "supportPendingStatus": "La recepción de aportes aún no está activada. No se realizará ningún cobro."
+    "supportReadyStatus": "Apoyo único. Puedes elegir mensual en GitHub antes de confirmar.",
+    "supportPendingStatus": "La recepción de aportes aún no está activada. No se realizará ningún cobro.",
+    "supportCustomLabel": "Tu importe (USD)"
   },
   "privacy": {
     "title": "Privacidad — TabHero",

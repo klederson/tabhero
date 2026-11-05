@@ -34,9 +34,12 @@ export async function quickReplyInPage(request) {
         && (!query || normalize(`${name(chat)} ${serial(chat.id)}`).includes(query)));
       const chats = candidates.sort((a, b) => Number(unread(b) > 0) - Number(unread(a) > 0) || Number(b.active) - Number(a.active) || (Number(b.t) || 0) - (Number(a.t) || 0)).slice(0, 100).map(chat => {
         const messages = chat.msgs?.getModelsArray?.() ?? [];
-        const incoming = [...messages].reverse().find(msg => !msg.id?.fromMe && !msg.fromMe && msg.type === 'chat' && typeof msg.body === 'string');
+        const incoming = [...messages].reverse().find(msg => !msg.id?.fromMe && !msg.fromMe && !msg.isSentByMe && !msg.isNotification
+          && !['e2e_notification', 'notification_template', 'gp2', 'protocol', 'ciphertext'].includes(msg.type));
+        const receivedType = incoming?.isViewOnce ? 'view_once' : incoming?.type ?? 'chat';
+        const received = incoming?.isViewOnce ? '' : receivedType === 'chat' ? text(incoming?.body) : text(incoming?.caption);
         return { id: serial(chat.id), name: name(chat),
-          unread: unread(chat), active: Boolean(chat.active), timestamp: Number(chat.t) || 0, received: text(incoming?.body) };
+          unread: unread(chat), active: Boolean(chat.active), timestamp: Number(chat.t) || 0, received, receivedType };
       });
       return { ok: true, documentId: state.documentId, unread: total, chats };
     }

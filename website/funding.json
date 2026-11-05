@@ -2,7 +2,12 @@
   "provider": "github",
   "currency": "USD",
   "minimum": 100,
-  "presets": [100, 300, 500, 1000],
+  "presets": [
+    100,
+    300,
+    500,
+    1000
+  ],
   "githubSponsors": "https://github.com/sponsors/klederson",
-  "enabled": false
+  "enabled": true
 }

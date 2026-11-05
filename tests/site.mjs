@@ -28,6 +28,7 @@ try {
   const locales = ['en', 'es-419', 'pt-BR', 'id', 'hi'];
   const catalogs = [];
   const version = JSON.parse(await readFile('package.json', 'utf8')).version;
+  const receivingEnabled = JSON.parse(await readFile('website/funding.json', 'utf8')).enabled === true;
   const load = async path => {
     await page.goto(new URL(path, url).href);
     await page.waitForFunction(() => document.documentElement.dataset.i18nReady === 'true');
@@ -46,7 +47,8 @@ try {
     assert.match(await page.title(), /TabHero/);
     assert.equal(await page.locator('[data-version]').textContent(), version);
     assert.doesNotMatch(await page.locator('body').textContent(), /__(?:BRAND|WORDMARK|I18N|META|LANG)/);
-    assert.equal(await page.locator('#support-submit').isDisabled(), true, 'Unverified receiving profile must stay disabled');
+    await page.waitForFunction(enabled => document.querySelector('#support-submit').disabled === !enabled, receivingEnabled);
+    assert.equal(await page.locator('#support-submit').isDisabled(), !receivingEnabled);
     await page.locator('#run-demo').click();
     assert.equal(await page.locator('.sim-tab').count(), 1);
     assert.equal(await page.locator('#sim-document').textContent(), catalog.ui.afterDoc);
@@ -63,7 +65,9 @@ try {
     await page.locator('[data-browser="chrome"]').click();
     await page.locator('[data-amount="custom"]').click();
     assert.equal(await page.locator('#custom-note').isVisible(), true);
-    assert.equal(await page.locator('#support-submit').isDisabled(), true);
+    assert.equal(await page.locator('#support-submit').isDisabled(), true, 'Custom amount starts empty');
+    await page.locator('#support-custom-amount').fill('17');
+    assert.equal(await page.locator('#support-submit').isDisabled(), !receivingEnabled);
     await page.locator('[data-amount="100"]').click();
     if (locale === 'en') {
       assert.equal(await page.locator('h1').innerText(), 'Another tab?\nIt’s already\nopen.');
@@ -124,11 +128,12 @@ try {
   assert.match(await page.title(), /TabHero/);
   assert.equal((await page.request.get(new URL('assets/brand-book.pdf',url).href)).ok(), true);
   await page.route('**/funding.json', route => route.fulfill({ json: { provider: 'github', enabled: true, githubSponsors: 'https://github.com/sponsors/klederson' } }));
-  await page.route('https://github.com/sponsors/klederson', route => route.fulfill({ contentType: 'text/html', body: '<h1>Mock checkout</h1>' }));
+  await page.route('https://github.com/**', route => route.fulfill({ contentType: 'text/html', body: '<h1>Mock checkout</h1>' }));
   await load('');
   await page.waitForFunction(() => !document.querySelector('#support-submit').disabled);
+  await page.locator('[data-amount="500"]').click();
   await page.locator('#support-submit').click();
-  await page.waitForURL('https://github.com/sponsors/klederson');
+  await page.waitForURL('https://github.com/sponsors/klederson/sponsorships?amount=5&frequency=one-time');
   assert.deepEqual(errors, []);
   assert.deepEqual(badResponses, []);
   console.log('OK site: configured Sponsors handoff; no real payment performed.');

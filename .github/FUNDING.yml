@@ -1,3 +1,2 @@
-# The landing explains the current funding state. Enable the native github field
-# with scripts/enable-sponsors.mjs after the public listing is active.
+github: klederson
 custom: ["https://klederson.github.io/tabhero/#apoie"]

@@ -118,8 +118,8 @@
     "apoie_button_107": "US$ 5",
     "apoie_button_108": "US$ 10",
     "apoie_button_109": "Jumlah lain ↗",
-    "apoie_p_110": "Ini saran nilai dukungan. Nilai akhirnya dipilih dan dikonfirmasi di GitHub.",
-    "apoie_p_111": "Kolom nilai bebas ada di GitHub Sponsors, mulai dari US$ 1. Anda mengonfirmasi nilai dan jenis dukungannya di sana.",
+    "apoie_p_110": "Pilih jumlah dan lanjut ke GitHub. Jumlah diteruskan untuk diperiksa sebelum konfirmasi.",
+    "apoie_p_111": "Dukungan sekali. Anda dapat memilih bulanan di GitHub sebelum konfirmasi.",
     "apoie_button_112": "Dukungan finansial sedang disiapkan",
     "apoie_p_113": "Penerimaan dukungan belum diaktifkan. Tidak ada tagihan yang akan dibuat.",
     "apoie_a_114": "Bintang di GitHub juga bikin semangat <span aria-hidden=\"true\">☆</span>",
@@ -191,8 +191,9 @@
     "download": "Unduh untuk {browser} ↓",
     "supportReady": "Pilih nilai di GitHub Sponsors ↗",
     "supportPending": "Dukungan finansial sedang disiapkan",
-    "supportReadyStatus": "Pilih nilai dan jenis dukungan di halaman GitHub. Tidak ada tagihan yang dibuat di situs ini.",
-    "supportPendingStatus": "Penerimaan dukungan belum diaktifkan. Tidak ada tagihan yang akan dibuat."
+    "supportReadyStatus": "Dukungan sekali. Anda dapat memilih bulanan di GitHub sebelum konfirmasi.",
+    "supportPendingStatus": "Penerimaan dukungan belum diaktifkan. Tidak ada tagihan yang akan dibuat.",
+    "supportCustomLabel": "Jumlah Anda (USD)"
   },
   "privacy": {
     "title": "Privasi — TabHero",

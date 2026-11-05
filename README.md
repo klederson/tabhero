@@ -1,3 +1,5 @@
+<p align="center"><a href="https://github.com/sponsors/klederson"><img src="brand/sponsor-badge.svg" width="224" height="40" alt="Support TabHero on GitHub Sponsors"></a></p>
+
 <p align="center"><img src="brand/logo.svg" width="280" alt="TabHero"></p>
 
 <h1 align="center">New chat. Same tab.</h1>
@@ -10,13 +12,13 @@
 
 The toolbar's **Quick reply** panel also lets you choose a loaded conversation and send a deliberate reply without leaving your work tab. Use free text, saved replies, or an editable AI suggestion through your own OpenRouter key. Sending always requires your Send click. The silent icon badge shows unread messages for the selected regular WhatsApp tab.
 
-**Experimental — version 1.7.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
+**Experimental — version 1.8.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
 
 Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta. WhatsApp is a trademark of its respective owners.
 
 ## Update an existing installation
 
-Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.7.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
+Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.8.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
 
 ## Install in Chrome
 
@@ -50,7 +52,7 @@ If using `artifacts/tabhero-firefox.zip`, extract it first. Requires Firefox 142
 
 Only requesting a suggestion sends the displayed received text and your draft to OpenRouter and its AI provider. Read and edit the result, then explicitly click Send. No AI request sends a WhatsApp message. A successful send means WhatsApp accepted the message; check delivery in WhatsApp. Uncertain sends retain the text and require checking WhatsApp before another attempt, rather than retrying automatically.
 
-The badge uses a dark-red background and white text to stand apart from the lime icon. It updates silently (normally every 15 seconds while the WhatsApp document runs; background-browser throttling can delay it). No sound or desktop notification. It follows the selected regular tab rather than summing duplicate tabs; private sessions do not update the global badge. The panel only exposes sessions in the current tab's private/container context. Only messages already loaded in the app are used; no message-history archive is fetched. See [the acceptance criteria](docs/quick-reply.md).
+The badge uses a dark-red background and white text to stand apart from the lime icon. It updates silently (normally every 15 seconds while the WhatsApp document runs; background-browser throttling can delay it). No sound or desktop notification. It follows the selected regular tab rather than summing duplicate tabs; private sessions do not update the global badge. The panel only exposes sessions in the current tab's private/container context. Only messages already loaded in the app are used; no message-history archive is fetched. The latest incoming photo, video, voice note, document or other non-text message is identified with a localized placeholder and any loaded caption. No media is downloaded, played or passed to AI; view-once content remains unopened. The compact popup retains its layout with a familiar teal-and-soft-green palette. See [the acceptance criteria](docs/quick-reply.md).
 
 ### Opening conversation links
 
@@ -124,14 +126,16 @@ Internal contracts were consulted in public WPPConnect/WA-JS code: [opening a ch
 
 ## Website, identity, and support
 
+[**Sponsor TabHero on GitHub →**](https://github.com/sponsors/klederson) — optional support from US$ 1; all features stay free.
+
 The static website has no framework or backend and is deployed to GitHub Pages by [pages.yml](.github/workflows/pages.yml). Source is in `website/`; vectors, the PDF guide, and social artwork are in `brand/`. Fonts are self-hosted with their OFL licenses. Run `npm run package` and `npm run build:site` to generate `website/dist/`. Website downloads include `tabhero-chrome.zip`, `tabhero-firefox.zip`, and `tabhero-brand-kit.zip`.
 
 `npm run build:brand` regenerates icons, social artwork, and the PDF guide with Playwright Chromium. To regenerate outlined wordmarks, install `fonttools` in a Python environment and run `scripts/wordmark.py`. The final assets are versioned; regenerating them is not required to build or publish the site.
 
 English is primary at the site root. Localized static pages are available at `es/`, `pt-br/`, `id/`, and `hi/`, with a visible language selector and matching privacy and community-research pages. `research.html` presents eight attributed historical reports with filters and separates reported experiences from our product interpretations. Website copy lives in `website/locales/`, the shared page structure in `website/template.html`, and native extension messages in `extension/_locales/`. The extension follows the browser UI language with English as its fallback. The website does not redirect based on location or browser language; a language choice stays in its URL. See the [internationalization plan](docs/internationalization.md) for language-review requirements and the limits of market research.
 
-The extension has a **Support TabHero** button and its own support screen, available even without a WhatsApp session. Suggested amounts are US$ 1, US$ 3, US$ 5 and US$ 10; the amount, a custom value and the one-time or monthly frequency are chosen and confirmed on GitHub. Opening the screen keeps the quick-reply draft. The extension and website share `website/funding.json`, bundled locally at build time, so an unavailable receiving profile keeps both checkout buttons disabled.
+The extension has a **Support TabHero** button and its own support screen, available even without a WhatsApp session. Choose US$ 1, US$ 3, US$ 5, US$ 10 or a custom whole-dollar amount in the extension or website. The selected amount is passed to GitHub’s review form, defaulting to one-time support; users can change the frequency and must confirm the payment on GitHub. Opening the screen keeps the quick-reply draft. The extension and website share `website/funding.json`, bundled locally at build time, so an unavailable receiving profile keeps both checkout buttons disabled.
 
-Support is optional through **GitHub Sponsors, from US$ 1**. Receiving payments is not enabled yet; the website shows a pending state and does not offer a nonexistent checkout. Once enrollment is complete, `node scripts/enable-sponsors.mjs` checks the public page before enabling local configuration. Amount and payment type are confirmed on GitHub. GitHub charges no fee for sponsorships from personal accounts; sponsorships from organizations may incur a fee of up to 6%. A GitHub account is required. See [funding.md](docs/funding.md).
+Support is optional through **GitHub Sponsors, from US$ 1**. The public receiving profile is active and the website and extension support buttons are enabled. To recheck its availability, `node scripts/enable-sponsors.mjs` checks the public page before enabling local configuration. Amount and payment type are confirmed on GitHub. GitHub charges no fee for sponsorships from personal accounts; sponsorships from organizations may incur a fee of up to 6%. A GitHub account is required. See [funding.md](docs/funding.md).
 
 **The best version of TabHero? The one you never have to install.** Native adoption would be a welcome outcome. This is not an acquisition request or a claim of interest from Meta. The [MIT license](LICENSE) permits reuse under its terms, without obliging anyone to adopt or acquire the project. Fonts retain their own licenses. Contributions are welcome: [CONTRIBUTING.md](CONTRIBUTING.md).

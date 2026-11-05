@@ -1,10 +1,10 @@
 # Support TabHero
 
-The selected channel for [TabHero](https://github.com/klederson/tabhero) is **GitHub Sponsors**, with contributions starting at **US$ 1**. Suggested amounts are **US$ 1, US$ 3, US$ 5, and US$ 10**, with a custom amount in GitHub’s own interface. Support is voluntary and never a condition of using the extension.
+The selected channel for [TabHero](https://github.com/klederson/tabhero) is **GitHub Sponsors**, with contributions starting at **US$ 1**. Choose **US$ 1, US$ 3, US$ 5, US$ 10**, or a custom whole-dollar amount in the extension or website, then review it on GitHub. Support is voluntary and never a condition of using the extension.
 
 The browser extension also has a Support TabHero button and a localized support screen. It uses the same `website/funding.json`, copied into both extension packages by `scripts/build.mjs`. The receiving-state check therefore controls the site and extension together. No remote check, payment tracking, banking details or sponsor authentication is added to the extension.
 
-On 5 November 2026, the GitHub API returned a Sponsors listing for klederson with `isPublic: false`. The interface is prepared, but actual checkout remains disabled until the public receiving profile is verified.
+On 5 November 2026, the GitHub API returned a Sponsors listing for klederson with `isPublic: false`. Later that day, the API returned `isPublic: true` and a fresh unauthenticated request stayed on the Sponsors page with Monthly, One-time and custom-amount controls. The shared configuration is now enabled. No tiers were created or payments made by this project; the GitHub page currently offers custom support.
 
 ## Fees and eligibility
 
@@ -27,7 +27,7 @@ The public `funding.json` configuration is:
   "minimum": 100,
   "presets": [100, 300, 500, 1000],
   "githubSponsors": "https://github.com/sponsors/klederson",
-  "enabled": false
+  "enabled": true
 }
 ```
 
@@ -41,15 +41,17 @@ The official route is [GitHub Sponsors → Get sponsored](https://github.com/ope
 
 The maintainer must complete onboarding directly on GitHub and the Stripe Connect flow it presents: contact information, bank payouts, residence and bank country, tax details, two-factor authentication, and the approval request. For bank payouts, the documentation requires the bank-account region to match the region of residence. Use the account holder’s own personal details and bank account; do not put them in project files. After approval, verify that the public page actually offers sponsorship. Source: [setting up Sponsors for a personal account](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/setting-up-github-sponsors-for-your-personal-account).
 
-In the dashboard’s **Sponsor tiers**, create four **One-time** tiers: US$ 1, US$ 3, US$ 5, and US$ 10. Under **Custom amounts**, configure a US$ 1 minimum and a suggested amount. The custom minimum also applies to recurring sponsorships. Do not promise benefits that do not exist in tier descriptions. Source: [managing tiers and custom amounts](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/managing-your-sponsorship-tiers).
+The custom-amount flow supports the project’s presets without dedicated tiers. Optional **One-time** tiers of US$ 1, US$ 3, US$ 5 and US$ 10 can also be created in the dashboard. Keep custom support available from US$ 1. The custom minimum also applies to recurring sponsorships. Do not promise benefits that do not exist in tier descriptions. Source: [managing tiers and custom amounts](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/managing-your-sponsorship-tiers).
 
 ## Supporter flow
 
-The project page shows the four suggested amounts and offers **“Choose an amount on GitHub”**. The canonical destination is `https://github.com/sponsors/klederson`. The actual tier, custom amount, and one-time option are selected on GitHub before confirmation. Do not present a field on the project website as though its value were automatically transferred to checkout. Source: [choosing a tier or custom amount](https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/sponsoring-an-open-source-contributor-through-github).
+The project page shows the four suggested amounts and offers **“Choose an amount on GitHub”**. The canonical destination is `https://github.com/sponsors/klederson`. The selected amount is sent to GitHub’s native GET review form. Users review it and can change the amount or frequency on GitHub before confirmation. Source: [choosing a tier or custom amount](https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/sponsoring-an-open-source-contributor-through-github).
 
-No specification for URL parameters that prefill a price or select one-time sponsorship was found in the official sources consulted. This integration therefore does not append parameters such as `amount`, `tier_id`, or `frequency=one-time`, or promise that a website preset will already be selected on GitHub. The URL documentation consulted describes tracking metadata; that metadata does not configure the contribution amount. Source: [metadata in Sponsors URLs](https://docs.github.com/en/sponsors/receiving-sponsorships-through-github-sponsors/viewing-your-sponsors-and-sponsorships).
+On 5 November 2026, the live public GitHub Sponsors page exposed its native custom-amount form as a GET to `/sponsors/klederson/sponsorships`, with `amount` and `frequency` fields. The One-time view uses `frequency=one-time`. The extension and website now reuse those fields for selected and custom whole-dollar amounts. An unauthenticated request for `?amount=5&frequency=one-time` reached GitHub sign-in with both values preserved in `return_to`. This opens review, not payment confirmation; no transaction is submitted automatically. The shared builder is `extension/sponsorship.js`, also copied into the static site at build time.
 
-Before changing `enabled` to `true`, check publicly that the URL stays on Sponsors, identifies Klederson Bueno, describes TabHero’s work, offers all four one-time tiers, and allows custom amounts starting at US$ 1. Review the billing summary before confirming any payment. An existing profile, a page opening, and simulated-interface tests do not prove a payment or bank payout.
+This replaces the earlier profile-only link based on documentation that did not describe amount selection. The link is now grounded in GitHub’s actual public form; maintainers should recheck it if GitHub changes that form.
+
+Before changing `enabled` to `true`, verify the public receiving URL and recipient and check the support controls. Suggested values can be chosen through GitHub’s custom-amount flow; dedicated tiers are optional. Review the billing summary before confirming any payment. An existing profile, a page opening, and simulated-interface tests do not prove a payment or bank payout.
 
 ## What GitHub CLI can do
 
@@ -63,9 +65,9 @@ An absent or nonpublic listing keeps `enabled: false`. The API also documents `c
 
 ## Repository Sponsor button
 
-While the listing is inactive, do not declare `github: klederson` in `.github/FUNDING.yml` as a ready-to-use payment channel. That destination currently returns to the profile. Use `custom` with the actual public website URL followed by `/#apoie`, or keep an explanatory README link to that section. Do not invent a publication URL.
+While the listing is inactive, do not declare `github: klederson` in `.github/FUNDING.yml` as a ready-to-use payment channel. An inactive destination can return to the profile. Use `custom` with the actual public website URL followed by `/#apoie`, or keep an explanatory README link to that section. Do not invent a publication URL.
 
-After the Sponsors page is active and verified, the following can be added:
+For the verified public Sponsors profile, the repository now includes:
 
 ```yaml
 github: klederson
