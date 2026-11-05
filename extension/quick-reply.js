@@ -22,7 +22,8 @@ export function createQuickReplyController(api) {
       const { qrBadgeTarget } = await session.get('qrBadgeTarget');
       if (qrBadgeTarget && qrBadgeTarget !== tabId) return;
       await session.set({ qrBadgeTarget: tabId });
-      await api.action.setBadgeBackgroundColor({ color: '#C7F65A' });
+      await api.action.setBadgeBackgroundColor({ color: '#B42318' });
+      if (api.action.setBadgeTextColor) await api.action.setBadgeTextColor({ color: '#FFFFFF' }).catch(() => {});
       await api.action.setBadgeText({ text: unread > 99 ? '99+' : unread > 0 ? String(unread) : '' });
     });
     return badges;
@@ -53,6 +54,15 @@ export function createQuickReplyController(api) {
       }
     },
     async handle(message) {
+      if (message.type === 'qr-search') {
+        if (typeof message.search !== 'string' || message.search.length > 100) return { ok: false, code: 'invalid-request' };
+        const { target } = await targetFor(message);
+        if (!target) return { ok: false, code: 'no-tab' };
+        const snapshot = await executeQuickReply(api, target.id, { action: 'snapshot', search: message.search });
+        if (!snapshot.ok) return snapshot;
+        if (snapshot.documentId !== message.documentId) return { ok: false, code: 'stale-document' };
+        return snapshot;
+      }
       if (message.type === 'qr-list') {
         const { source, tabs } = await tabsFor(message.sourceTabId);
         const { qrBadgeTarget } = await session.get('qrBadgeTarget');
@@ -93,7 +103,7 @@ export function createQuickReplyController(api) {
       if (message.type === 'qr-suggest') {
         const { target } = await targetFor(message);
         if (!target) return { ok: false, code: 'no-tab' };
-        const snapshot = await executeQuickReply(api, target.id, { action: 'snapshot' });
+        const snapshot = await executeQuickReply(api, target.id, { action: 'snapshot', chatId: message.chatId });
         if (!snapshot.ok) return snapshot;
         if (snapshot.documentId !== message.documentId) return { ok: false, code: 'stale-document' };
         const chat = snapshot.chats.find(chat => chat.id === message.chatId);

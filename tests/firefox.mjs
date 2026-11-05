@@ -151,8 +151,13 @@ try {
   await driver.switchTo().newWindow('tab');
   const quickPanel = await driver.getWindowHandle();
   await driver.get(`${extensionOrigin}/popup.html`);
-  await driver.wait(async () => (await driver.findElements(By.css('#recipient option'))).length >= 2, 15000);
-  await driver.executeScript("document.getElementById('recipient').value='12025550141@c.us';document.getElementById('recipient').dispatchEvent(new Event('change',{bubbles:true}))");
+  await driver.wait(async () => await driver.executeScript("return document.documentElement.dataset.ready==='true'"), 15000);
+  const badgeColors = await driver.executeAsyncScript("const done=arguments[arguments.length-1];Promise.all([browser.action.getBadgeBackgroundColor({}),browser.action.getBadgeTextColor({})]).then(done)");
+  assert.deepEqual(badgeColors, [[180, 35, 24, 255], [255, 255, 255, 255]], 'Unread badge must contrast with the lime icon');
+  await driver.findElement(By.id('recipient')).click();
+  await driver.findElement(By.id('recipient-search')).sendKeys('joao');
+  await driver.wait(async () => (await driver.findElements(By.css('#recipient-options [role="option"]'))).length === 1, 5000);
+  await driver.findElement(By.css('#recipient-options [data-chat-id="12025550141@c.us"]')).click();
   await driver.wait(async () => await driver.executeScript("return !document.getElementById('recipient').disabled"), 5000);
   await driver.findElement(By.id('reply')).sendKeys('Confirmado pelo painel.');
   await driver.findElement(By.id('send')).click();

@@ -42,4 +42,12 @@ const from = values => {
   return Object.fromEntries(Object.keys(en).map((key, index) => [key, values[index]]));
 };
 export const popupCatalogs = { en, pt: from(pt), es: from(es), id: from(id), hi: from(hi) };
+const pickerMessages = {
+  en: { searchChats: 'Search conversations…', noMatches: 'No conversations found.' },
+  pt: { searchChats: 'Buscar conversa…', noMatches: 'Nenhuma conversa encontrada.' },
+  es: { searchChats: 'Buscar conversación…', noMatches: 'No se encontraron conversaciones.' },
+  id: { searchChats: 'Cari percakapan…', noMatches: 'Percakapan tidak ditemukan.' },
+  hi: { searchChats: 'बातचीत खोजें…', noMatches: 'कोई बातचीत नहीं मिली।' }
+};
+for (const [locale, messages] of Object.entries(pickerMessages)) Object.assign(popupCatalogs[locale], messages);
 export function popupMessages(language) { return popupCatalogs[language?.split(/[-_]/)[0]] ?? en; }

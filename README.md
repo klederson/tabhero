@@ -10,13 +10,13 @@
 
 The toolbar's **Quick reply** panel also lets you choose a loaded conversation and send a deliberate reply without leaving your work tab. Use free text, saved replies, or an editable AI suggestion through your own OpenRouter key. Sending always requires your Send click. The silent icon badge shows unread messages for the selected regular WhatsApp tab.
 
-**Experimental — version 1.5.1.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
+**Experimental — version 1.6.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
 
 Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta. WhatsApp is a trademark of its respective owners.
 
 ## Update an existing installation
 
-Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.5.1**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
+Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.6.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
 
 ## Install in Chrome
 
@@ -44,13 +44,13 @@ If using `artifacts/tabhero-firefox.zip`, extract it first. Requires Firefox 142
 ### Quick reply from the toolbar
 
 1. Keep WhatsApp Web signed in and open in the same browser profile. Pin TabHero's icon in the browser toolbar for easy access.
-2. Click the icon, choose the recipient, type your reply or tap a saved reply, and click **Send reply**. WhatsApp is neither focused nor reloaded, and its active chat and existing draft are left alone.
+2. Click the icon, open the recipient picker and type a name to search inside the list, then choose the conversation, write your reply or tap a saved reply, and click **Send reply**. Search ignores case and accents and includes loaded conversations beyond the first 100 results. Typing or canceling a search does not change the selected recipient or draft. WhatsApp is neither focused nor reloaded, and its active chat and existing draft are left alone.
 3. **My saved replies** lets you create, edit and delete reusable text. Closing the panel retains your current draft for the browser session.
 4. AI is optional. Click **Connect AI**, follow the link to create your own [OpenRouter key](https://openrouter.ai/settings/keys), paste it once, and allow the OpenRouter connection. There is no provider, model or endpoint picker. **Suggest a reply** uses the [free-model router](https://openrouter.ai/docs/guides/routing/routers/free-router), subject to its availability and limits, with no automatic paid fallback.
 
 Only requesting a suggestion sends the displayed received text and your draft to OpenRouter and its AI provider. Read and edit the result, then explicitly click Send. No AI request sends a WhatsApp message. A successful send means WhatsApp accepted the message; check delivery in WhatsApp. Uncertain sends retain the text and require checking WhatsApp before another attempt, rather than retrying automatically.
 
-The badge updates silently (normally every 15 seconds while the WhatsApp document runs; background-browser throttling can delay it). No sound or desktop notification. It follows the selected regular tab rather than summing duplicate tabs; private sessions do not update the global badge. The panel only exposes sessions in the current tab's private/container context. Only messages already loaded in the app are used; no message-history archive is fetched. See [the acceptance criteria](docs/quick-reply.md).
+The badge uses a dark-red background and white text to stand apart from the lime icon. It updates silently (normally every 15 seconds while the WhatsApp document runs; background-browser throttling can delay it). No sound or desktop notification. It follows the selected regular tab rather than summing duplicate tabs; private sessions do not update the global badge. The panel only exposes sessions in the current tab's private/container context. Only messages already loaded in the app are used; no message-history archive is fetched. See [the acceptance criteria](docs/quick-reply.md).
 
 ### Opening conversation links
 

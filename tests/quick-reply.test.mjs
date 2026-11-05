@@ -91,6 +91,42 @@ test('Firefox requests optional data consent only with the AI connection', () =>
   assert.deepEqual(aiPermissions({ runtime: {} }), { origins: ['https://openrouter.ai/*'] });
   assert.deepEqual(aiPermissions({ runtime: { getBrowserInfo() {} } }), { origins: ['https://openrouter.ai/*'], data_collection: ['authenticationInfo', 'personalCommunications'] });
 });
+test('search finds loaded conversations beyond the initial list and ignores case and accents', async () => {
+  const { sandbox, run } = app();
+  const store = sandbox.require('WAWebChatCollection').ChatCollection;
+  const original = store.getModelsArray;
+  const extra = Array.from({ length: 120 }, (_, index) => ({ id: { _serialized: `${12025551000 + index}@c.us` }, name: index === 119 ? 'Antônio · Fornecedor' : `Contato ${index}`, unreadCount: 0 }));
+  store.getModelsArray = () => [...original(), ...extra];
+  const initial = await run({ action: 'snapshot' });
+  assert.equal(initial.chats.length, 100);
+  assert.equal(initial.chats.some(chat => chat.name.includes('Antônio')), false);
+  const found = await run({ action: 'snapshot', search: 'ANTONIO' });
+  assert.equal(found.chats.length, 1);
+  assert.equal(found.chats[0].name, 'Antônio · Fornecedor');
+  assert.equal((await run({ action: 'snapshot', search: 'not a contact' })).chats.length, 0);
+  assert.equal((await run({ action: 'snapshot', chatId: extra[119].id._serialized })).chats[0].name, 'Antônio · Fornecedor');
+  assert.equal(sandbox.appState.messages.length, 0);
+  assert.equal(sandbox.appState.opens.length, 0);
+});
+test('unread badge uses a distinct background and readable text, including 99+ and clearing', async () => {
+  const data = {};
+  const calls = [];
+  let unread = 145;
+  const storage = { get: async key => ({ [key]: data[key] }), set: async value => Object.assign(data, value) };
+  const api = { storage: { local: storage, session: storage }, tabs: { get: async id => ({ id, url: 'https://web.whatsapp.com/' }) },
+    scripting: { executeScript: async () => [{ frameId: 0, result: { ok: true, unread } }] },
+    action: { setBadgeBackgroundColor: async value => calls.push(['background', value.color]), setBadgeTextColor: async value => calls.push(['foreground', value.color]), setBadgeText: async value => calls.push(['text', value.text]) } };
+  const controller = createQuickReplyController(api);
+  await controller.heartbeat({ id: 2, url: 'https://web.whatsapp.com/' });
+  assert.deepEqual(calls.slice(-3), [['background', '#B42318'], ['foreground', '#FFFFFF'], ['text', '99+']]);
+  unread = 3; await controller.heartbeat({ id: 2, url: 'https://web.whatsapp.com/' });
+  assert.deepEqual(calls.at(-1), ['text', '3']);
+  unread = 0; await controller.heartbeat({ id: 2, url: 'https://web.whatsapp.com/' });
+  assert.deepEqual(calls.at(-1), ['text', '']);
+  const beforePrivate = calls.length;
+  await controller.heartbeat({ id: 2, incognito: true, url: 'https://web.whatsapp.com/' });
+  assert.equal(calls.length, beforePrivate);
+});
 test('background journal prevents duplicate dispatch after its controller restarts', async () => {
   const memory = {};
   const storage = { get: async key => Object.fromEntries((Array.isArray(key) ? key : [key]).map(name => [name, memory[name]])), set: async data => Object.assign(memory, data) };

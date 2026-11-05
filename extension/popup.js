@@ -1,5 +1,6 @@
 import { popupMessages } from './popup-i18n.js';
 import { aiPermissions } from './quick-reply-ai.js';
+import { createRecipientPicker } from './recipient-picker.js';
 const api = globalThis.browser ?? globalThis.chrome;
 const language = api.i18n.getMessage('language') || api.i18n.getUILanguage();
 const t = popupMessages(language);
@@ -28,10 +29,32 @@ const persist = () => {
   draftWrites = draftWrites.catch(() => {}).then(() => draft.text || draft.operationId ? api.storage.session.set({ [key]: draft }) : api.storage.session.remove(key));
   return draftWrites;
 };
+const recipientPicker = createRecipientPicker({
+  document, messages: t, blocked: () => Boolean(state.busy),
+  error: () => status(t.checkFailed, true),
+  openChanged: open => { state.searching = open; controls(); },
+  load: async query => {
+    if (!query.trim()) return state.snapshot?.chats ?? [];
+    const result = await send({ type: 'qr-search', documentId: state.snapshot?.documentId, search: query });
+    if (!result.ok) { status(failure(result.code), true); throw new Error('Search unavailable'); }
+    return result.chats;
+  },
+  select: async item => {
+    if (state.busy) return;
+    state.busy = 'select'; controls();
+    try {
+      await persist();
+      if (!state.snapshot.chats.some(existing => existing.id === item.id)) state.snapshot.chats.push(item);
+      status(); await selectChat(item.id);
+    } catch { status(t.checkFailed, true); }
+    finally { state.busy = false; controls(); }
+  }
+});
 function controls() {
-  for (const id of ['recipient', 'account', 'refresh', 'manage', 'settings']) $(`#${id}`).disabled = state.busy;
+  for (const id of ['account', 'refresh', 'manage', 'settings']) $(`#${id}`).disabled = state.busy;
+  recipientPicker.setDisabled(state.busy);
   $('#reply').disabled = state.busy || state.uncertain;
-  $('#send').disabled = state.busy || state.uncertain || !chat() || !$('#reply').value.trim();
+  $('#send').disabled = state.busy || state.searching || state.uncertain || !chat() || !$('#reply').value.trim();
   $('#suggest').disabled = state.busy || state.uncertain || !chat();
   for (const button of document.querySelectorAll('#saved-chips button')) button.disabled = state.busy || state.uncertain;
   $('#checked').hidden = !state.uncertain;
@@ -39,6 +62,7 @@ function controls() {
   $('#suggest').textContent = `✦ ${state.busy === 'ai' ? t.generating : t.suggest}`;
 }
 function panel(id) {
+  recipientPicker.close();
   for (const name of ['main-panel', 'ai-panel', 'saved-panel']) $(`#${name}`).hidden = name !== id;
   status();
 }
@@ -89,7 +113,7 @@ async function restoreDraft() {
 }
 async function selectChat(id, restore = true) {
   state.chatId = id;
-  $('#recipient').value = id ?? '';
+  recipientPicker.setSelected(chat());
   $('#received').textContent = chat()?.received || t.noPreview;
   if (restore) await restoreDraft();
   controls();
@@ -111,7 +135,6 @@ async function refresh({ tabId, keep = false } = {}) {
     $('#account-field').hidden = result.tabs.length < 2; $('#account').value = String(state.tabId ?? '');
     state.snapshot = result.snapshot.ok ? result.snapshot : null;
     const chats = state.snapshot?.chats ?? [];
-    $('#recipient').replaceChildren(...chats.map(item => new Option(`${item.name}${item.unread ? ` (${item.unread})` : ''}`, item.id)));
     $('#composer').hidden = !chats.length; $('#empty').hidden = Boolean(chats.length);
     $('#empty-copy').textContent = !result.tabId ? t.noTab : !result.snapshot.ok ? failure(result.snapshot.code) : t.noChats;
     const selected = keep && previousTab === state.tabId && chats.some(item => item.id === previousChat) ? previousChat : chats[0]?.id;
@@ -123,11 +146,6 @@ async function refresh({ tabId, keep = false } = {}) {
   finally { state.busy = false; controls(); }
 }
 $('#reply').addEventListener('input', () => { state.operationId = null; status(); persist().catch(() => status(t.checkFailed, true)); controls(); });
-$('#recipient').addEventListener('change', async event => {
-  state.busy = 'select'; controls();
-  try { await persist(); status(); await selectChat(event.target.value); } catch { status(t.checkFailed, true); }
-  finally { state.busy = false; controls(); }
-});
 $('#account').addEventListener('change', event => refresh({ tabId: Number(event.target.value) }));
 $('#refresh').addEventListener('click', () => refresh({ tabId: state.tabId, keep: true }));
 $('#settings').addEventListener('click', () => panel('ai-panel'));

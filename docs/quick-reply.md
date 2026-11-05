@@ -14,3 +14,7 @@ The person is working on another website and wants to read enough context and se
 Browser acceptance tests must retain document identity, URL, in-memory state and the original composer draft, verify the exact recipient and outgoing text, and keep the user's work tab selected. Include stale-target, integration failure, duplicate-send, draft recovery, badge updates and AI-without-send cases. These tests use a simulated WhatsApp contract; real authenticated compatibility needs separate validation and must not be claimed from the fixture.
 
 Contract references: [native text sending](https://github.com/imoonkey/openweb/blob/main/src/sites/whatsapp/adapters/whatsapp-modules.ts), [loaded chat collection](https://github.com/wppconnect-team/wa-js/blob/main/src/chat/functions/list.ts), [OpenRouter authentication](https://openrouter.ai/docs/api-reference/authentication), [free router](https://openrouter.ai/docs/guides/routing/routers/free-router). The adapter is independently implemented and does not bundle these projects.
+
+## User-reported check
+
+On 5 November 2026, the project owner reported that Firefox read the latest received message, selected the intended recipient and sent a quick reply successfully. The owner also confirmed the 99+ unread badge was present but blended into the icon. These are user observations, not independently recorded document-identity or delivery measurements. The following UI revision improves badge contrast and adds search within the conversation picker without changing the send adapter.

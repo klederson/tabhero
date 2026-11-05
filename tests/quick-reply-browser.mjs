@@ -37,11 +37,20 @@ try {
     assert.equal(await worker.evaluate(async () => (await chrome.tabs.query({ active: true, currentWindow: true }))[0].id), workId);
   };
   let popup = await context.newPage();
+  const chooseRecipient = async (id, query) => {
+    await popup.locator('#recipient').click();
+    await popup.locator('#recipient-search').fill(query);
+    await popup.locator(`[role="option"][data-chat-id="${id}"]`).click();
+    await popup.waitForFunction(() => !document.querySelector('#recipient').disabled && document.querySelector('#recipient-menu').hidden);
+  };
   await work.bringToFront();
   await popup.goto(`${extensionOrigin}/popup.html`);
   await popup.waitForFunction(() => document.documentElement.dataset.ready === 'true');
   await work.bringToFront();
-  assert.equal(await popup.locator('#recipient option').count(), 2);
+  await popup.locator('#recipient').click();
+  await popup.locator('#recipient-options [role="option"]').first().waitFor({ state: 'visible' });
+  assert.equal(await popup.locator('#recipient-options [role="option"]').count(), 2);
+  await popup.locator('#recipient-search').press('Escape');
   assert.match(await popup.locator('#received').textContent(), /pão/);
   const unauthorized = await context.newPage();
   await unauthorized.goto(`${extensionOrigin}/handoff.html`);
@@ -51,12 +60,27 @@ try {
   await work.bringToFront();
   // Background's selected-target snapshot also updates the real browser badge.
   assert.equal(await worker.evaluate(() => chrome.action.getBadgeText({})), '3');
+  assert.deepEqual(await worker.evaluate(() => chrome.action.getBadgeBackgroundColor({})), [180, 35, 24, 255]);
+  await popup.locator('#recipient').click();
+  await popup.locator('#recipient-search').fill('joao');
+  await popup.locator('#recipient-options [role="option"]').first().waitFor({ state: 'visible' });
+  await popup.locator('#recipient-search').press('ArrowDown');
+  await popup.locator('#recipient-search').press('Enter');
+  await popup.waitForFunction(() => !document.querySelector('#recipient').disabled && document.querySelector('#recipient-value').textContent.includes('João'));
+  assert.equal(await whatsapp.evaluate(() => appState.messages.length), 0, 'Searching and keyboard selection must not send');
+  await chooseRecipient('12025550140@c.us', 'padaria');
   await popup.locator('#reply').fill('Oi 👋\nJá vou conferir + café & pão.');
   await popup.waitForTimeout(100);
   await popup.close();
   popup = await context.newPage(); await work.bringToFront(); await popup.goto(`${extensionOrigin}/popup.html`);
   await popup.waitForFunction(() => document.documentElement.dataset.ready === 'true');
   assert.equal(await popup.locator('#reply').inputValue(), 'Oi 👋\nJá vou conferir + café & pão.');
+  await popup.locator('#recipient').click();
+  await popup.locator('#recipient-search').fill('joao');
+  await popup.locator('#recipient-options [role="option"]').first().waitFor({ state: 'visible' });
+  assert.match(await popup.locator('#recipient-value').textContent(), /Bia/);
+  assert.equal(await popup.locator('#reply').inputValue(), 'Oi 👋\nJá vou conferir + café & pão.');
+  await popup.locator('#recipient-search').press('Escape');
   console.log('OK quick reply: recovered draft after closing the panel; real badge shows unread count.');
 
   await popup.locator('#manage').click(); await popup.locator('#new-reply').click();
@@ -64,7 +88,12 @@ try {
   await popup.locator('#saved-form button[type="submit"]').click();
   await popup.waitForFunction(() => document.querySelectorAll('.saved-row').length === 1);
   await popup.locator('#saved-panel [data-back]').click();
-  await popup.locator('#recipient').selectOption('12025550141@c.us');
+  await popup.locator('#recipient').click();
+  await popup.locator('#recipient-search').fill('nobody here');
+  await popup.waitForFunction(() => document.querySelector('#recipient-empty').textContent === 'No conversations found.');
+  assert.match(await popup.locator('#recipient-value').textContent(), /Bia/);
+  await popup.locator('#recipient-search').press('Escape');
+  await chooseRecipient('12025550141@c.us', 'JOAO');
   await popup.waitForFunction(() => !document.querySelector('#recipient').disabled);
   await popup.getByRole('button', { name: 'Prazo', exact: true }).click();
   assert.equal(await popup.locator('#reply').inputValue(), 'Em cinco minutos.');
@@ -119,7 +148,7 @@ try {
   assert.equal(await whatsapp.evaluate(() => appState.messages.length), 3);
   await popup.close(); popup = await context.newPage(); await work.bringToFront(); await popup.goto(`${extensionOrigin}/popup.html`);
   await popup.waitForFunction(() => document.documentElement.dataset.ready === 'true');
-  await popup.locator('#recipient').selectOption('12025550141@c.us');
+  await chooseRecipient('12025550141@c.us', 'joao');
   await popup.waitForFunction(() => !document.querySelector('#recipient').disabled);
   assert.equal(await popup.locator('#checked').isVisible(), true);
   assert.equal(await popup.locator('#send').isDisabled(), true);
@@ -128,7 +157,7 @@ try {
   console.log('OK quick reply: failure keeps the draft; uncertain sends stay blocked after reopening.');
 
   await popup.locator('#checked').click();
-  await popup.locator('#recipient').selectOption('12025550140@c.us');
+  await chooseRecipient('12025550140@c.us', 'padaria');
   await popup.waitForFunction(() => !document.querySelector('#recipient').disabled);
   await popup.locator('#reply').fill('Stale target');
   await whatsapp.evaluate(() => { delete globalThis[Symbol.for('TabHero.quickReply.v1')]; sendUncertain = false; });
