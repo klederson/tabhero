@@ -48,7 +48,22 @@ try {
     }
   });
 
+  const initialWindow = await driver.getWindowHandle();
   await driver.installAddon(resolve("dist/firefox"), true);
+  // Verify and dismiss installation disclosures before this scenario counts tabs.
+  await driver.wait(async () => {
+    for (const handle of await driver.getAllWindowHandles()) {
+      if (handle === initialWindow) continue;
+      await driver.switchTo().window(handle);
+      if (!(await driver.getCurrentUrl()).endsWith('/welcome.html')) continue;
+      await driver.wait(() => driver.executeScript("return document.documentElement.dataset.ready === 'true'"), 5000);
+      assert.match(await driver.findElement(By.css('[data-disclosure="privacySummary"]')).getText(), /No developer server/);
+      await driver.close();
+      return true;
+    }
+    return false;
+  }, 10000, 'First installation must display privacy disclosures');
+  await driver.switchTo().window(initialWindow);
   await driver.get("https://fixture.test/origem");
   const origin = await driver.getWindowHandle();
   await driver.switchTo().newWindow("tab");

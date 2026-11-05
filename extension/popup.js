@@ -3,9 +3,11 @@ import { aiPermissions } from './quick-reply-ai.js';
 import { createRecipientPicker } from './recipient-picker.js';
 import { loadSupport } from './support.js';
 import { sponsorshipUrl } from './sponsorship.js';
+import { renderDisclosures } from './privacy-i18n.js';
 const api = globalThis.browser ?? globalThis.chrome;
 const language = api.i18n.getMessage('language') || api.i18n.getUILanguage();
 const t = popupMessages(language);
+renderDisclosures(document, api);
 document.documentElement.lang = language;
 document.title = `TabHero — ${t.title}`;
 const $ = selector => document.querySelector(selector);
@@ -67,7 +69,7 @@ function controls() {
 }
 function panel(id) {
   recipientPicker.close();
-  for (const name of ['main-panel', 'ai-panel', 'saved-panel', 'support-panel']) $(`#${name}`).hidden = name !== id;
+  for (const name of ['main-panel', 'ai-panel', 'saved-panel', 'support-panel', 'privacy-panel']) $(`#${name}`).hidden = name !== id;
   status();
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
@@ -167,6 +169,10 @@ $('#reply').addEventListener('input', () => { state.operationId = null; status()
 $('#account').addEventListener('change', event => refresh({ tabId: Number(event.target.value) }));
 $('#refresh').addEventListener('click', () => refresh({ tabId: state.tabId, keep: true }));
 $('#settings').addEventListener('click', () => panel('ai-panel'));
+$('#privacy').addEventListener('click', async () => {
+  await persist().catch(() => {});
+  panel('privacy-panel');
+});
 for (const id of ['support', 'support-footer']) $(`#${id}`).addEventListener('click', async () => {
   await persist().catch(() => {});
   panel('support-panel');

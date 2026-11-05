@@ -159,7 +159,14 @@
     "accessibility_148": "Illustration of a chat returning to the tab that’s already open",
     "accessibility_149": "Demo mode",
     "accessibility_150": "Browser installation options",
-    "accessibility_151": "__BRAND__, home"
+    "accessibility_151": "__BRAND__, home",
+    "trust_heading": "Your chats are not our business.",
+    "trust_summary": "No developer server receiving your chats. No advertising, analytics or sale of your data.",
+    "trust_local": "Saved replies and your optional OpenRouter key stay in local extension storage in this browser profile, without browser sync. Drafts and send-operation records use browser-session storage. We do not build or upload a chat-history archive.",
+    "trust_ai": "AI is optional. Only after you connect your own OpenRouter key and click Suggest, the displayed received text (including any caption) and your draft go directly to OpenRouter and its AI provider. Your key authenticates that request. Their policies govern processing and retention. Media files are not sent to AI.",
+    "trust_audit": "The source is public under the MIT license. Inspect the code, build it yourself, report issues and compare the source with the release you installed.",
+    "trust_link": "Privacy, local storage & source ↗",
+    "install_privacy": "No developer server receiving your chats. No advertising, analytics or sale of your data."
   },
   "ui": {
     "toastCopied": "Address copied. Paste it into your browser’s address bar.",
@@ -197,12 +204,12 @@
   },
   "privacy": {
     "title": "Privacy — TabHero",
-    "kicker": "UPDATED NOVEMBER 4, 2026",
+    "kicker": "UPDATED NOVEMBER 5, 2026",
     "back": "Back to the site ↵",
     "heading": "Your chats.<br>The details, clear.",
     "extensionHeading": "The extension",
-    "extensionP1": "TabHero opens numbered chat links in an already loaded WhatsApp Web tab. Its optional quick-reply panel reads loaded chat names, unread counts and the latest incoming text so you can select a recipient, write or reuse a reply, and explicitly send through that session without focusing or reloading WhatsApp. It does not fetch a message archive or automatically send replies.",
-    "extensionP2": "Saved replies and your optional OpenRouter key are stored locally in this browser profile, without browser sync. Drafts and send-operation records use browser-session storage. The key is not injected into WhatsApp. Only clicking Suggest sends the displayed received text and your draft directly to OpenRouter and its AI provider, under their policies. There is no developer-operated relay, analytics, advertising or telemetry. The silent icon badge shows unread counts, with no message body or desktop notification.",
+    "extensionP1": "TabHero intercepts supported conversation links and accesses loaded WhatsApp chat names, unread counts and message previews to provide its features. Messages are sent through your WhatsApp session only when you click Send.",
+    "extensionP2": "Saved replies and your optional OpenRouter key stay in local extension storage in this browser profile, without browser sync. Drafts and send-operation records use browser-session storage. We do not build or upload a chat-history archive.",
     "siteHeading": "This website",
     "siteP1": "The files and fonts are hosted with the site. Our code creates no cookies, includes no trackers and asks for no chats, phone numbers or account. Your language choice stays in the page URL; we do not store it in a profile. The interactive illustration runs locally and does not connect to WhatsApp.",
     "siteP2": "GitHub Pages hosts this website. As the hosting provider, GitHub may process technical access information, such as IP addresses and network requests, under its <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">privacy statement</a>. This is separate from the extension.",
@@ -210,7 +217,10 @@
     "fundingP": "When the receiving profile is active, the support button takes you to GitHub Sponsors. You choose and confirm the amount, frequency and payment there. This site receives no card details and does not confirm payments. While the profile is unavailable, the payment action stays disabled.",
     "reportHeading": "Reporting a problem",
     "reportP": "Open an <a href=\"https://github.com/klederson/tabhero/issues\">issue</a> with versions and the behavior you observed. Do not include real phone numbers, messages, QR codes, cookies or credentials. For security reports, see <a href=\"https://github.com/klederson/tabhero/blob/main/SECURITY.md\">SECURITY.md</a>.",
-    "maintainerP": "Maintained by <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Independent project. Not affiliated with, sponsored by, or endorsed by WhatsApp or Meta."
+    "maintainerP": "Maintained by <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Independent project. Not affiliated with, sponsored by, or endorsed by WhatsApp or Meta.",
+    "aiP": "AI is optional. Only after you connect your own OpenRouter key and click Suggest, the displayed received text (including any caption) and your draft go directly to OpenRouter and its AI provider. Your key authenticates that request. Their policies govern processing and retention. Media files are not sent to AI.",
+    "deleteP": "Delete saved replies in My saved replies. Disconnect AI in settings to remove its saved key and permissions. Drafts and send-operation records expire with the browser session.",
+    "auditP": "The source is public under the MIT license. Inspect the code, build it yourself, report issues and compare the source with the release you installed."
   },
   "community": {
     "title": "Community notes — TabHero",

@@ -1,6 +1,6 @@
 {
   "name": "tabhero",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "license": "MIT",
   "author": "Klederson Bueno",
   "homepage": "https://klederson.github.io/tabhero/",
@@ -24,7 +24,9 @@
     "package": "npm run build && node scripts/package.mjs",
     "build:brand": "node scripts/build-brand.mjs",
     "build:site": "node scripts/build-site.mjs",
-    "test:site": "node tests/site.mjs"
+    "test:site": "node tests/site.mjs",
+    "test:disclosures": "node tests/disclosures-browser.mjs",
+    "build:store": "node scripts/build-store.mjs"
   },
   "devDependencies": {
     "playwright": "^1.64.1",

@@ -5,6 +5,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { chromium } from "playwright";
+import { dismissChromiumWelcome } from './installation.mjs';
 
 const profile = await mkdtemp(join(tmpdir(), "whatsapp-extension-test-"));
 const extension = resolve("dist/chrome");
@@ -39,6 +40,7 @@ try {
   }));
 
   const worker = context.serviceWorkers()[0] ?? await context.waitForEvent("serviceworker");
+  await dismissChromiumWelcome(context);
   await eventually(async () => await worker.evaluate(async () =>
     (await chrome.declarativeNetRequest.getDynamicRules()).length === 2
   ), "ativação das regras");

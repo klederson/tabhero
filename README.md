@@ -12,13 +12,21 @@
 
 The toolbar's **Quick reply** panel also lets you choose a loaded conversation and send a deliberate reply without leaving your work tab. Use free text, saved replies, or an editable AI suggestion through your own OpenRouter key. Sending always requires your Send click. The silent icon badge shows unread messages for the selected regular WhatsApp tab.
 
-**Experimental — version 1.8.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
+**Experimental.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
 
 Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta. WhatsApp is a trademark of its respective owners.
 
+## Privacy and public source
+
+No developer server receives your chats. No advertising, analytics, telemetry or sale of your data. TabHero intercepts supported conversation links and accesses loaded chat names, unread counts and message previews to provide its features. Sending requires your explicit click.
+
+Saved replies and an optional OpenRouter key are stored locally in this browser profile; drafts and send-operation records use browser-session storage. AI is optional: connecting your own key and clicking Suggest sends the displayed received text, including an available caption, and your draft directly to OpenRouter and its AI provider under their policies. Media files are not sent to AI.
+
+The first-install page and popup explain these details and link to the public GitHub source. Inspect it, build it yourself and report issues. Source availability enables inspection; no independent security certification is claimed. Read the [privacy policy](https://klederson.github.io/tabhero/privacy.html) and [store submission guide](store/README.md).
+
 ## Update an existing installation
 
-Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.8.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
+Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is named **TabHero**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
 
 ## Install in Chrome
 

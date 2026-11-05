@@ -159,7 +159,14 @@
     "accessibility_148": "Ilustrasi chat kembali ke tab yang sudah terbuka",
     "accessibility_149": "Mode demonstrasi",
     "accessibility_150": "Browser untuk pemasangan",
-    "accessibility_151": "__BRAND__, beranda"
+    "accessibility_151": "__BRAND__, beranda",
+    "trust_heading": "Percakapan Anda bukan bisnis kami.",
+    "trust_summary": "Tidak ada server pengembang yang menerima percakapan Anda. Tanpa iklan, analitik, atau penjualan data Anda.",
+    "trust_local": "Balasan tersimpan dan kunci OpenRouter opsional Anda tetap di penyimpanan lokal ekstensi pada profil ini, tanpa sinkronisasi browser. Draf dan catatan pengiriman memakai penyimpanan sesi browser. Kami tidak membuat atau mengunggah arsip riwayat percakapan.",
+    "trust_ai": "AI bersifat opsional. Hanya setelah Anda menghubungkan kunci OpenRouter sendiri dan mengeklik Sarankan, teks diterima yang ditampilkan (termasuk keterangan yang tersedia) dan draf Anda dikirim langsung ke OpenRouter serta penyedia AI-nya. Kunci Anda mengautentikasi permintaan tersebut. Pemrosesan dan retensi mengikuti kebijakan mereka. Berkas media tidak dikirim ke AI.",
+    "trust_audit": "Kode sumber tersedia untuk umum dengan lisensi MIT. Anda dapat memeriksa kode, membuat build sendiri, melaporkan masalah, dan membandingkannya dengan versi terpasang.",
+    "trust_link": "Privasi, penyimpanan lokal & kode ↗",
+    "install_privacy": "Tidak ada server pengembang yang menerima percakapan Anda. Tanpa iklan, analitik, atau penjualan data Anda."
   },
   "ui": {
     "toastCopied": "Alamat disalin. Tempel di bilah alamat browser.",
@@ -197,12 +204,12 @@
   },
   "privacy": {
     "title": "Privasi — TabHero",
-    "kicker": "DIPERBARUI 4 NOVEMBER 2026",
+    "kicker": "DIPERBARUI 5 NOVEMBER 2026",
     "back": "Kembali ke situs ↵",
     "heading": "Chat milik Anda.<br>Penjelasannya terbuka.",
     "extensionHeading": "Ekstensi",
-    "extensionP1": "TabHero membuka tautan percakapan di tab WhatsApp Web yang sudah dimuat. Panel balasan cepat opsional membaca nama, jumlah pesan dan teks masuk terakhir yang sudah dimuat agar Anda dapat memilih penerima, menulis atau memakai balasan tersimpan, lalu mengirim dengan sengaja melalui sesi itu tanpa memfokuskan atau memuat ulang WhatsApp. Tidak mengambil arsip pesan atau membalas otomatis.",
-    "extensionP2": "Balasan tersimpan dan kunci OpenRouter opsional disimpan di profil browser ini tanpa sinkronisasi. Draf dan catatan operasi pengiriman memakai penyimpanan sesi browser. Kunci tidak disuntikkan ke WhatsApp. Hanya saat menekan Saran, teks masuk yang ditampilkan dan draf dikirim langsung ke OpenRouter serta penyedia AI-nya menurut kebijakan mereka. Tanpa server perantara pengembang, analitik, iklan atau telemetri. Penghitung senyap di ikon tidak menampilkan isi pesan atau membuat notifikasi desktop.",
+    "extensionP1": "TabHero menangkap tautan percakapan yang didukung dan mengakses nama percakapan, jumlah pesan belum dibaca, serta pratinjau pesan yang sudah dimuat di WhatsApp untuk menjalankan fiturnya. Pesan dikirim melalui sesi WhatsApp hanya saat Anda mengeklik Kirim.",
+    "extensionP2": "Balasan tersimpan dan kunci OpenRouter opsional Anda tetap di penyimpanan lokal ekstensi pada profil ini, tanpa sinkronisasi browser. Draf dan catatan pengiriman memakai penyimpanan sesi browser. Kami tidak membuat atau mengunggah arsip riwayat percakapan.",
     "siteHeading": "Situs ini",
     "siteP1": "Berkas dan font dihosting bersama situs. Kode kami tidak membuat cookie, tidak menyertakan pelacak, dan tidak meminta chat, nomor telepon, atau akun. Pilihan bahasa Anda tetap ada di URL halaman; kami tidak menyimpannya dalam profil. Ilustrasi interaktif berjalan secara lokal dan tidak terhubung ke WhatsApp.",
     "siteP2": "Situs ini dihosting oleh GitHub Pages. Sebagai penyedia hosting, GitHub dapat memproses informasi teknis akses, seperti alamat IP dan permintaan jaringan, sesuai <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">pernyataan privasinya</a>. Hal ini terpisah dari ekstensi.",
@@ -210,7 +217,10 @@
     "fundingP": "Setelah profil penerimaan aktif, tombol dukungan membawa Anda ke GitHub Sponsors. Anda memilih dan mengonfirmasi nilai, frekuensi, serta pembayarannya di sana. Situs ini tidak menerima detail kartu dan tidak mengonfirmasi pembayaran. Selama profil belum tersedia, tindakan pembayaran tetap dinonaktifkan.",
     "reportHeading": "Melaporkan masalah",
     "reportP": "Buka <a href=\"https://github.com/klederson/tabhero/issues\">issue</a> dengan informasi versi dan perilaku yang Anda amati. Jangan sertakan nomor telepon asli, pesan, kode QR, cookie, atau kredensial. Untuk laporan keamanan, lihat <a href=\"https://github.com/klederson/tabhero/blob/main/SECURITY.md\">SECURITY.md</a>.",
-    "maintainerP": "Dikelola oleh <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Proyek independen. Tidak berafiliasi, disponsori, atau didukung secara resmi oleh WhatsApp maupun Meta."
+    "maintainerP": "Dikelola oleh <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Proyek independen. Tidak berafiliasi, disponsori, atau didukung secara resmi oleh WhatsApp maupun Meta.",
+    "aiP": "AI bersifat opsional. Hanya setelah Anda menghubungkan kunci OpenRouter sendiri dan mengeklik Sarankan, teks diterima yang ditampilkan (termasuk keterangan yang tersedia) dan draf Anda dikirim langsung ke OpenRouter serta penyedia AI-nya. Kunci Anda mengautentikasi permintaan tersebut. Pemrosesan dan retensi mengikuti kebijakan mereka. Berkas media tidak dikirim ke AI.",
+    "deleteP": "Hapus balasan di Balasan tersimpan saya. Putuskan AI di pengaturan untuk menghapus kunci dan izinnya. Draf serta catatan pengiriman berakhir bersama sesi browser.",
+    "auditP": "Kode sumber tersedia untuk umum dengan lisensi MIT. Anda dapat memeriksa kode, membuat build sendiri, melaporkan masalah, dan membandingkannya dengan versi terpasang."
   },
   "community": {
     "title": "Catatan komunitas — TabHero",

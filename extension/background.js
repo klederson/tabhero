@@ -33,7 +33,10 @@ function initialize() {
   });
 }
 
-api.runtime.onInstalled.addListener(initialize);
+api.runtime.onInstalled.addListener(details => {
+  initialize();
+  if (details.reason === 'install') api.tabs.create({ url: api.runtime.getURL('welcome.html') }).catch(() => {});
+});
 api.runtime.onStartup.addListener(initialize);
 
 api.runtime.onMessage.addListener((message, sender, sendResponse) => {

@@ -159,7 +159,14 @@
     "accessibility_148": "Ilustração de uma conversa voltando à aba já aberta",
     "accessibility_149": "Modo da demonstração",
     "accessibility_150": "Navegador para instalação",
-    "accessibility_151": "__BRAND__, início"
+    "accessibility_151": "__BRAND__, início",
+    "trust_heading": "Suas conversas não são nosso negócio.",
+    "trust_summary": "Nenhum servidor nosso recebe suas conversas. Sem publicidade, análise de uso ou venda dos seus dados.",
+    "trust_local": "Respostas salvas e sua chave opcional do OpenRouter ficam no armazenamento local da extensão neste perfil, sem sincronização do navegador. Rascunhos e registros de envio usam o armazenamento da sessão do navegador. Não montamos nem enviamos um arquivo do histórico das conversas.",
+    "trust_ai": "A IA é opcional. Só depois de conectar sua própria chave do OpenRouter e clicar em Sugerir, o texto recebido exibido (incluindo a legenda disponível) e seu rascunho vão diretamente ao OpenRouter e ao provedor de IA. Sua chave autentica essa solicitação. O processamento e a retenção seguem as políticas deles. Arquivos de mídia não vão para a IA.",
+    "trust_audit": "O código é público sob a licença MIT. Você pode inspecioná-lo, gerar sua própria versão, relatar problemas e comparar o código com a versão instalada.",
+    "trust_link": "Privacidade, dados locais e código ↗",
+    "install_privacy": "Nenhum servidor nosso recebe suas conversas. Sem publicidade, análise de uso ou venda dos seus dados."
   },
   "ui": {
     "toastCopied": "Endereço copiado. Cole na barra do navegador.",
@@ -197,12 +204,12 @@
   },
   "privacy": {
     "title": "Privacidade — TabHero",
-    "kicker": "ATUALIZADO EM 4 DE NOVEMBRO DE 2026",
+    "kicker": "ATUALIZADO EM 5 DE NOVEMBRO DE 2026",
     "back": "Voltar ao site ↵",
     "heading": "Conversa sua.<br>O resto, claro.",
     "extensionHeading": "A extensão",
-    "extensionP1": "O TabHero abre links de conversa na aba já carregada do WhatsApp Web. O painel opcional de resposta rápida lê nomes, contadores e o último texto recebido já carregado para você escolher a pessoa, escrever ou reutilizar uma resposta e enviar explicitamente por essa sessão, sem focar nem recarregar o WhatsApp. Não busca um arquivo de mensagens nem responde automaticamente.",
-    "extensionP2": "As respostas salvas e a chave opcional do OpenRouter ficam neste perfil do navegador, sem sincronização. Rascunhos e registros de operações de envio usam memória da sessão do navegador. A chave não é injetada no WhatsApp. Só ao clicar em Sugerir o texto recebido exibido e seu rascunho são enviados diretamente ao OpenRouter e seu provedor de IA, conforme as políticas deles. Sem servidor intermediário do desenvolvedor, analytics, publicidade ou telemetria. O contador discreto no ícone não mostra o corpo da mensagem nem cria notificações na área de trabalho.",
+    "extensionP1": "O TabHero captura os links de conversa compatíveis e acessa nomes de conversas, contagens de não lidas e prévias de mensagens já carregadas no WhatsApp para oferecer seus recursos. Só envia mensagens pela sua sessão quando você clica em Enviar.",
+    "extensionP2": "Respostas salvas e sua chave opcional do OpenRouter ficam no armazenamento local da extensão neste perfil, sem sincronização do navegador. Rascunhos e registros de envio usam o armazenamento da sessão do navegador. Não montamos nem enviamos um arquivo do histórico das conversas.",
     "siteHeading": "Este site",
     "siteP1": "Os arquivos e as fontes ficam hospedados com o site. Nosso código não cria cookies, não inclui rastreadores e não pede telefone, conversas ou cadastro. A escolha de idioma fica na URL da página; não a armazenamos em um perfil. A demonstração é local e não se conecta ao WhatsApp.",
     "siteP2": "O GitHub Pages hospeda este site. Como provedor, o GitHub pode processar informações técnicas de acesso, como IP e solicitações de rede, conforme sua <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">política de privacidade</a>. Isso é separado da extensão.",
@@ -210,7 +217,10 @@
     "fundingP": "Quando o perfil de recebimento estiver ativo, o botão leva ao GitHub Sponsors. O valor, a modalidade e o pagamento são escolhidos e confirmados lá. Este site não recebe dados de cartão nem confirma pagamentos. Enquanto o perfil estiver indisponível, a ação de pagamento fica desabilitada.",
     "reportHeading": "Relatar problemas",
     "reportP": "Abra uma <a href=\"https://github.com/klederson/tabhero/issues\">issue</a> com versões e o comportamento observado, sem telefone real, mensagens, QR code, cookies ou credenciais. Para segurança, veja <a href=\"https://github.com/klederson/tabhero/blob/main/SECURITY.md\">SECURITY.md</a>.",
-    "maintainerP": "Mantido por <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Projeto independente, sem vínculo, patrocínio ou endosso de WhatsApp ou Meta."
+    "maintainerP": "Mantido por <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Projeto independente, sem vínculo, patrocínio ou endosso de WhatsApp ou Meta.",
+    "aiP": "A IA é opcional. Só depois de conectar sua própria chave do OpenRouter e clicar em Sugerir, o texto recebido exibido (incluindo a legenda disponível) e seu rascunho vão diretamente ao OpenRouter e ao provedor de IA. Sua chave autentica essa solicitação. O processamento e a retenção seguem as políticas deles. Arquivos de mídia não vão para a IA.",
+    "deleteP": "Apague respostas em Minhas respostas salvas. Desconecte a IA nas configurações para remover a chave salva e as permissões. Rascunhos e registros de envio expiram com a sessão do navegador.",
+    "auditP": "O código é público sob a licença MIT. Você pode inspecioná-lo, gerar sua própria versão, relatar problemas e comparar o código com a versão instalada."
   },
   "community": {
     "title": "Relatos da comunidade — TabHero",

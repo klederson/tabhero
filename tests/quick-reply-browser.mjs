@@ -4,6 +4,7 @@ import { mkdtemp, readFile, rm, mkdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { chromium } from 'playwright';
+import { dismissChromiumWelcome } from './installation.mjs';
 const profile = await mkdtemp(join(tmpdir(), 'tabhero-quick-reply-'));
 const extension = resolve('dist/chrome');
 const context = await chromium.launchPersistentContext(profile, { channel: 'chromium', headless: true, args: [`--disable-extensions-except=${extension}`, `--load-extension=${extension}`] });
@@ -16,6 +17,9 @@ try {
   await context.route('https://web.whatsapp.com/**', route => { requests++; return route.fulfill({ contentType: 'text/html', body: fixture }); });
   await context.route('https://work.test/**', route => route.fulfill({ contentType: 'text/html', body: '<title>Work</title><textarea id="work">Meu trabalho em andamento</textarea>' }));
   const worker = context.serviceWorkers()[0] ?? await context.waitForEvent('serviceworker');
+  // Finish the first-install experience before measuring the work tab's focus.
+  // Opening welcome is intentionally part of installation, not quick reply.
+  await dismissChromiumWelcome(context);
   const workerUrl = new URL(worker.url());
   const extensionOrigin = `${workerUrl.protocol}//${workerUrl.host}`;
   const work = context.pages()[0]; await work.goto('https://work.test/');
@@ -71,6 +75,13 @@ try {
   assert.equal(await whatsapp.evaluate(() => appState.messages.length), 0, 'Searching and keyboard selection must not send');
   await chooseRecipient('12025550140@c.us', 'padaria');
   await popup.locator('#reply').fill('Oi 👋\nJá vou conferir + café & pão.');
+  await popup.locator('#privacy').click();
+  assert.equal(await popup.locator('#privacy-panel').isVisible(), true);
+  assert.equal(await popup.locator('#main-panel').isVisible(), false);
+  assert.equal(await popup.locator('[data-disclosure="privacySource"]').getAttribute('href'), 'https://github.com/klederson/tabhero');
+  await popup.locator('#privacy-panel [data-back]').click();
+  assert.equal(await popup.locator('#privacy-panel').isVisible(), false);
+  assert.equal(await popup.locator('#reply').inputValue(), 'Oi 👋\nJá vou conferir + café & pão.');
   await popup.waitForFunction(() => document.documentElement.dataset.supportReady === 'true');
   await popup.locator('#support').click();
   assert.equal(await popup.locator('#support-panel').isVisible(), true);
