@@ -4,7 +4,7 @@ export const englishMessages = Object.freeze({
   brandName: "TabHero",
   extensionName: "TabHero — New chat. Same tab.",
   extensionDescription: "Open WhatsApp conversation links in your existing WhatsApp Web tab, keeping the phone number and message.",
-  actionTitle: "TabHero — open WhatsApp Web",
+  actionTitle: "TabHero — quick reply",
   activationFailed: "Couldn't activate. Reload the extension and check its permissions for WhatsApp websites.",
   handoffTitle: "TabHero — opening your conversation",
   headlineFirst: "New chat.",

@@ -8,13 +8,15 @@
 
 **TabHero** is an independent, MIT-licensed browser extension for Chrome and Firefox. It opens chat links inside an already loaded WhatsApp Web tab, preserving the document and session and preparing a draft for manual sending. It does not send messages automatically.
 
-**Experimental — version 1.4.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
+The toolbar's **Quick reply** panel also lets you choose a loaded conversation and send a deliberate reply without leaving your work tab. Use free text, saved replies, or an editable AI suggestion through your own OpenRouter key. Sending always requires your Send click. The silent icon badge shows unread messages for the selected regular WhatsApp tab.
+
+**Experimental — version 1.5.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
 
 Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta. WhatsApp is a trademark of its respective owners.
 
 ## Update an existing installation
 
-Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.4.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
+Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.5.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
 
 ## Install in Chrome
 
@@ -39,6 +41,19 @@ If using `artifacts/tabhero-firefox.zip`, extract it first. Requires Firefox 142
 
 ## Behavior
 
+### Quick reply from the toolbar
+
+1. Keep WhatsApp Web signed in and open in the same browser profile. Pin TabHero's icon in the browser toolbar for easy access.
+2. Click the icon, choose the recipient, type your reply or tap a saved reply, and click **Send reply**. WhatsApp is neither focused nor reloaded, and its active chat and existing draft are left alone.
+3. **My saved replies** lets you create, edit and delete reusable text. Closing the panel retains your current draft for the browser session.
+4. AI is optional. Click **Connect AI**, follow the link to create your own [OpenRouter key](https://openrouter.ai/settings/keys), paste it once, and allow the OpenRouter connection. There is no provider, model or endpoint picker. **Suggest a reply** uses the [free-model router](https://openrouter.ai/docs/guides/routing/routers/free-router), subject to its availability and limits, with no automatic paid fallback.
+
+Only requesting a suggestion sends the displayed received text and your draft to OpenRouter and its AI provider. Read and edit the result, then explicitly click Send. No AI request sends a WhatsApp message. A successful send means WhatsApp accepted the message; check delivery in WhatsApp. Uncertain sends retain the text and require checking WhatsApp before another attempt, rather than retrying automatically.
+
+The badge updates silently (normally every 15 seconds while the WhatsApp document runs; background-browser throttling can delay it). No sound or desktop notification. It follows the selected regular tab rather than summing duplicate tabs; private sessions do not update the global badge. The panel only exposes sessions in the current tab's private/container context. Only messages already loaded in the app are used; no message-history archive is fetched. See [the acceptance criteria](docs/quick-reply.md).
+
+### Opening conversation links
+
 - Captures `https://wa.me/NUMBER`, `https://api.whatsapp.com/send?phone=NUMBER`, and `https://www.whatsapp.com/send?phone=NUMBER`, including trailing-slash and HTTP variants.
 - Preserves the `text` message, including accents, emojis, line breaks, and special characters. Without `text`, it preserves the recipient’s existing draft.
 - Prefers an existing WhatsApp tab in the same window; otherwise, focuses its window. It switches chats through internal app commands, without navigating, changing the URL, or reloading the loaded tab.
@@ -59,7 +74,9 @@ Group invitations, channels, numberless sharing links, and business codes such a
 
 Host access is limited to `wa.me`, `api.whatsapp.com`, `www.whatsapp.com`, and `web.whatsapp.com`. `declarativeNetRequestWithHostAccess` redirects navigations before the intermediary page; `scripting` opens the chat within the loaded document. The browser may ask for site access. Keep access to the declared sites enabled in Chrome for automatic interception.
 
-Only the local intermediary page is web-accessible, allowing links from any site to reach it. This does not grant access to read other sites. On-demand execution is restricted to WhatsApp Web and uses the destination contact model to open the chat and fill in its draft. It does not query message history. The extension has no telemetry, server, or storage of phone numbers and messages.
+Only the local intermediary page is web-accessible, allowing links from any site to reach it. The quick-reply popup is private to the extension. The extension has no telemetry or developer-operated server. It uses WhatsApp's loaded chat models for names, unread counts, latest incoming text and deliberate quick replies; it does not fetch a history archive. A content script requests the silent count but cannot ask to send messages. Only the extension popup can request a quick-reply send.
+
+The `storage` permission keeps saved replies and the optional OpenRouter key locally, without browser sync. Drafts and operation receipts use browser-session storage; closing the browser clears them. The key is never injected into WhatsApp. Optional access to `https://openrouter.ai/*` is requested only when connecting AI and can be removed with **Disconnect AI**. Firefox also requests its optional authentication-information and personal-communications consent at that point; revoking it prevents AI requests. No chat content goes to AI in the background. Local storage is not an encrypted password vault; use a dedicated, limited OpenRouter key. No real key is included in this repository or its tests.
 
 ## Develop and test
 
@@ -77,11 +94,12 @@ Packages use native JavaScript without runtime libraries or a compiler. The buil
 npx playwright install chromium
 npm run test:browser
 npm run test:firefox
+npm run test:quick-reply
 ```
 
 Firefox tests use Selenium, an installed Firefox, and geckodriver. Selenium Manager locates the driver; `FIREFOX_BINARY` selects a custom browser executable. Tests launch isolated profiles and simulate ordinary pages and WhatsApp’s internal module contracts. Real browsers exercise redirects, execution in the page context, and tab APIs.
 
-Checks verify that the original document, its in-memory identity, prior draft, and URL remain intact while the target chat and draft change. They also check that no new WhatsApp document is requested and an integration failure preserves the tab without navigation fallback. These tests **do not prove compatibility with a real authenticated session** and do not send messages.
+Link-routing checks verify that the original document, its in-memory identity, prior state, and URL remain intact while the target chat and draft change. Quick-reply checks verify the selected recipient, exact outgoing text, unchanged active WhatsApp chat and composer, unchanged work-tab selection, duplicate prevention, draft recovery and AI suggestions without sending. Both verify no navigation or reload fallback. These tests use **simulated WhatsApp and AI interfaces**, not authenticated accounts or a paid API. They do not establish real-world compatibility or recipient delivery.
 
 Validate the Firefox manifest and generate ZIPs (`zip` is required for packaging):
 

@@ -12,7 +12,7 @@
     "message": "Buka tautan percakapan di tab WhatsApp Web yang sudah terbuka, dengan nomor dan pesan tetap utuh."
   },
   "actionTitle": {
-    "message": "TabHero — buka WhatsApp Web"
+    "message": "TabHero — balasan cepat"
   },
   "activationFailed": {
     "message": "Tidak dapat mengaktifkan ekstensi. Muat ulang ekstensi dan periksa izinnya untuk situs WhatsApp."

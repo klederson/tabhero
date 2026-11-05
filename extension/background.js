@@ -1,9 +1,13 @@
 import { conversationUrl, redirectRules } from "./links.js";
 import { chooseTab, routeConversation, whatsappTabs } from "./router.js";
 import { errorMessage, message as translatedMessage, normalizeErrorCode } from "./i18n.js";
+import { createQuickReplyController } from './quick-reply.js';
 
 const api = globalThis.browser ?? globalThis.chrome;
 const handoffUrl = api.runtime.getURL("handoff.html");
+const quickReply = createQuickReplyController(api);
+// Chrome can restrict local storage to extension pages and background scripts.
+api.storage.local.setAccessLevel?.({ accessLevel: 'TRUSTED_CONTEXTS' }).catch(() => {});
 let routing = Promise.resolve();
 
 async function installRules() {
@@ -17,6 +21,11 @@ async function installRules() {
 }
 
 function initialize() {
+  // Existing WhatsApp documents also receive the silent counter after an
+  // extension update/install, without requiring a WhatsApp reload.
+  whatsappTabs(api).then(tabs => Promise.allSettled(tabs.map(tab => api.scripting.executeScript({
+    target: { tabId: tab.id, frameIds: [0] }, files: ['quick-reply-heartbeat.js']
+  })))).catch(() => {});
   installRules().catch(() => {
     // Surface installation failures without logging a phone number or message.
     api.action.setBadgeText({ text: "!" });
@@ -28,6 +37,14 @@ api.runtime.onInstalled.addListener(initialize);
 api.runtime.onStartup.addListener(initialize);
 
 api.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (typeof message?.type === 'string' && message.type.startsWith('qr-')) {
+    const popup = sender.id === api.runtime.id && sender.url === api.runtime.getURL('popup.html');
+    const heartbeat = message.type === 'qr-heartbeat' && sender.id === api.runtime.id && sender.frameId === 0 && sender.tab && sender.url?.startsWith('https://web.whatsapp.com/');
+    if (!popup && !heartbeat) { sendResponse({ ok: false, code: 'unauthorized-source' }); return; }
+    const request = heartbeat ? quickReply.heartbeat(sender.tab) : quickReply.handle(message);
+    request.then(sendResponse, () => sendResponse({ ok: false, code: message.type === 'qr-send' ? 'send-unknown' : 'unavailable' }));
+    return true;
+  }
   if (message?.type !== "route-conversation") return;
   // Only our own handoff page may request tab navigation. Verify both sender
   // and fragment, rather than accepting a URL supplied by any web page.
@@ -56,6 +73,11 @@ api.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }
   );
   return true;
+});
+
+api.tabs.onRemoved.addListener(tabId => { quickReply.removed(tabId).catch(() => {}); });
+api.tabs.onUpdated.addListener((tabId, change) => {
+  if (change.status === 'loading' || change.url) quickReply.removed(tabId).catch(() => {});
 });
 
 api.action.onClicked.addListener(tab => {

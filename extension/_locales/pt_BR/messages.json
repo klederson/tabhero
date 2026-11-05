@@ -12,7 +12,7 @@
     "message": "Abre links de conversa na aba já aberta do WhatsApp Web, preservando o número e a mensagem."
   },
   "actionTitle": {
-    "message": "TabHero — abrir o WhatsApp Web"
+    "message": "TabHero — resposta rápida"
   },
   "activationFailed": {
     "message": "Não foi possível ativar. Recarregue a extensão e confira as permissões para os sites do WhatsApp."

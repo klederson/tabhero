@@ -12,7 +12,7 @@
     "message": "Open WhatsApp conversation links in your existing WhatsApp Web tab, keeping the phone number and message."
   },
   "actionTitle": {
-    "message": "TabHero — open WhatsApp Web"
+    "message": "TabHero — quick reply"
   },
   "activationFailed": {
     "message": "Couldn't activate. Reload the extension and check its permissions for WhatsApp websites."

@@ -12,7 +12,9 @@ const options = new firefox.Options().addArguments("-headless").enableBidi();
 const binary = process.env.FIREFOX_BINARY
   ?? (existsSync("/snap/firefox/current/usr/lib/firefox/firefox") ? "/snap/firefox/current/usr/lib/firefox/firefox" : null);
 if (binary) options.setBinary(binary);
-const driver = await new Builder().forBrowser("firefox").setFirefoxOptions(options).build();
+// Isolated synthetic test profile only: required to automate the add-on popup.
+const service = new firefox.ServiceBuilder().addArguments('--allow-system-access');
+const driver = await new Builder().forBrowser("firefox").setFirefoxService(service).setFirefoxOptions(options).build();
 const callbackErrors = [];
 const fixture = await readFile(new URL("./fixtures/whatsapp.html", import.meta.url), "utf8");
 const expectedUnavailable = JSON.parse(await readFile(new URL("../extension/_locales/en/messages.json", import.meta.url), "utf8")).errorUnavailable.message;
@@ -129,6 +131,11 @@ try {
   await driver.switchTo().window(whatsapp);
   await unchanged();
   assert.equal(await driver.executeScript("return appState.opens.length"), 2);
+  await driver.switchTo().window(failureTab);
+  const failurePageUrl = await driver.getCurrentUrl();
+  const failureUrl = new URL(failurePageUrl);
+  const extensionOrigin = `${failureUrl.protocol}//${failureUrl.host}`;
+  await driver.switchTo().window(whatsapp);
   await driver.executeScript("document.documentElement.removeAttribute('data-integration-unavailable')");
   await driver.switchTo().window(failureTab);
   await driver.findElement(By.id("retry")).click();
@@ -137,6 +144,32 @@ try {
   await driver.wait(async () => (await driver.executeScript("return appState.opens.length")) === 3, 15_000);
   await unchanged();
   console.log("OK Firefox: falha preserva a página carregada; nova tentativa funciona sem recarga.");
+
+  // Same real add-on APIs; the WhatsApp sender is simulated by the fixture.
+  const priorDraft = await driver.findElement(By.id('compose')).getAttribute('value');
+  const priorContact = await driver.findElement(By.id('contact')).getText();
+  await driver.switchTo().newWindow('tab');
+  const quickPanel = await driver.getWindowHandle();
+  await driver.get(`${extensionOrigin}/popup.html`);
+  await driver.wait(async () => (await driver.findElements(By.css('#recipient option'))).length >= 2, 15000);
+  await driver.executeScript("document.getElementById('recipient').value='12025550141@c.us';document.getElementById('recipient').dispatchEvent(new Event('change',{bubbles:true}))");
+  await driver.wait(async () => await driver.executeScript("return !document.getElementById('recipient').disabled"), 5000);
+  await driver.findElement(By.id('reply')).sendKeys('Confirmado pelo painel.');
+  await driver.findElement(By.id('send')).click();
+  await driver.wait(async () => (await driver.findElement(By.id('status')).getText()).includes('Passed to WhatsApp'), 15000);
+  const activeAfter = await driver.executeAsyncScript("const done=arguments[arguments.length-1];browser.tabs.query({active:true,currentWindow:true}).then(t=>done(t[0].url))");
+  assert.equal(activeAfter, `${extensionOrigin}/popup.html`, 'Quick reply must not activate WhatsApp');
+  await driver.switchTo().window(whatsapp);
+  assert.equal(await driver.getCurrentUrl(), 'https://web.whatsapp.com/');
+  assert.equal(await driver.executeScript('return arguments[0]===document.documentElement', originalRoot), true);
+  assert.equal(await driver.executeScript('return documentToken'), originalToken);
+  assert.equal(await driver.findElement(By.id('compose')).getAttribute('value'), priorDraft);
+  assert.equal(await driver.findElement(By.id('contact')).getText(), priorContact);
+  assert.equal(whatsappRequests, requestsAtStart);
+  assert.deepEqual(await driver.executeScript('return appState.messages'), [{ to: '12025550141@c.us', text: 'Confirmado pelo painel.' }]);
+  await driver.switchTo().window(quickPanel); await driver.close();
+  await driver.switchTo().window(whatsapp);
+  console.log('OK Firefox quick reply: selected recipient sent, document and composer preserved, no focus change. Simulated WhatsApp.');
 
   await driver.close();
   await driver.switchTo().window(origin);

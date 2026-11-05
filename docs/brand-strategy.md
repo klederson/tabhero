@@ -1,6 +1,6 @@
 # Brand strategy — TabHero
 
-Author: Klederson Bueno, 2026. Identity and launch direction, 4 November 2026. Current product identity: TabHero 1.4.0.
+Author: Klederson Bueno, 2026. Identity and launch direction, 4 November 2026. Current product identity: TabHero 1.5.0.
 
 ## Make the desired outcome clear
 

@@ -12,8 +12,19 @@
     window.appState = { opens: [], previousDraft: "Rascunho anterior", messages: [], lookups: [] };
     const chats = new Map();
     const key = value => typeof value === "string" ? value : value._serialized;
-    const store = { get: id => chats.get(key(id)) };
+    const store = { get: id => chats.get(key(id)), getModelsArray: () => [...new Set(chats.values())] };
+    for (const [number, name, unreadCount, body] of [
+      ['12025550140', 'Bia · Padaria', 2, 'Oi! O pão fica pronto às quatro?'],
+      ['12025550141', 'João', 1, 'Pode confirmar o horário?']
+    ]) {
+      const id = { _serialized: `${number}@c.us` };
+      chats.set(id._serialized, { id, name, unreadCount, active: number.endsWith('140'), draft: 'Rascunho anterior',
+        msgs: { getModelsArray: () => [{ id: { fromMe: false }, type: 'chat', body }] },
+        setComposeContents({ text }) { this.draft = text; }
+      });
+    }
     const modules = {
+      WAWebUserPrefsMeUser: { getMaybeMePnUser: () => ({ _serialized: window.fixtureAccount ?? '12025550000@c.us' }) },
       WAWebWidFactory: { createWid: id => ({ _serialized: id }) },
       WAWebChatCollection: { ChatCollection: store },
       WAWebCollections: { Chat: store },
@@ -52,6 +63,13 @@
             if (!chat.active) throw new Error("Rascunho em conversa inativa");
             document.getElementById("compose").value = text;
           }
+        }
+      },
+      WAWebSendTextMsgChatAction: {
+        sendTextMsgToChat: async (chat, text) => {
+          appState.messages.push({ to: key(chat.id), text });
+          if (window.sendUncertain) throw new Error('Synthetic connection uncertainty after dispatch');
+          return { messageSendResult: 'OK' };
         }
       }
     };
