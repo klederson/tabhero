@@ -8,6 +8,8 @@ for (const browser of ["chrome", "firefox"]) {
   await rm(destination, { recursive: true, force: true });
   await mkdir(destination, { recursive: true });
   await cp(new URL("extension/", root), destination, { recursive: true });
+  // One verified receiving-state configuration for the website and extension.
+  await cp(new URL('website/funding.json', root), new URL('funding.json', destination));
   const output = structuredClone(manifest);
   if (browser === "firefox") {
     delete output.minimum_chrome_version;

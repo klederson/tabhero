@@ -70,6 +70,19 @@ try {
   assert.equal(await whatsapp.evaluate(() => appState.messages.length), 0, 'Searching and keyboard selection must not send');
   await chooseRecipient('12025550140@c.us', 'padaria');
   await popup.locator('#reply').fill('Oi 👋\nJá vou conferir + café & pão.');
+  await popup.waitForFunction(() => document.documentElement.dataset.supportReady === 'true');
+  await popup.locator('#support').click();
+  assert.equal(await popup.locator('#support-panel').isVisible(), true);
+  assert.equal(await popup.locator('#sponsor-button').isDisabled(), true, 'Private receiving profile must not offer checkout');
+  assert.equal(await popup.locator('#support-pending').isVisible(), true);
+  assert.match(await popup.locator('.support-price').textContent(), /US\$ 1/);
+  await mkdir('artifacts', { recursive: true });
+  await popup.setViewportSize({ width: 390, height: 600 });
+  const supportAction = await popup.locator('#sponsor-button').boundingBox();
+  assert.ok(supportAction.y + supportAction.height <= 600, 'Support action must fit in the popup without scrolling');
+  await popup.screenshot({ path: 'artifacts/extension-support.png', fullPage: true });
+  await popup.locator('#support-panel [data-back]').click();
+  assert.equal(await popup.locator('#reply').inputValue(), 'Oi 👋\nJá vou conferir + café & pão.');
   await popup.waitForTimeout(100);
   await popup.close();
   popup = await context.newPage(); await work.bringToFront(); await popup.goto(`${extensionOrigin}/popup.html`);
@@ -167,6 +180,37 @@ try {
   await unchanged();
   await mkdir('artifacts', { recursive: true });
   await popup.screenshot({ path: 'artifacts/quick-reply-error.png', fullPage: true });
+  // Simulate a future public Sponsors profile; never contact a real checkout.
+  await context.route('https://github.com/**', route => route.fulfill({ contentType: 'text/html', body: '<h1>Simulated Sponsors page</h1>' }));
+  await popup.addInitScript(() => {
+    const original = globalThis.fetch.bind(globalThis);
+    globalThis.fetch = (url, options) => String(url).endsWith('/funding.json')
+      ? Promise.resolve(new Response(JSON.stringify({ provider: 'github', currency: 'USD', minimum: 100, githubSponsors: 'https://github.com/sponsors/klederson', enabled: true }), { status: 200 }))
+      : original(url, options);
+  });
+  await popup.reload();
+  await popup.waitForFunction(() => document.documentElement.dataset.ready === 'true' && document.documentElement.dataset.supportReady === 'true');
+  await popup.locator('#support').click();
+  assert.equal(await popup.locator('#sponsor-button').isEnabled(), true);
+  assert.equal(await popup.locator('#support-pending').isVisible(), false);
+  // tabs.create can start navigation before Playwright attaches interception.
+  // Defer this test tab's navigation, preserving and checking the requested URL.
+  await popup.evaluate(() => {
+    const create = chrome.tabs.create.bind(chrome.tabs);
+    chrome.tabs.create = options => {
+      globalThis.requestedSupportUrl = options.url;
+      return create({ ...options, url: 'about:blank' });
+    };
+  });
+  const sponsorTabPromise = context.waitForEvent('page');
+  await popup.locator('#sponsor-button').click();
+  const sponsorTab = await sponsorTabPromise;
+  const requestedSupportUrl = await popup.evaluate(() => requestedSupportUrl);
+  assert.equal(requestedSupportUrl, 'https://github.com/sponsors/klederson');
+  await sponsorTab.goto(requestedSupportUrl);
+  assert.equal(await sponsorTab.locator('h1').textContent(), 'Simulated Sponsors page');
+  await sponsorTab.close(); await work.bringToFront(); await unchanged();
+  console.log('OK support: pending receiver blocks checkout; simulated public receiver opens only GitHub Sponsors. No payment.');
   assert.deepEqual(errors, []);
   console.log('OK quick reply: stale document rejected, no navigation fallback. All tests used simulated services.');
 } finally { await context.close(); await rm(profile, { recursive: true, force: true }); }

@@ -6,6 +6,7 @@ import { quickReplyInPage } from '../extension/quick-reply-page.js';
 import { suggestReply, aiPermissions } from '../extension/quick-reply-ai.js';
 import { popupCatalogs } from '../extension/popup-i18n.js';
 import { createQuickReplyController, sameContext } from '../extension/quick-reply.js';
+import { loadSupport } from '../extension/support.js';
 const fixture = await readFile(new URL('./fixtures/whatsapp.html', import.meta.url), 'utf8');
 function app() {
   const elements = { contact: { textContent: 'Original contact' }, compose: { value: 'Unfinished original draft' } };
@@ -16,6 +17,16 @@ function app() {
   return { sandbox, elements, run: runInNewContext(`(${quickReplyInPage.toString()})`, sandbox) };
 }
 const operationId = 'aaaaaaaa-aaaa-4aaa-aaaa-aaaaaaaaaaaa';
+test('support is available only with the verified GitHub receiving configuration', async () => {
+  const config = { provider: 'github', currency: 'USD', minimum: 100, githubSponsors: 'https://github.com/sponsors/klederson', enabled: false };
+  const fetchConfig = value => async () => ({ ok: true, json: async () => value });
+  assert.equal((await loadSupport(fetchConfig(config))).enabled, false);
+  const active = await loadSupport(fetchConfig({ ...config, enabled: true }));
+  assert.equal(active.enabled, true);
+  assert.equal(active.url, 'https://github.com/sponsors/klederson');
+  assert.equal((await loadSupport(fetchConfig({ ...config, enabled: true, githubSponsors: 'https://other.example/collect' }))).enabled, false);
+  assert.equal((await loadSupport(async () => { throw new Error('Unavailable'); })).enabled, false);
+});
 test('quick reply sends to the selected recipient while preserving the active chat and composer', async () => {
   const { sandbox, elements, run } = app();
   const snapshot = await run({ action: 'snapshot' });

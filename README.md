@@ -10,13 +10,13 @@
 
 The toolbar's **Quick reply** panel also lets you choose a loaded conversation and send a deliberate reply without leaving your work tab. Use free text, saved replies, or an editable AI suggestion through your own OpenRouter key. Sending always requires your Send click. The silent icon badge shows unread messages for the selected regular WhatsApp tab.
 
-**Experimental — version 1.6.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
+**Experimental — version 1.7.0.** Browser integration tests use a simulated app. Integration with a real authenticated WhatsApp session has not been validated in this development session. WhatsApp’s internal interfaces can change.
 
 Independent project. No affiliation, sponsorship, or endorsement from WhatsApp or Meta. WhatsApp is a trademark of its respective owners.
 
 ## Update an existing installation
 
-Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.6.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
+Reload **the extension only**: use the reload button on its card at `chrome://extensions`, or **Reload** beside it in Firefox’s `about:debugging`. The extension is now named **TabHero**, version **1.7.0**. Its integration runs on demand, so you can leave the WhatsApp tab as it is.
 
 ## Install in Chrome
 
@@ -129,6 +129,8 @@ The static website has no framework or backend and is deployed to GitHub Pages b
 `npm run build:brand` regenerates icons, social artwork, and the PDF guide with Playwright Chromium. To regenerate outlined wordmarks, install `fonttools` in a Python environment and run `scripts/wordmark.py`. The final assets are versioned; regenerating them is not required to build or publish the site.
 
 English is primary at the site root. Localized static pages are available at `es/`, `pt-br/`, `id/`, and `hi/`, with a visible language selector and matching privacy and community-research pages. `research.html` presents eight attributed historical reports with filters and separates reported experiences from our product interpretations. Website copy lives in `website/locales/`, the shared page structure in `website/template.html`, and native extension messages in `extension/_locales/`. The extension follows the browser UI language with English as its fallback. The website does not redirect based on location or browser language; a language choice stays in its URL. See the [internationalization plan](docs/internationalization.md) for language-review requirements and the limits of market research.
+
+The extension has a **Support TabHero** button and its own support screen, available even without a WhatsApp session. Suggested amounts are US$ 1, US$ 3, US$ 5 and US$ 10; the amount, a custom value and the one-time or monthly frequency are chosen and confirmed on GitHub. Opening the screen keeps the quick-reply draft. The extension and website share `website/funding.json`, bundled locally at build time, so an unavailable receiving profile keeps both checkout buttons disabled.
 
 Support is optional through **GitHub Sponsors, from US$ 1**. Receiving payments is not enabled yet; the website shows a pending state and does not offer a nonexistent checkout. Once enrollment is complete, `node scripts/enable-sponsors.mjs` checks the public page before enabling local configuration. Amount and payment type are confirmed on GitHub. GitHub charges no fee for sponsorships from personal accounts; sponsorships from organizations may incur a fee of up to 6%. A GitHub account is required. See [funding.md](docs/funding.md).
 

@@ -1,6 +1,7 @@
 import { popupMessages } from './popup-i18n.js';
 import { aiPermissions } from './quick-reply-ai.js';
 import { createRecipientPicker } from './recipient-picker.js';
+import { loadSupport } from './support.js';
 const api = globalThis.browser ?? globalThis.chrome;
 const language = api.i18n.getMessage('language') || api.i18n.getUILanguage();
 const t = popupMessages(language);
@@ -51,7 +52,7 @@ const recipientPicker = createRecipientPicker({
   }
 });
 function controls() {
-  for (const id of ['account', 'refresh', 'manage', 'settings']) $(`#${id}`).disabled = state.busy;
+  for (const id of ['account', 'refresh', 'manage', 'settings', 'support', 'support-footer']) $(`#${id}`).disabled = state.busy;
   recipientPicker.setDisabled(state.busy);
   $('#reply').disabled = state.busy || state.uncertain;
   $('#send').disabled = state.busy || state.searching || state.uncertain || !chat() || !$('#reply').value.trim();
@@ -63,8 +64,10 @@ function controls() {
 }
 function panel(id) {
   recipientPicker.close();
-  for (const name of ['main-panel', 'ai-panel', 'saved-panel']) $(`#${name}`).hidden = name !== id;
+  for (const name of ['main-panel', 'ai-panel', 'saved-panel', 'support-panel']) $(`#${name}`).hidden = name !== id;
   status();
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 function savedReplies() {
   $('#saved-chips').replaceChildren();
@@ -149,6 +152,20 @@ $('#reply').addEventListener('input', () => { state.operationId = null; status()
 $('#account').addEventListener('change', event => refresh({ tabId: Number(event.target.value) }));
 $('#refresh').addEventListener('click', () => refresh({ tabId: state.tabId, keep: true }));
 $('#settings').addEventListener('click', () => panel('ai-panel'));
+for (const id of ['support', 'support-footer']) $(`#${id}`).addEventListener('click', async () => {
+  await persist().catch(() => {});
+  panel('support-panel');
+});
+loadSupport().then(config => {
+  $('#support-pending').hidden = config.enabled;
+  $('#sponsor-button').disabled = !config.enabled;
+  $('#sponsor-button').addEventListener('click', async () => {
+    if (!config.enabled || !config.url) return;
+    try { await api.tabs.create({ url: config.url }); }
+    catch { status(t.checkFailed, true); }
+  });
+  document.documentElement.dataset.supportReady = 'true';
+});
 $('#manage').addEventListener('click', () => { panel('saved-panel'); savedReplies(); });
 for (const button of document.querySelectorAll('[data-back]')) button.addEventListener('click', () => panel('main-panel'));
 $('#new-reply').addEventListener('click', () => { if (state.replies.length >= 50) status(t.maxReplies, true); else editReply(); });

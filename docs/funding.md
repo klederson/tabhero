@@ -2,6 +2,10 @@
 
 The selected channel for [TabHero](https://github.com/klederson/tabhero) is **GitHub Sponsors**, with contributions starting at **US$ 1**. Suggested amounts are **US$ 1, US$ 3, US$ 5, and US$ 10**, with a custom amount in GitHub’s own interface. Support is voluntary and never a condition of using the extension.
 
+The browser extension also has a Support TabHero button and a localized support screen. It uses the same `website/funding.json`, copied into both extension packages by `scripts/build.mjs`. The receiving-state check therefore controls the site and extension together. No remote check, payment tracking, banking details or sponsor authentication is added to the extension.
+
+On 5 November 2026, the GitHub API returned a Sponsors listing for klederson with `isPublic: false`. The interface is prepared, but actual checkout remains disabled until the public receiving profile is verified.
+
 ## Fees and eligibility
 
 GitHub charges no fee for sponsorships **sent from personal accounts**. Its documentation states that 100% of those sponsorships goes to the sponsored developer or organization. The rule depends on the account **sending** support, not whether the recipient is an individual. Sponsorships from organization accounts have a fee of up to 6%. Source: [GitHub Sponsors fees](https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/about-sponsorships-fees-and-taxes).

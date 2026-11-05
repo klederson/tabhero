@@ -14,5 +14,5 @@ if (!listing?.isPublic || listing.url !== 'https://github.com/sponsors/klederson
   config.enabled = true;
   await writeFile(configUrl, `${JSON.stringify(config, null, 2)}\n`);
   await writeFile(new URL('.github/FUNDING.yml', root), 'github: klederson\ncustom: ["https://klederson.github.io/tabhero/#apoie"]\n');
-  console.log('Public profile verified. Local Sponsors configuration enabled; publish the commit to update the website.');
+  console.log('Public profile verified. Sponsors configuration enabled. Rebuild extension packages and publish the commit to update the website and extension.');
 }
