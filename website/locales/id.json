@@ -161,12 +161,12 @@
     "accessibility_150": "Browser untuk pemasangan",
     "accessibility_151": "__BRAND__, beranda",
     "trust_heading": "Percakapan Anda bukan bisnis kami.",
-    "trust_summary": "Tidak ada server pengembang yang menerima percakapan Anda. Tanpa iklan, analitik, atau penjualan data Anda.",
+    "trust_summary": "Tidak ada server pengembang yang menerima percakapan Anda. Ekstensi ini tidak memakai iklan, analitik, atau menjual data Anda.",
     "trust_local": "Balasan tersimpan dan kunci OpenRouter opsional Anda tetap di penyimpanan lokal ekstensi pada profil ini, tanpa sinkronisasi browser. Draf dan catatan pengiriman memakai penyimpanan sesi browser. Kami tidak membuat atau mengunggah arsip riwayat percakapan.",
     "trust_ai": "AI bersifat opsional. Hanya setelah Anda menghubungkan kunci OpenRouter sendiri dan mengeklik Sarankan, teks diterima yang ditampilkan (termasuk keterangan yang tersedia) dan draf Anda dikirim langsung ke OpenRouter serta penyedia AI-nya. Kunci Anda mengautentikasi permintaan tersebut. Pemrosesan dan retensi mengikuti kebijakan mereka. Berkas media tidak dikirim ke AI.",
     "trust_audit": "Kode sumber tersedia untuk umum dengan lisensi MIT. Anda dapat memeriksa kode, membuat build sendiri, melaporkan masalah, dan membandingkannya dengan versi terpasang.",
     "trust_link": "Privasi, penyimpanan lokal & kode ↗",
-    "install_privacy": "Tidak ada server pengembang yang menerima percakapan Anda. Tanpa iklan, analitik, atau penjualan data Anda."
+    "install_privacy": "Tidak ada server pengembang yang menerima percakapan Anda. Ekstensi ini tidak memakai iklan, analitik, atau menjual data Anda."
   },
   "ui": {
     "toastCopied": "Alamat disalin. Tempel di bilah alamat browser.",
@@ -211,7 +211,7 @@
     "extensionP1": "TabHero menangkap tautan percakapan yang didukung dan mengakses nama percakapan, jumlah pesan belum dibaca, serta pratinjau pesan yang sudah dimuat di WhatsApp untuk menjalankan fiturnya. Pesan dikirim melalui sesi WhatsApp hanya saat Anda mengeklik Kirim.",
     "extensionP2": "Balasan tersimpan dan kunci OpenRouter opsional Anda tetap di penyimpanan lokal ekstensi pada profil ini, tanpa sinkronisasi browser. Draf dan catatan pengiriman memakai penyimpanan sesi browser. Kami tidak membuat atau mengunggah arsip riwayat percakapan.",
     "siteHeading": "Situs ini",
-    "siteP1": "Berkas dan font dihosting bersama situs. Kode kami tidak membuat cookie, tidak menyertakan pelacak, dan tidak meminta chat, nomor telepon, atau akun. Pilihan bahasa Anda tetap ada di URL halaman; kami tidak menyimpannya dalam profil. Ilustrasi interaktif berjalan secara lokal dan tidak terhubung ke WhatsApp.",
+    "siteP1": "Jika Anda mengizinkan statistik, situs ini memakai Google Analytics dan cookie untuk menghitung kunjungan serta klik unduhan atau dukungan. Google menerima informasi teknis kunjungan, seperti halaman, peramban, dan perangkat. Kode kami menghapus parameter dan fragmen alamat halaman yang dikirim. Pesan WhatsApp dan aktivitas ekstensi tidak disertakan. Jika ditolak, Analytics tidak dimuat. Ubah pilihan melalui “Statistik kunjungan” di bagian bawah; pilihan disimpan secara lokal selama 180 hari. Berkas dan font dihosting bersama situs. Ilustrasi berjalan secara lokal tanpa terhubung ke WhatsApp. Lihat <a href=\"https://policies.google.com/privacy\">kebijakan privasi Google</a>.",
     "siteP2": "Situs ini dihosting oleh GitHub Pages. Sebagai penyedia hosting, GitHub dapat memproses informasi teknis akses, seperti alamat IP dan permintaan jaringan, sesuai <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">pernyataan privasinya</a>. Hal ini terpisah dari ekstensi.",
     "fundingHeading": "Dukungan opsional",
     "fundingP": "Setelah profil penerimaan aktif, tombol dukungan membawa Anda ke GitHub Sponsors. Anda memilih dan mengonfirmasi nilai, frekuensi, serta pembayarannya di sana. Situs ini tidak menerima detail kartu dan tidak mengonfirmasi pembayaran. Selama profil belum tersedia, tindakan pembayaran tetap dinonaktifkan.",

@@ -161,12 +161,12 @@
     "accessibility_150": "Navegador para instalação",
     "accessibility_151": "__BRAND__, início",
     "trust_heading": "Suas conversas não são nosso negócio.",
-    "trust_summary": "Nenhum servidor nosso recebe suas conversas. Sem publicidade, análise de uso ou venda dos seus dados.",
+    "trust_summary": "Nenhum servidor nosso recebe suas conversas. A extensão não tem publicidade, análise de uso ou venda dos seus dados.",
     "trust_local": "Respostas salvas e sua chave opcional do OpenRouter ficam no armazenamento local da extensão neste perfil, sem sincronização do navegador. Rascunhos e registros de envio usam o armazenamento da sessão do navegador. Não montamos nem enviamos um arquivo do histórico das conversas.",
     "trust_ai": "A IA é opcional. Só depois de conectar sua própria chave do OpenRouter e clicar em Sugerir, o texto recebido exibido (incluindo a legenda disponível) e seu rascunho vão diretamente ao OpenRouter e ao provedor de IA. Sua chave autentica essa solicitação. O processamento e a retenção seguem as políticas deles. Arquivos de mídia não vão para a IA.",
     "trust_audit": "O código é público sob a licença MIT. Você pode inspecioná-lo, gerar sua própria versão, relatar problemas e comparar o código com a versão instalada.",
     "trust_link": "Privacidade, dados locais e código ↗",
-    "install_privacy": "Nenhum servidor nosso recebe suas conversas. Sem publicidade, análise de uso ou venda dos seus dados."
+    "install_privacy": "Nenhum servidor nosso recebe suas conversas. A extensão não tem publicidade, análise de uso ou venda dos seus dados."
   },
   "ui": {
     "toastCopied": "Endereço copiado. Cole na barra do navegador.",
@@ -211,7 +211,7 @@
     "extensionP1": "O TabHero captura os links de conversa compatíveis e acessa nomes de conversas, contagens de não lidas e prévias de mensagens já carregadas no WhatsApp para oferecer seus recursos. Só envia mensagens pela sua sessão quando você clica em Enviar.",
     "extensionP2": "Respostas salvas e sua chave opcional do OpenRouter ficam no armazenamento local da extensão neste perfil, sem sincronização do navegador. Rascunhos e registros de envio usam o armazenamento da sessão do navegador. Não montamos nem enviamos um arquivo do histórico das conversas.",
     "siteHeading": "Este site",
-    "siteP1": "Os arquivos e as fontes ficam hospedados com o site. Nosso código não cria cookies, não inclui rastreadores e não pede telefone, conversas ou cadastro. A escolha de idioma fica na URL da página; não a armazenamos em um perfil. A demonstração é local e não se conecta ao WhatsApp.",
+    "siteP1": "Se você permitir as estatísticas, este site usa Google Analytics e seus cookies para contar visitas e cliques em downloads ou apoio. O Google recebe informações técnicas da visita, como página, navegador e aparelho. Nosso código remove os parâmetros e fragmentos do endereço da página enviado. Suas mensagens do WhatsApp e o uso da extensão ficam fora dessa medição. Ao recusar, o Analytics não é carregado. Mude sua escolha em “Estatísticas de visitas”, no rodapé; ela fica salva localmente por 180 dias. Os arquivos e fontes são hospedados com o site. A ilustração funciona localmente e não se conecta ao WhatsApp. Veja a <a href=\"https://policies.google.com/privacy\">política de privacidade do Google</a>.",
     "siteP2": "O GitHub Pages hospeda este site. Como provedor, o GitHub pode processar informações técnicas de acesso, como IP e solicitações de rede, conforme sua <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">política de privacidade</a>. Isso é separado da extensão.",
     "fundingHeading": "Apoio opcional",
     "fundingP": "Quando o perfil de recebimento estiver ativo, o botão leva ao GitHub Sponsors. O valor, a modalidade e o pagamento são escolhidos e confirmados lá. Este site não recebe dados de cartão nem confirma pagamentos. Enquanto o perfil estiver indisponível, a ação de pagamento fica desabilitada.",

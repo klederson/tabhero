@@ -161,12 +161,12 @@
     "accessibility_150": "Browser installation options",
     "accessibility_151": "__BRAND__, home",
     "trust_heading": "Your chats are not our business.",
-    "trust_summary": "No developer server receiving your chats. No advertising, analytics or sale of your data.",
+    "trust_summary": "No developer server receiving your chats. The extension has no advertising, analytics or sale of your data.",
     "trust_local": "Saved replies and your optional OpenRouter key stay in local extension storage in this browser profile, without browser sync. Drafts and send-operation records use browser-session storage. We do not build or upload a chat-history archive.",
     "trust_ai": "AI is optional. Only after you connect your own OpenRouter key and click Suggest, the displayed received text (including any caption) and your draft go directly to OpenRouter and its AI provider. Your key authenticates that request. Their policies govern processing and retention. Media files are not sent to AI.",
     "trust_audit": "The source is public under the MIT license. Inspect the code, build it yourself, report issues and compare the source with the release you installed.",
     "trust_link": "Privacy, local storage & source ↗",
-    "install_privacy": "No developer server receiving your chats. No advertising, analytics or sale of your data."
+    "install_privacy": "No developer server receiving your chats. The extension has no advertising, analytics or sale of your data."
   },
   "ui": {
     "toastCopied": "Address copied. Paste it into your browser’s address bar.",
@@ -211,7 +211,7 @@
     "extensionP1": "TabHero intercepts supported conversation links and accesses loaded WhatsApp chat names, unread counts and message previews to provide its features. Messages are sent through your WhatsApp session only when you click Send.",
     "extensionP2": "Saved replies and your optional OpenRouter key stay in local extension storage in this browser profile, without browser sync. Drafts and send-operation records use browser-session storage. We do not build or upload a chat-history archive.",
     "siteHeading": "This website",
-    "siteP1": "The files and fonts are hosted with the site. Our code creates no cookies, includes no trackers and asks for no chats, phone numbers or account. Your language choice stays in the page URL; we do not store it in a profile. The interactive illustration runs locally and does not connect to WhatsApp.",
+    "siteP1": "If you allow visit statistics, this website uses Google Analytics and its cookies to count visits and clicks on downloads or support. Google receives technical visit information, such as page, browser and device information. We remove query parameters and fragments from the page address sent by our code. Your WhatsApp messages and extension activity are not included. Declining loads no Analytics script. Change your choice using “Visit statistics” in the footer; we save it locally for 180 days. Files and fonts are hosted with the site. The illustration runs locally and does not connect to WhatsApp. See <a href=\"https://policies.google.com/privacy\">Google’s privacy policy</a>.",
     "siteP2": "GitHub Pages hosts this website. As the hosting provider, GitHub may process technical access information, such as IP addresses and network requests, under its <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">privacy statement</a>. This is separate from the extension.",
     "fundingHeading": "Optional support",
     "fundingP": "When the receiving profile is active, the support button takes you to GitHub Sponsors. You choose and confirm the amount, frequency and payment there. This site receives no card details and does not confirm payments. While the profile is unavailable, the payment action stays disabled.",

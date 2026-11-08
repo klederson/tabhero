@@ -161,12 +161,12 @@
     "accessibility_150": "Navegador para la instalación",
     "accessibility_151": "__BRAND__, inicio",
     "trust_heading": "Tus conversaciones no son nuestro negocio.",
-    "trust_summary": "Ningún servidor nuestro recibe tus conversaciones. Sin publicidad, análisis de uso ni venta de tus datos.",
+    "trust_summary": "Ningún servidor nuestro recibe tus conversaciones. La extensión no tiene publicidad, análisis de uso ni venta de tus datos.",
     "trust_local": "Las respuestas guardadas y tu clave opcional de OpenRouter quedan en el almacenamiento local de la extensión en este perfil, sin sincronización del navegador. Los borradores y registros de envío usan el almacenamiento de la sesión. No creamos ni subimos un archivo del historial de conversaciones.",
     "trust_ai": "La IA es opcional. Solo después de conectar tu propia clave de OpenRouter y pulsar Sugerir, el texto recibido mostrado (incluido el pie disponible) y tu borrador van directamente a OpenRouter y su proveedor de IA. Tu clave autentica esa solicitud. El tratamiento y la conservación siguen sus políticas. Los archivos multimedia no se envían a la IA.",
     "trust_audit": "El código es público bajo licencia MIT. Puedes inspeccionarlo, compilarlo, informar problemas y compararlo con la versión instalada.",
     "trust_link": "Privacidad, datos locales y código ↗",
-    "install_privacy": "Ningún servidor nuestro recibe tus conversaciones. Sin publicidad, análisis de uso ni venta de tus datos."
+    "install_privacy": "Ningún servidor nuestro recibe tus conversaciones. La extensión no tiene publicidad, análisis de uso ni venta de tus datos."
   },
   "ui": {
     "toastCopied": "Dirección copiada. Pégala en la barra del navegador.",
@@ -211,7 +211,7 @@
     "extensionP1": "TabHero captura los enlaces de conversación compatibles y accede a nombres, cantidades de no leídos y vistas previas ya cargadas en WhatsApp para ofrecer sus funciones. Solo envía mensajes desde tu sesión cuando pulsas Enviar.",
     "extensionP2": "Las respuestas guardadas y tu clave opcional de OpenRouter quedan en el almacenamiento local de la extensión en este perfil, sin sincronización del navegador. Los borradores y registros de envío usan el almacenamiento de la sesión. No creamos ni subimos un archivo del historial de conversaciones.",
     "siteHeading": "Este sitio web",
-    "siteP1": "Los archivos y las fuentes se alojan junto con el sitio. Nuestro código no crea cookies, no incluye rastreadores ni te pide conversaciones, números de teléfono o una cuenta. El idioma que eliges queda en la URL de la página; no lo guardamos en un perfil. La ilustración interactiva se ejecuta localmente y no se conecta a WhatsApp.",
+    "siteP1": "Si permites las estadísticas, este sitio usa Google Analytics y sus cookies para contar visitas y clics en descargas o apoyo. Google recibe información técnica de la visita, como página, navegador y dispositivo. Nuestro código elimina parámetros y fragmentos de la dirección de la página enviada. Tus mensajes de WhatsApp y el uso de la extensión quedan fuera. Al rechazar, Analytics no se carga. Cambia tu elección en “Estadísticas de visitas”, en el pie de página; se guarda localmente durante 180 días. Los archivos y fuentes se alojan con el sitio. La ilustración funciona localmente y no se conecta a WhatsApp. Consulta la <a href=\"https://policies.google.com/privacy\">política de privacidad de Google</a>.",
     "siteP2": "Este sitio está alojado en GitHub Pages. Como proveedor de alojamiento, GitHub puede procesar información técnica de acceso, como direcciones IP y solicitudes de red, de acuerdo con su <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\">declaración de privacidad</a>. Esto es independiente de la extensión.",
     "fundingHeading": "Apoyo opcional",
     "fundingP": "Cuando el perfil de recepción esté activo, el botón de apoyo te llevará a GitHub Sponsors. Allí eliges y confirmas el monto, la frecuencia y el pago. Este sitio no recibe datos de tarjetas ni confirma pagos. Mientras el perfil no esté disponible, la opción de pago permanece desactivada.",

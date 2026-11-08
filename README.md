@@ -18,11 +18,13 @@ Independent project. No affiliation, sponsorship, or endorsement from WhatsApp o
 
 ## Privacy and public source
 
-No developer server receives your chats. No advertising, analytics, telemetry or sale of your data. TabHero intercepts supported conversation links and accesses loaded chat names, unread counts and message previews to provide its features. Sending requires your explicit click.
+No developer server receives your chats. The extension has no advertising, analytics, telemetry or sale of your data. TabHero intercepts supported conversation links and accesses loaded chat names, unread counts and message previews to provide its features. Sending requires your explicit click.
 
 Saved replies and an optional OpenRouter key are stored locally in this browser profile; drafts and send-operation records use browser-session storage. AI is optional: connecting your own key and clicking Suggest sends the displayed received text, including an available caption, and your draft directly to OpenRouter and its AI provider under their policies. Media files are not sent to AI.
 
 The first-install page and popup explain these details and link to the public GitHub source. Inspect it, build it yourself and report issues. Source availability enables inspection; no independent security certification is claimed. Read the [privacy policy](https://klederson.github.io/tabhero/privacy.html) and [store submission guide](store/README.md).
+
+The website separately offers optional Google Analytics visit statistics, only with visitor permission. See the [website analytics setup](docs/website-analytics.md).
 
 ## Update an existing installation
 

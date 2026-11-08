@@ -75,4 +75,12 @@ for (const browser of ['chrome', 'firefox']) {
 for (const name of ['tabhero', 'tabthere', 'jata']) await cp(new URL('artifacts/tabhero-brand-kit.zip', root), new URL(`downloads/${name}-brand-kit.zip`, destination));
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...catalogs.flatMap(catalog => { const base = `${origin}${catalog.path ? `${catalog.path}/` : ''}`; return [base, `${base}privacy.html`, `${base}research.html`]; }), `${origin}brand-book.html`].map(url => `  <url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`;
 await writeFile(new URL('sitemap.xml', destination), sitemap);
+// Include website analytics on every published HTML page, including translated policies.
+for (const file of await readdir(destination, { recursive: true })) {
+  if (!file.endsWith('.html')) continue;
+  const prefix = '../'.repeat(file.split('/').length - 1);
+  const target = new URL(file, destination);
+  const page = await readFile(target, 'utf8');
+  await writeFile(target, page.replace('</head>', `<script type="module" src="${prefix}analytics.js"></script>\n</head>`));
+}
 console.log(`TabHero site ready: English default plus ${locales.slice(1).join(', ')}.`);

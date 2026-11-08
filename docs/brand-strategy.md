@@ -97,12 +97,16 @@ A future contribution toward native adoption can bring together the problem, rep
 
 ## Measure usefulness without watching conversations
 
-Use only aggregate distribution metrics already available and voluntary contributions: downloads per release, issues by category, response time, and reproduction outcomes reported with synthetic data. Identify each total’s source, time period, and limitations.
+For the extension, use aggregate distribution metrics already available and voluntary contributions: downloads per release, issues by category, response time, and reproduction outcomes reported with synthetic data. Identify each total’s source, time period, and limitations.
 
-Do not instrument clicked links, phone numbers, messages, recipients, history, profiles, persistent identifiers, or WhatsApp sessions. Do not install behavioral analytics as a shortcut to measuring value. An optional anonymous survey may ask whether the extension resolved the flow, clearly identifying participation as voluntary; answers represent participants only.
+Do not instrument extension activity, captured conversation links, phone numbers, messages, recipients, history, profiles, persistent identifiers, or WhatsApp sessions. Website visit statistics are separate and require consent; see Website statistics below. An optional anonymous survey may ask whether the extension resolved the flow, clearly identifying participation as voluntary; answers represent participants only.
 
 Useful signals are resolved reproducible cases and understandable instructions. Downloads do not establish active users; stars do not establish compatibility; few issues do not establish an absence of failures. Publish learning with context, without manufactured social proof.
 
 ## Naming collision recorded
 
 A separate tab-management extension called [Tab Hero](https://chromewebstore.google.com/detail/tab-hero/oghoncpoemgefilccmophihoebjmbgfl) is listed in the Chrome Web Store. The project owner selected TabHero and was informed of this existing use. The identity and chat-link scope are independent; no affiliation with that extension is claimed. This name is not presented as exclusive, registered, or legally cleared.
+
+## Website statistics
+
+The extension remains free of analytics. The project websites may use Google Analytics only after visitor consent, with separate choices per site. Count website visits and download/support clicks; never instrument WhatsApp activity, conversations, phone numbers, AI prompts or extension usage. See docs/website-analytics.md for deployment and dashboard controls.
