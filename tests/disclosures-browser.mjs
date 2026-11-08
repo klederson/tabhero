@@ -35,8 +35,15 @@ try {
     }
   }
   assert.equal(await worker.evaluate(() => chrome.permissions.contains({ origins: ['https://openrouter.ai/*'] })), false);
+  // The user action closes its own page during pointer dispatch. Keep a second
+  // page alive and verify the outcome instead of treating successful closure as a click failure.
+  const work = await context.newPage(); await work.goto('about:blank');
   const closed = welcome.waitForEvent('close');
-  await welcome.locator('#start').click();
+  await welcome.locator('#start').click().catch(error => {
+    if (!welcome.isClosed() || !error.message.includes('Target page, context or browser has been closed')) throw error;
+  });
   await closed;
+  assert.equal(work.isClosed(), false, 'Only the welcome page may close');
+  assert.equal(await work.evaluate(() => location.href), 'about:blank');
   console.log('OK disclosures: fresh-install page, all five languages, generic source link, no AI permission/key or external request; dismiss closes only welcome.');
 } finally { await context.close(); await rm(profile, { recursive: true, force: true }); }
