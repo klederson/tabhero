@@ -1,3 +1,4 @@
+import { mountUsageStatistics, recordUsage } from './analytics-ui.js';
 import { popupMessages } from './popup-i18n.js';
 import { aiPermissions } from './quick-reply-ai.js';
 import { createRecipientPicker } from './recipient-picker.js';
@@ -8,6 +9,8 @@ const api = globalThis.browser ?? globalThis.chrome;
 const language = api.i18n.getMessage('language') || api.i18n.getUILanguage();
 const t = popupMessages(language);
 renderDisclosures(document, api);
+mountUsageStatistics(document.querySelector('#privacy-panel'), api);
+recordUsage('panel_open', api);
 document.documentElement.lang = language;
 document.title = `TabHero — ${t.title}`;
 const $ = selector => document.querySelector(selector);
@@ -82,6 +85,7 @@ function savedReplies() {
     const chip = document.createElement('button');
     chip.type = 'button'; chip.textContent = item.title; chip.title = item.text;
     chip.addEventListener('click', () => {
+      recordUsage('saved_reply_use', api);
       if (state.busy || state.uncertain) return;
       $('#reply').value = $('#reply').value ? `${$('#reply').value}\n${item.text}` : item.text;
       state.operationId = null; persist().catch(() => status(t.checkFailed, true)); controls(); $('#reply').focus();

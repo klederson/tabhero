@@ -38,7 +38,7 @@ try {
   captures.push({ file: '02-conversation-search.png', kicker: 'FIND. REPLY. CARRY ON.', title: 'The right chat.\nRight here.', detail: 'Search conversations already loaded in WhatsApp, without leaving the page you are on.', points: ['Search by name or identifier', 'Saved replies and free text', 'Silent unread counter'], image: await popup.screenshot() });
   await popup.locator('#recipient-search').press('Escape');
   await popup.locator('#privacy').click();
-  captures.push({ file: '03-privacy-and-source.png', kicker: 'OPEN SOURCE. OPEN ABOUT DATA.', title: 'Your chats.\nYour control.', detail: 'No ads, analytics or developer chat server. Clear local-storage details and optional AI disclosure.', points: ['Public source under the MIT license', 'Local saved replies and drafts', 'AI only when you connect and ask'], image: await popup.screenshot() });
+  captures.push({ file: '03-privacy-and-source.png', kicker: 'OPEN SOURCE. OPEN ABOUT DATA.', title: 'Your chats.\nYour control.', detail: 'No ads or developer chat server. Optional usage statistics, local-storage details and AI disclosure.', points: ['Public source under the MIT license', 'Local saved replies and drafts', 'AI only when you connect and ask'], image: await popup.screenshot() });
   const displayFont = (await readFile(new URL('website/assets/fonts/bricolage-grotesque.ttf', root))).toString('base64');
   const symbol = await readFile(new URL('brand/symbol.svg', root), 'utf8');
   const artwork = await context.newPage(); await artwork.setViewportSize({ width: 1280, height: 800 });
@@ -56,7 +56,7 @@ try {
 
 const source = await mkdtemp(join(tmpdir(), 'tabhero-review-source-'));
 try {
-  for (const name of ['extension', 'scripts', 'tests', 'brand', 'website', 'package.json', 'package-lock.json', 'README.md', 'LICENSE', 'SECURITY.md']) {
+  for (const name of ['extension', 'analytics-collector', 'docs', 'scripts', 'tests', 'brand', 'website', 'package.json', 'package-lock.json', 'README.md', 'LICENSE', 'SECURITY.md']) {
     await cp(new URL(name, root), join(source, name), { recursive: true, filter: path => !path.endsWith('/website/dist') });
   }
   const sourceZip = resolve('artifacts/tabhero-source.zip');

@@ -1,6 +1,6 @@
 # Website analytics (Google Analytics 4)
 
-Website only. No Analytics code is packaged into the extension. The standalone RELAYERS Bridge HTML guide also stays offline and tracking-free.
+Website only. Website tracking code is never imported into the extension. Separate, opt-in extension statistics are described in [extension analytics](extension-analytics.md). The standalone RELAYERS Bridge HTML guide also stays offline and tracking-free.
 
 ## Activation
 
@@ -22,3 +22,5 @@ Run `npm run test:analytics` after preparing the site's normal build. Tests inte
 
 Official references: [measurement ID](https://support.google.com/analytics/answer/9539598), [consent](https://developers.google.com/tag-platform/security/guides/consent), [configuration](https://developers.google.com/analytics/devguides/collection/ga4/reference/config).
 
+
+Configured public website stream: `G-5N0W0XMM0Y`. This is separate from the extension stream.

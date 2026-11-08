@@ -1,0 +1,31 @@
+# Optional extension usage statistics
+
+Separate from website analytics. Off by default, including existing installations. The extension works fully when refused. The first-install page and **Privacy & source** panel contain the choice in English, Portuguese, Spanish, Indonesian and Hindi.
+
+Only fixed event names, browser family (Chrome or Firefox) and extension version leave the extension. No message text/caption/media, saved reply content/title, chat/account ID, phone, search text, page URL, draft, credential, exception/stack, unread count, relay payload or machine/user identifier is accepted. No cookies or persistent visitor ID. Private contexts are excluded. No telemetry is injected into the WhatsApp document.
+
+Events count panel openings, saved-reply selection, manual-send acceptance/errors, AI suggestion success/errors, conversation-opening success/errors, and (Bridge only) bridge settings actions. These are sampled best-effort counts (at most once per event per minute per running background context), not message-delivery, unique-user, retention, installation or complete usage statistics. Automatic relay message content and traffic are never instrumented. There is no queue, backfill or retry. Failure never blocks routing, manual sends, AI or relay.
+
+## Activation (not active with the default configuration)
+
+1. Create a dedicated Google Analytics web stream for each extension, separate from the website streams. Leave advertising integrations and additional destinations off. A website `G-…` alone cannot activate this integration.
+2. Create a Measurement Protocol API secret in that stream. **Do not put it in the extension, repository, issues or chat.** Configure the server's `GA_MEASUREMENT_ID`, `GA_API_SECRET` and `PRODUCT` (`tabhero` or `relayers-bridge`) through its deployment secrets/environment.
+3. Run `node analytics-collector/server.mjs` with Node 22 or later using deployment environment variables. For a local private setup, copy `analytics-collector/.env.example` to the gitignored `.env`, fill it privately and use `node --env-file=analytics-collector/.env analytics-collector/server.mjs`. It binds to loopback; expose only `POST /events` through HTTPS. Use upstream request-size/time limits and rate limiting before publicly enabling it. This public unauthenticated count endpoint is not an attestation of a genuine extension event. Never embed a shared authentication secret in the client as a spam solution.
+4. Set `collectorUrl` in `extension/analytics-config.js` to the public HTTPS `/events` address and rebuild. The build adds only that origin to optional host permissions. No Google script, remote executable code or Google API secret is shipped. An empty URL disables outgoing statistics completely.
+5. Firefox's optional `technicalAndInteraction` permission and the collector host must both be granted in addition to the local opt-in. Runtime permission checks apply to every event; Firefox without the native data-permission API fails closed. Chrome also requires local opt-in and host permission. Neither a website preference nor the Firefox install checkbox alone enables collection. The in-extension enable button requests the browser permissions from its click handler.
+6. Update Chrome Web Store data-use declarations (usage and technical information) and Mozilla declarations, descriptions and screenshots. Do not describe the extension as having no analytics after activation. Run unit, disclosure, Chrome and Firefox verification and validate an allowed event in the dedicated Google stream before release. Browser-store approval is not implied by passing tests.
+
+## Server handling and withdrawal
+
+`analytics-collector/` is server code, never part of the extension ZIP. It validates a bounded 512-byte JSON object with exactly three fields, reconstructs the Google event, and keeps the API secret server-side. It generates an unrelated random Google client ID per event, so no stable identity is shared. Do not use GA Users/Sessions/Retention as real person counts. It does not forward IP addresses, headers or browser URLs to Google and does not write an event database or logs. The collector host still receives connection information such as IP; its hosting/proxy logging, access controls and retention require deployment review. Google stores the accepted statistics under the selected property settings and its policies. A 204 from Measurement Protocol is not proof that GA accepted a valid report.
+
+Turning statistics off immediately cancels in-flight requests where possible and prevents new ones. The Firefox button also revokes the optional technical-data permission. The host grant is retained because the same host may serve an enabled RELAYERS connection; local consent remains mandatory. It deletes no data already received by the host or Google. The local choice expires after 180 days and never migrates website consent or inferred consent. Removing the optional host/data permission blocks future statistics too. No previously captured events are uploaded when consent is granted later.
+
+## Verification
+
+`npm test` covers the client gating, strict payloads, revocation/races, private contexts, independent preferences, bounds, backend validation and secret isolation using fake transport. `npm run test:extension-analytics` exercises an actual loaded Chrome extension with a temporary test collector configuration and intercepted requests; no live Google data is sent. The temporary package never changes the distributable configuration. `npm run test:extension-analytics:firefox` separately checks native permissions and revocation in a real, isolated Firefox profile, using a fake collector and pre-granting the test permission before the real enable-button click.
+
+References: [Chrome MV3 and Measurement Protocol](https://developer.chrome.com/docs/extensions/how-to/integrate/google-analytics-4), [Google secret warning](https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events), [Firefox native data consent](https://extensionworkshop.com/documentation/develop/firefox-builtin-data-consent/).
+
+
+Configured public stream ID: `G-LM2ZE4CCRJ`. The default collector address is still empty; no extension usage is transmitted until the server is configured and each user opts in.

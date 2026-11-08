@@ -3,3 +3,8 @@ dist/
 artifacts/
 *.log
 website/dist/
+
+# Private analytics collector credentials (public template is safe).
+analytics-collector/.env
+analytics-collector/.env.*
+!analytics-collector/.env.example

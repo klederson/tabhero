@@ -161,12 +161,12 @@
     "accessibility_150": "Browser untuk pemasangan",
     "accessibility_151": "__BRAND__, beranda",
     "trust_heading": "Percakapan Anda bukan bisnis kami.",
-    "trust_summary": "Tidak ada server pengembang yang menerima percakapan Anda. Ekstensi ini tidak memakai iklan, analitik, atau menjual data Anda.",
+    "trust_summary": "Tidak ada server pengembang yang menerima percakapan Anda. Tanpa iklan atau penjualan data. Statistik penggunaan mati kecuali Anda memilih membagikannya.",
     "trust_local": "Balasan tersimpan dan kunci OpenRouter opsional Anda tetap di penyimpanan lokal ekstensi pada profil ini, tanpa sinkronisasi browser. Draf dan catatan pengiriman memakai penyimpanan sesi browser. Kami tidak membuat atau mengunggah arsip riwayat percakapan.",
     "trust_ai": "AI bersifat opsional. Hanya setelah Anda menghubungkan kunci OpenRouter sendiri dan mengeklik Sarankan, teks diterima yang ditampilkan (termasuk keterangan yang tersedia) dan draf Anda dikirim langsung ke OpenRouter serta penyedia AI-nya. Kunci Anda mengautentikasi permintaan tersebut. Pemrosesan dan retensi mengikuti kebijakan mereka. Berkas media tidak dikirim ke AI.",
     "trust_audit": "Kode sumber tersedia untuk umum dengan lisensi MIT. Anda dapat memeriksa kode, membuat build sendiri, melaporkan masalah, dan membandingkannya dengan versi terpasang.",
     "trust_link": "Privasi, penyimpanan lokal & kode ↗",
-    "install_privacy": "Tidak ada server pengembang yang menerima percakapan Anda. Ekstensi ini tidak memakai iklan, analitik, atau menjual data Anda."
+    "install_privacy": "Tidak ada server pengembang yang menerima percakapan Anda. Tanpa iklan atau penjualan data. Statistik penggunaan mati kecuali Anda memilih membagikannya."
   },
   "ui": {
     "toastCopied": "Alamat disalin. Tempel di bilah alamat browser.",
@@ -220,7 +220,8 @@
     "maintainerP": "Dikelola oleh <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Proyek independen. Tidak berafiliasi, disponsori, atau didukung secara resmi oleh WhatsApp maupun Meta.",
     "aiP": "AI bersifat opsional. Hanya setelah Anda menghubungkan kunci OpenRouter sendiri dan mengeklik Sarankan, teks diterima yang ditampilkan (termasuk keterangan yang tersedia) dan draf Anda dikirim langsung ke OpenRouter serta penyedia AI-nya. Kunci Anda mengautentikasi permintaan tersebut. Pemrosesan dan retensi mengikuti kebijakan mereka. Berkas media tidak dikirim ke AI.",
     "deleteP": "Hapus balasan di Balasan tersimpan saya. Putuskan AI di pengaturan untuk menghapus kunci dan izinnya. Draf serta catatan pengiriman berakhir bersama sesi browser.",
-    "auditP": "Kode sumber tersedia untuk umum dengan lisensi MIT. Anda dapat memeriksa kode, membuat build sendiri, melaporkan masalah, dan membandingkannya dengan versi terpasang."
+    "auditP": "Kode sumber tersedia untuk umum dengan lisensi MIT. Anda dapat memeriksa kode, membuat build sendiri, melaporkan masalah, dan membandingkannya dengan versi terpasang.",
+    "statisticsP": "Opsional: bagikan hitungan fitur yang dipakai dan kategori kesalahan umum, serta nama browser dan versi ekstensi. Data melewati server statistik kami ke Google Analytics. Tanpa pesan, kontak, nomor telepon, alamat halaman, kunci, atau ID pengguna tetap. Tanpa cookie. Menolak tidak mengubah fitur. Server statistik menerima informasi teknis koneksi seperti alamat IP; kebijakan hosting dan pencatatannya berlaku. Google menyimpan statistik sesuai kebijakannya. Kejadian sebelumnya tidak diunggah belakangan. Matikan di Privasi & kode sumber untuk menghentikan pengiriman baru; statistik yang telah diterima tidak dihapus. Pilihan lokal berakhir setelah 180 hari. Izin situs terpisah."
   },
   "community": {
     "title": "Catatan komunitas — TabHero",

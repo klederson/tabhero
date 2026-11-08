@@ -1,10 +1,10 @@
 {
   "version": "1.9.0",
-  "generatedAt": "2026-11-05T19:53:14.330Z",
+  "generatedAt": "2026-11-08T23:07:40.975Z",
   "status": "prepared-not-submitted",
   "sha256": {
-    "tabhero-chrome.zip": "2e34ea2c5981409190e77aefa30372b6b35776baf0ee88650ef35238d4cc1900",
-    "tabhero-firefox.zip": "febc76d1c5fbb0922b314321d9d2f340e05befd2e748837423f7d52c7d38f94e",
-    "tabhero-source.zip": "adcdfdd6d0a41d671a02a5042d02bbb0623d23f38a4f98dd50c7640fec694097"
+    "tabhero-chrome.zip": "a7375593727054bfea0ee1e792b0de0a595d083dd3421f314f0a65d1b029041e",
+    "tabhero-firefox.zip": "966d28eeff5c3a49a46bec396ed8d123128c3f738f4bf593329d52443b835329",
+    "tabhero-source.zip": "e98b02072e56dd15727c1bca62c66104de2f4c290ed29a47a9ce90577aab1fbc"
   }
 }

@@ -161,12 +161,12 @@
     "accessibility_150": "Browser installation options",
     "accessibility_151": "__BRAND__, home",
     "trust_heading": "Your chats are not our business.",
-    "trust_summary": "No developer server receiving your chats. The extension has no advertising, analytics or sale of your data.",
+    "trust_summary": "No developer server receiving your chats. No ads or sale of your data. Usage statistics are off unless you choose to share them.",
     "trust_local": "Saved replies and your optional OpenRouter key stay in local extension storage in this browser profile, without browser sync. Drafts and send-operation records use browser-session storage. We do not build or upload a chat-history archive.",
     "trust_ai": "AI is optional. Only after you connect your own OpenRouter key and click Suggest, the displayed received text (including any caption) and your draft go directly to OpenRouter and its AI provider. Your key authenticates that request. Their policies govern processing and retention. Media files are not sent to AI.",
     "trust_audit": "The source is public under the MIT license. Inspect the code, build it yourself, report issues and compare the source with the release you installed.",
     "trust_link": "Privacy, local storage & source ↗",
-    "install_privacy": "No developer server receiving your chats. The extension has no advertising, analytics or sale of your data."
+    "install_privacy": "No developer server receiving your chats. No ads or sale of your data. Usage statistics are off unless you choose to share them."
   },
   "ui": {
     "toastCopied": "Address copied. Paste it into your browser’s address bar.",
@@ -220,7 +220,8 @@
     "maintainerP": "Maintained by <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Independent project. Not affiliated with, sponsored by, or endorsed by WhatsApp or Meta.",
     "aiP": "AI is optional. Only after you connect your own OpenRouter key and click Suggest, the displayed received text (including any caption) and your draft go directly to OpenRouter and its AI provider. Your key authenticates that request. Their policies govern processing and retention. Media files are not sent to AI.",
     "deleteP": "Delete saved replies in My saved replies. Disconnect AI in settings to remove its saved key and permissions. Drafts and send-operation records expire with the browser session.",
-    "auditP": "The source is public under the MIT license. Inspect the code, build it yourself, report issues and compare the source with the release you installed."
+    "auditP": "The source is public under the MIT license. Inspect the code, build it yourself, report issues and compare the source with the release you installed.",
+    "statisticsP": "Optional: share counts of features used and broad error categories, plus browser name and extension version. Counts go through our statistics server to Google Analytics. No messages, contacts, phone numbers, page addresses, keys or persistent user ID. No cookies. Refusing changes no features. The statistics host receives technical connection information such as IP addresses; its hosting and logging policies apply. Google stores the statistics under its policies. No past events are uploaded later. Turn sharing off in Privacy & source; this stops new requests and does not delete previously received statistics. The local choice expires after 180 days. Website consent is separate."
   },
   "community": {
     "title": "Community notes — TabHero",

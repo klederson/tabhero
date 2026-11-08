@@ -9,7 +9,7 @@ Maintainer: Klederson Bueno.
 
 ## Data use
 
-The developer operates no chat server, analytics, advertising or telemetry and does not sell user data. The extension does handle data locally: phone/recipient identifiers and draft text in intercepted links; loaded chat names, unread counts and latest incoming text/captions for quick reply; user-authored replies; and the optional user-supplied OpenRouter key. It never silently navigates or reloads the loaded WhatsApp document.
+The developer operates no chat server or advertising and does not sell user data. Separate, optional usage statistics send only fixed feature/error categories, browser family and extension version through the disclosed statistics server to Google Analytics, after explicit opt-in and optional permissions. No message data enters statistics. The extension does handle data locally: phone/recipient identifiers and draft text in intercepted links; loaded chat names, unread counts and latest incoming text/captions for quick reply; user-authored replies; and the optional user-supplied OpenRouter key. It never silently navigates or reloads the loaded WhatsApp document.
 
 Saved replies and the optional AI key use local extension storage, not browser sync. Drafts and send-operation records use browser-session storage. No message-history archive is built or uploaded by TabHero. Local storage is not a promise of encryption or isolation from other users of the same browser profile.
 
@@ -33,8 +33,10 @@ Certify only practices supported by the code: no sale, no unrelated advertising/
 | Optional `https://openrouter.ai/*` | User-initiated AI suggestions only after connection and permission grant. |
 | `handoff.html` accessible from all page origins | A supported conversation link can originate on any website. Only this bundled handoff resource is exposed; this is not access to the content of all websites. |
 
-Firefox declares no required extension-origin external collection and optional authentication information and personal communications for AI, using native permission consent. Review the complete transmission model against the latest Mozilla taxonomy before submitting, including the intentional WhatsApp send path; local lint does not settle policy classification.
+Firefox declares no required extension-origin external collection and optional authentication information and personal communications for AI, plus optional technicalAndInteraction for usage statistics, using native permission consent. Review the complete transmission model against the latest Mozilla taxonomy before submitting, including the intentional WhatsApp send path; local lint does not settle policy classification.
 
 All extension-owned executable code is bundled. The MAIN-world adapter invokes internal modules already loaded by the WhatsApp website; it does not fetch/inject a remote extension SDK, evaluate AI responses, run scripts supplied by a server, or weaken page CSP. Explain this interaction to reviewers transparently; their assessment determines acceptability.
 
 Donations open GitHub’s own review page with the selected whole-dollar amount and one-time frequency. No card data, sponsor authentication or payment webhook is collected by TabHero. Every feature remains free.
+
+Usage statistics are off by default, with separate in-extension consent and a collector host permission. Firefox also checks technicalAndInteraction on every event. Declare usage/technical data truthfully in Chrome dashboards. No Google API secret or remotely hosted executable code is in the package. Follow docs/extension-analytics.md for activation, hosting/logging disclosure and review. The collector server is not in the extension ZIP.

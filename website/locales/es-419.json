@@ -161,12 +161,12 @@
     "accessibility_150": "Navegador para la instalación",
     "accessibility_151": "__BRAND__, inicio",
     "trust_heading": "Tus conversaciones no son nuestro negocio.",
-    "trust_summary": "Ningún servidor nuestro recibe tus conversaciones. La extensión no tiene publicidad, análisis de uso ni venta de tus datos.",
+    "trust_summary": "Ningún servidor nuestro recibe tus conversaciones. Sin publicidad ni venta de tus datos. Las estadísticas de uso quedan apagadas hasta que elijas compartirlas.",
     "trust_local": "Las respuestas guardadas y tu clave opcional de OpenRouter quedan en el almacenamiento local de la extensión en este perfil, sin sincronización del navegador. Los borradores y registros de envío usan el almacenamiento de la sesión. No creamos ni subimos un archivo del historial de conversaciones.",
     "trust_ai": "La IA es opcional. Solo después de conectar tu propia clave de OpenRouter y pulsar Sugerir, el texto recibido mostrado (incluido el pie disponible) y tu borrador van directamente a OpenRouter y su proveedor de IA. Tu clave autentica esa solicitud. El tratamiento y la conservación siguen sus políticas. Los archivos multimedia no se envían a la IA.",
     "trust_audit": "El código es público bajo licencia MIT. Puedes inspeccionarlo, compilarlo, informar problemas y compararlo con la versión instalada.",
     "trust_link": "Privacidad, datos locales y código ↗",
-    "install_privacy": "Ningún servidor nuestro recibe tus conversaciones. La extensión no tiene publicidad, análisis de uso ni venta de tus datos."
+    "install_privacy": "Ningún servidor nuestro recibe tus conversaciones. Sin publicidad ni venta de tus datos. Las estadísticas de uso quedan apagadas hasta que elijas compartirlas."
   },
   "ui": {
     "toastCopied": "Dirección copiada. Pégala en la barra del navegador.",
@@ -220,7 +220,8 @@
     "maintainerP": "Mantenido por <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Proyecto independiente. Sin vínculo, patrocinio ni respaldo de WhatsApp o Meta.",
     "aiP": "La IA es opcional. Solo después de conectar tu propia clave de OpenRouter y pulsar Sugerir, el texto recibido mostrado (incluido el pie disponible) y tu borrador van directamente a OpenRouter y su proveedor de IA. Tu clave autentica esa solicitud. El tratamiento y la conservación siguen sus políticas. Los archivos multimedia no se envían a la IA.",
     "deleteP": "Elimina respuestas en Mis respuestas guardadas. Desconecta la IA en ajustes para eliminar la clave y sus permisos. Los borradores y registros de envío caducan con la sesión del navegador.",
-    "auditP": "El código es público bajo licencia MIT. Puedes inspeccionarlo, compilarlo, informar problemas y compararlo con la versión instalada."
+    "auditP": "El código es público bajo licencia MIT. Puedes inspeccionarlo, compilarlo, informar problemas y compararlo con la versión instalada.",
+    "statisticsP": "Opcional: comparte conteos de funciones usadas y categorías generales de errores, además del navegador y la versión de la extensión. Pasan por nuestro servidor de estadísticas hacia Google Analytics. Sin mensajes, contactos, números, direcciones de páginas, claves ni identificación permanente. Sin cookies. Rechazar no cambia las funciones. El servidor de estadísticas recibe información técnica de conexión, como la dirección IP; se aplican sus políticas de alojamiento y registros. Google guarda las estadísticas según sus políticas. No se envían eventos pasados después. Desactiva en Privacidad y código para detener nuevos envíos; esto no borra estadísticas ya recibidas. La elección local caduca en 180 días. El permiso del sitio es independiente."
   },
   "community": {
     "title": "Reportes de la comunidad — TabHero",

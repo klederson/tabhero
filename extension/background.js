@@ -1,9 +1,11 @@
+import { createUsageStatistics } from './analytics.js';
 import { conversationUrl, redirectRules } from "./links.js";
 import { chooseTab, routeConversation, whatsappTabs } from "./router.js";
 import { errorMessage, message as translatedMessage, normalizeErrorCode } from "./i18n.js";
 import { createQuickReplyController } from './quick-reply.js';
 
 const api = globalThis.browser ?? globalThis.chrome;
+const usage = createUsageStatistics(api);
 const handoffUrl = api.runtime.getURL("handoff.html");
 const quickReply = createQuickReplyController(api);
 // Chrome can restrict local storage to extension pages and background scripts.
@@ -40,11 +42,26 @@ api.runtime.onInstalled.addListener(details => {
 api.runtime.onStartup.addListener(initialize);
 
 api.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (typeof message?.type === 'string' && message.type.startsWith('usage-')) {
+    const ownPage = sender.id === api.runtime.id && ['popup.html','welcome.html','bridge.html'].some(page => sender.url === api.runtime.getURL(page));
+    if (!ownPage || sender.tab?.incognito || message.privateContext === true) { sendResponse({ ok: false }); return; }
+    const task = message.type === 'usage-status' ? usage.status()
+      : message.type === 'usage-consent' ? usage.setConsent(message.enabled)
+      : message.type === 'usage-event' && ['panel_open','saved_reply_use','bridge_open'].includes(message.event) ? usage.track(message.event).then(() => ({ ok: true }))
+      : Promise.resolve({ ok: false });
+    task.then(sendResponse, () => sendResponse({ ok: false }));
+    return true;
+  }
+
   if (typeof message?.type === 'string' && message.type.startsWith('qr-')) {
     const popup = sender.id === api.runtime.id && sender.url === api.runtime.getURL('popup.html');
     const heartbeat = message.type === 'qr-heartbeat' && sender.id === api.runtime.id && sender.frameId === 0 && sender.tab && sender.url?.startsWith('https://web.whatsapp.com/');
     if (!popup && !heartbeat) { sendResponse({ ok: false, code: 'unauthorized-source' }); return; }
     const request = heartbeat ? quickReply.heartbeat(sender.tab) : quickReply.handle(message);
+    if (popup && ['qr-send','qr-suggest'].includes(message.type)) request.then(result => {
+      const event = message.type === 'qr-send' ? (result.ok ? 'manual_reply_success' : 'manual_reply_error') : (result.ok ? 'ai_suggest' : 'ai_error');
+      recordSourceUsage(event, message, sender);
+    }, () => recordSourceUsage(message.type === 'qr-send' ? 'manual_reply_error' : 'ai_error', message, sender));
     request.then(sendResponse, () => sendResponse({ ok: false, code: message.type === 'qr-send' ? 'send-unknown' : 'unavailable' }));
     return true;
   }
@@ -69,8 +86,9 @@ api.runtime.onMessage.addListener((message, sender, sendResponse) => {
     routeConversation(api, { ...sender.tab, url: sender.url }, targetUrl, message.canGoBack === true)
   );
   routing.then(
-    () => sendResponse({ ok: true }),
+    () => { recordSourceUsage('conversation_open', {}, sender); sendResponse({ ok: true }); },
     error => {
+      recordSourceUsage('conversation_error', {}, sender);
       const code = normalizeErrorCode(error?.code);
       sendResponse({ ok: false, code, error: errorMessage(code, api) });
     }
@@ -96,3 +114,10 @@ api.action.onClicked.addListener(tab => {
   });
   routing.catch(() => {});
 });
+
+// Consult private-context flags locally; nothing from a tab or message enters analytics.
+function recordSourceUsage(event, message, sender) {
+  if (sender.tab?.incognito || api.extension?.inIncognitoContext) return;
+  const source = Number.isInteger(message.sourceTabId) ? api.tabs.get(message.sourceTabId) : Promise.resolve(null);
+  source.then(tab => { if (!tab?.incognito) usage.track(event).catch(() => {}); }).catch(() => {});
+}

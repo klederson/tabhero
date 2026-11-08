@@ -99,7 +99,7 @@ A future contribution toward native adoption can bring together the problem, rep
 
 For the extension, use aggregate distribution metrics already available and voluntary contributions: downloads per release, issues by category, response time, and reproduction outcomes reported with synthetic data. Identify each total’s source, time period, and limitations.
 
-Do not instrument extension activity, captured conversation links, phone numbers, messages, recipients, history, profiles, persistent identifiers, or WhatsApp sessions. Website visit statistics are separate and require consent; see Website statistics below. An optional anonymous survey may ask whether the extension resolved the flow, clearly identifying participation as voluntary; answers represent participants only.
+Optional extension counts are limited to fixed feature names and broad error categories. Never instrument captured conversation links, phone numbers, messages, recipients, history, profiles, persistent identifiers, or WhatsApp sessions. Website visit statistics are separate and require consent; see Website statistics below. An optional anonymous survey may ask whether the extension resolved the flow, clearly identifying participation as voluntary; answers represent participants only.
 
 Useful signals are resolved reproducible cases and understandable instructions. Downloads do not establish active users; stars do not establish compatibility; few issues do not establish an absence of failures. Publish learning with context, without manufactured social proof.
 
@@ -109,4 +109,4 @@ A separate tab-management extension called [Tab Hero](https://chromewebstore.goo
 
 ## Website statistics
 
-The extension remains free of analytics. The project websites may use Google Analytics only after visitor consent, with separate choices per site. Count website visits and download/support clicks; never instrument WhatsApp activity, conversations, phone numbers, AI prompts or extension usage. See docs/website-analytics.md for deployment and dashboard controls.
+The extension offers separately controlled, optional usage counts without conversation data; see docs/extension-analytics.md. The project websites may use Google Analytics only after visitor consent, with separate choices per site. Count website visits and download/support clicks; never instrument WhatsApp activity, conversations, phone numbers, AI prompts or extension usage. See docs/website-analytics.md for deployment and dashboard controls.

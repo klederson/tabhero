@@ -161,12 +161,12 @@
     "accessibility_150": "Navegador para instalação",
     "accessibility_151": "__BRAND__, início",
     "trust_heading": "Suas conversas não são nosso negócio.",
-    "trust_summary": "Nenhum servidor nosso recebe suas conversas. A extensão não tem publicidade, análise de uso ou venda dos seus dados.",
+    "trust_summary": "Nenhum servidor nosso recebe suas conversas. Sem anúncios ou venda dos seus dados. Estatísticas de uso ficam desligadas até você escolher compartilhar.",
     "trust_local": "Respostas salvas e sua chave opcional do OpenRouter ficam no armazenamento local da extensão neste perfil, sem sincronização do navegador. Rascunhos e registros de envio usam o armazenamento da sessão do navegador. Não montamos nem enviamos um arquivo do histórico das conversas.",
     "trust_ai": "A IA é opcional. Só depois de conectar sua própria chave do OpenRouter e clicar em Sugerir, o texto recebido exibido (incluindo a legenda disponível) e seu rascunho vão diretamente ao OpenRouter e ao provedor de IA. Sua chave autentica essa solicitação. O processamento e a retenção seguem as políticas deles. Arquivos de mídia não vão para a IA.",
     "trust_audit": "O código é público sob a licença MIT. Você pode inspecioná-lo, gerar sua própria versão, relatar problemas e comparar o código com a versão instalada.",
     "trust_link": "Privacidade, dados locais e código ↗",
-    "install_privacy": "Nenhum servidor nosso recebe suas conversas. A extensão não tem publicidade, análise de uso ou venda dos seus dados."
+    "install_privacy": "Nenhum servidor nosso recebe suas conversas. Sem anúncios ou venda dos seus dados. Estatísticas de uso ficam desligadas até você escolher compartilhar."
   },
   "ui": {
     "toastCopied": "Endereço copiado. Cole na barra do navegador.",
@@ -220,7 +220,8 @@
     "maintainerP": "Mantido por <a href=\"https://github.com/klederson\">Klederson Bueno</a>. Projeto independente, sem vínculo, patrocínio ou endosso de WhatsApp ou Meta.",
     "aiP": "A IA é opcional. Só depois de conectar sua própria chave do OpenRouter e clicar em Sugerir, o texto recebido exibido (incluindo a legenda disponível) e seu rascunho vão diretamente ao OpenRouter e ao provedor de IA. Sua chave autentica essa solicitação. O processamento e a retenção seguem as políticas deles. Arquivos de mídia não vão para a IA.",
     "deleteP": "Apague respostas em Minhas respostas salvas. Desconecte a IA nas configurações para remover a chave salva e as permissões. Rascunhos e registros de envio expiram com a sessão do navegador.",
-    "auditP": "O código é público sob a licença MIT. Você pode inspecioná-lo, gerar sua própria versão, relatar problemas e comparar o código com a versão instalada."
+    "auditP": "O código é público sob a licença MIT. Você pode inspecioná-lo, gerar sua própria versão, relatar problemas e comparar o código com a versão instalada.",
+    "statisticsP": "Opcional: compartilhe contagens dos recursos usados e categorias gerais de erro, além do nome do navegador e da versão da extensão. Elas passam pelo nosso servidor de estatísticas e vão ao Google Analytics. Sem mensagens, contatos, números, endereços de páginas, chaves ou identificação permanente do usuário. Sem cookies. Recusar não muda os recursos. O servidor de estatísticas recebe informações técnicas da conexão, como o endereço IP; valem as políticas de hospedagem e registros dele. O Google armazena as estatísticas conforme suas políticas. Eventos anteriores não são enviados depois. Desligue em Privacidade e código para parar novos envios; isso não apaga estatísticas já recebidas. A escolha local expira em 180 dias. A permissão do site é separada."
   },
   "community": {
     "title": "Relatos da comunidade — TabHero",
