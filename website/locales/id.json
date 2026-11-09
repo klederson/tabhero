@@ -55,7 +55,7 @@
     "como_funciona_h3_044": "Teks ikut masuk.<br>Kirim tetap pilihan Anda.",
     "como_funciona_p_045": "Nomor, aksen, emoji, dan pesan dari tautan: semuanya masuk ke draf. Tidak ada pesan yang dikirim otomatis.",
     "como_funciona_h3_046": "Tanpa kotak hitam.<br>Tanpa ribet.",
-    "como_funciona_p_047": "Kode terbuka, lisensi MIT, dan berjalan secara lokal. Tanpa server untuk menerima chat Anda dan tanpa telemetri di ekstensi.",
+    "como_funciona_p_047": "Sumber terbuka dengan lisensi MIT. Tidak ada server kami yang menerima percakapan Anda. Hitungan penggunaan opsional membantu memperbaiki fitur dan kesalahan, hanya jika Anda memilih membagikannya.",
     "demo_p_048": "02 / COBA IDENYA",
     "demo_h2_049": "Satu klik.<br>Tanpa jalan memutar.",
     "demo_p_050": "Ganti mode lalu klik tautannya.<br>Ini simulasi antarmuka: tidak membuka WhatsApp atau mengirim pesan.",
@@ -132,7 +132,7 @@
     "perguntas_summary_121": "Apakah tab saya akan dimuat ulang?<span>+</span>",
     "perguntas_p_122": "Tujuan utamanya adalah membuka chat di dalam dokumen yang sudah dimuat. __BRAND__ memakai perintah internal aplikasi. Jika integrasi gagal, ekstensi menampilkan pesan kesalahan; tab tidak dimuat ulang sebagai jalan cadangan.",
     "perguntas_summary_123": "Apakah chat saya dibaca?<span>+</span>",
-    "perguntas_p_124": "Balasan cepat membaca nama, jumlah pesan belum dibaca dan teks masuk terakhir yang sudah dimuat di WhatsApp. Pesan hanya dikirim saat Anda menekan Kirim. Balasan tersimpan dan kunci OpenRouter tetap di profil ini; draf bertahan selama sesi browser. Saat meminta saran, teks masuk yang ditampilkan dan draf dikirim ke OpenRouter serta penyedia AI-nya. Tanpa telemetri atau arsip percakapan.",
+    "perguntas_p_124": "Balasan cepat membaca nama, jumlah pesan belum dibaca dan teks masuk terakhir yang sudah dimuat di WhatsApp. Pesan hanya dikirim saat Anda menekan Kirim. Balasan tersimpan dan kunci OpenRouter tetap di profil ini; draf bertahan selama sesi browser. Saat meminta saran, teks masuk yang ditampilkan dan draf dikirim ke OpenRouter serta penyedia AI-nya. Kami tidak membuat arsip riwayat percakapan. Hitungan penggunaan opsional membantu memperbaiki ekstensi; isi percakapan tidak pernah masuk ke statistik tersebut.",
     "perguntas_summary_125": "Apakah sudah siap untuk produksi?<span>+</span>",
     "perguntas_p_126": "Masih eksperimental. Ada pengujian otomatis di Chromium dan Firefox dengan antarmuka WhatsApp yang disimulasikan. Pengujian memeriksa dokumen, status, dan draf tetap utuh, tetapi tidak membuktikan integrasi dengan sesi nyata yang sudah terautentikasi. Modul internal WhatsApp dapat berubah.",
     "perguntas_summary_127": "Bisa dipakai lintas browser?<span>+</span>",
@@ -221,7 +221,7 @@
     "aiP": "AI bersifat opsional. Hanya setelah Anda menghubungkan kunci OpenRouter sendiri dan mengeklik Sarankan, teks diterima yang ditampilkan (termasuk keterangan yang tersedia) dan draf Anda dikirim langsung ke OpenRouter serta penyedia AI-nya. Kunci Anda mengautentikasi permintaan tersebut. Pemrosesan dan retensi mengikuti kebijakan mereka. Berkas media tidak dikirim ke AI.",
     "deleteP": "Hapus balasan di Balasan tersimpan saya. Putuskan AI di pengaturan untuk menghapus kunci dan izinnya. Draf serta catatan pengiriman berakhir bersama sesi browser.",
     "auditP": "Kode sumber tersedia untuk umum dengan lisensi MIT. Anda dapat memeriksa kode, membuat build sendiri, melaporkan masalah, dan membandingkannya dengan versi terpasang.",
-    "statisticsP": "Opsional: bagikan hitungan fitur yang dipakai dan kategori kesalahan umum, serta nama browser dan versi ekstensi. Data melewati server statistik kami ke Google Analytics. Tanpa pesan, kontak, nomor telepon, alamat halaman, kunci, atau ID pengguna tetap. Tanpa cookie. Menolak tidak mengubah fitur. Server statistik menerima informasi teknis koneksi seperti alamat IP; kebijakan hosting dan pencatatannya berlaku. Google menyimpan statistik sesuai kebijakannya. Kejadian sebelumnya tidak diunggah belakangan. Matikan di Privasi & kode sumber untuk menghentikan pengiriman baru; statistik yang telah diterima tidak dihapus. Pilihan lokal berakhir setelah 180 hari. Izin situs terpisah."
+    "statisticsP": "Kami memakai statistik ini untuk memperbaiki fitur dan mengatasi kesalahan. Opsional: bagikan hitungan fitur yang dipakai dan kategori kesalahan umum, serta nama browser dan versi ekstensi. Data melewati server statistik kami ke Google Analytics. Tanpa pesan, kontak, nomor telepon, alamat halaman, kunci, atau ID pengguna tetap. Tanpa cookie. Menolak tidak mengubah fitur. Server statistik menerima informasi teknis koneksi seperti alamat IP; kebijakan hosting dan pencatatannya berlaku. Google menyimpan statistik sesuai kebijakannya. Kejadian sebelumnya tidak diunggah belakangan. Matikan di Privasi & kode sumber untuk menghentikan pengiriman baru; statistik yang telah diterima tidak dihapus. Pilihan lokal berakhir setelah 180 hari. Izin situs terpisah."
   },
   "community": {
     "title": "Catatan komunitas — TabHero",

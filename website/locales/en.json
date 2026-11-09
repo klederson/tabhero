@@ -55,7 +55,7 @@
     "como_funciona_h3_044": "The text comes along.<br>You hit send.",
     "como_funciona_p_045": "The number, accents, emojis, and message from the link all make it into the draft. No messages are sent automatically.",
     "como_funciona_h3_046": "Open code.<br>No extra fuss.",
-    "como_funciona_p_047": "Open source, MIT licensed, and running locally. No server receiving your chats. No telemetry in the extension.",
+    "como_funciona_p_047": "Open source and MIT licensed. No developer server receives your chats. Optional usage counts help us improve features and fix errors, only if you choose to share them.",
     "demo_p_048": "02 / TRY THE IDEA",
     "demo_h2_049": "One click.<br>Skip the sightseeing.",
     "demo_p_050": "Switch modes and click the link.<br>This is a simulated interface. It doesn’t open WhatsApp or send messages.",
@@ -132,7 +132,7 @@
     "perguntas_summary_121": "Will it reload my tab?<span>+</span>",
     "perguntas_p_122": "The core goal is to open the chat inside the document that’s already loaded. __BRAND__ uses internal app commands. If the integration fails, it shows an error; it doesn’t reload the tab as a fallback.",
     "perguntas_summary_123": "Do you read my chats?<span>+</span>",
-    "perguntas_p_124": "Quick reply reads names, unread counts and the latest incoming text already loaded in WhatsApp. It sends only when you click Send. Saved replies and your OpenRouter key stay in this browser profile; drafts last for the browser session. On Suggest, the displayed received text and your draft go to OpenRouter and its AI provider. There is no telemetry or chat archive.",
+    "perguntas_p_124": "Quick reply reads names, unread counts and the latest incoming text already loaded in WhatsApp. It sends only when you click Send. Saved replies and your OpenRouter key stay in this browser profile; drafts last for the browser session. On Suggest, the displayed received text and your draft go to OpenRouter and its AI provider. No chat-history archive is created. Optional usage counts help improve the extension; conversation content is never included in those statistics.",
     "perguntas_summary_125": "Is this production-ready?<span>+</span>",
     "perguntas_p_126": "It’s still experimental. Automated tests run in Chromium and Firefox with a simulated WhatsApp interface. They check that the document, state, and draft are preserved, but don’t prove the integration works in a real signed-in session. WhatsApp’s internal modules can change.",
     "perguntas_summary_127": "Does it work across browsers?<span>+</span>",
@@ -221,7 +221,7 @@
     "aiP": "AI is optional. Only after you connect your own OpenRouter key and click Suggest, the displayed received text (including any caption) and your draft go directly to OpenRouter and its AI provider. Your key authenticates that request. Their policies govern processing and retention. Media files are not sent to AI.",
     "deleteP": "Delete saved replies in My saved replies. Disconnect AI in settings to remove its saved key and permissions. Drafts and send-operation records expire with the browser session.",
     "auditP": "The source is public under the MIT license. Inspect the code, build it yourself, report issues and compare the source with the release you installed.",
-    "statisticsP": "Optional: share counts of features used and broad error categories, plus browser name and extension version. Counts go through our statistics server to Google Analytics. No messages, contacts, phone numbers, page addresses, keys or persistent user ID. No cookies. Refusing changes no features. The statistics host receives technical connection information such as IP addresses; its hosting and logging policies apply. Google stores the statistics under its policies. No past events are uploaded later. Turn sharing off in Privacy & source; this stops new requests and does not delete previously received statistics. The local choice expires after 180 days. Website consent is separate."
+    "statisticsP": "We use these statistics to improve features and fix errors. Optional: share counts of features used and broad error categories, plus browser name and extension version. Counts go through our statistics server to Google Analytics. No messages, contacts, phone numbers, page addresses, keys or persistent user ID. No cookies. Refusing changes no features. The statistics host receives technical connection information such as IP addresses; its hosting and logging policies apply. Google stores the statistics under its policies. No past events are uploaded later. Turn sharing off in Privacy & source; this stops new requests and does not delete previously received statistics. The local choice expires after 180 days. Website consent is separate."
   },
   "community": {
     "title": "Community notes — TabHero",

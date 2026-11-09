@@ -55,7 +55,7 @@
     "como_funciona_h3_044": "El texto viene contigo.<br>Tú decides si enviarlo.",
     "como_funciona_p_045": "El número, los acentos, los emojis y el mensaje del enlace: todo llega al borrador. No se envía ningún mensaje automáticamente.",
     "como_funciona_h3_046": "Sin caja negra.<br>Sin complicaciones.",
-    "como_funciona_p_047": "Código abierto, licencia MIT y ejecución local. Sin un servidor que reciba tus conversaciones ni telemetría en la extensión.",
+    "como_funciona_p_047": "Código abierto y licencia MIT. Ningún servidor nuestro recibe tus conversaciones. Los conteos opcionales de uso ayudan a mejorar funciones y corregir errores, solo si eliges compartirlos.",
     "demo_p_048": "02 / PRUEBA LA IDEA",
     "demo_h2_049": "Un clic.<br>Sin excursión.",
     "demo_p_050": "Cambia de modo y haz clic en el enlace.<br>Es una simulación de interfaz: no abre WhatsApp ni envía mensajes.",
@@ -132,7 +132,7 @@
     "perguntas_summary_121": "¿Va a volver a cargar mi pestaña?<span>+</span>",
     "perguntas_p_122": "El objetivo central es abrir la conversación dentro del documento que ya está cargado. __BRAND__ usa comandos internos de la aplicación. Si la integración falla, muestra un error; no vuelve a cargar la pestaña como alternativa.",
     "perguntas_summary_123": "¿Lees mis conversaciones?<span>+</span>",
-    "perguntas_p_124": "La respuesta rápida lee nombres, contadores y el último texto recibido ya cargado en WhatsApp. Solo envía cuando pulsas Enviar. Tus respuestas y tu clave de OpenRouter quedan en este perfil; los borradores duran la sesión del navegador. Al sugerir, el texto recibido mostrado y tu borrador van a OpenRouter y su proveedor de IA. Sin telemetría ni archivo de conversaciones.",
+    "perguntas_p_124": "La respuesta rápida lee nombres, contadores y el último texto recibido ya cargado en WhatsApp. Solo envía cuando pulsas Enviar. Tus respuestas y tu clave de OpenRouter quedan en este perfil; los borradores duran la sesión del navegador. Al sugerir, el texto recibido mostrado y tu borrador van a OpenRouter y su proveedor de IA. No creamos un archivo del historial de conversaciones. Los conteos opcionales ayudan a mejorar la extensión; el contenido de las conversaciones nunca entra en esas estadísticas.",
     "perguntas_summary_125": "¿Ya está lista para producción?<span>+</span>",
     "perguntas_p_126": "Todavía es experimental. Hay pruebas automatizadas en Chromium y Firefox con una interfaz de WhatsApp simulada. Verifican que se conserven el documento, el estado y el borrador, pero no demuestran que la integración funcione en una sesión autenticada real. Los módulos internos de WhatsApp pueden cambiar.",
     "perguntas_summary_127": "¿Funciona de un navegador a otro?<span>+</span>",
@@ -221,7 +221,7 @@
     "aiP": "La IA es opcional. Solo después de conectar tu propia clave de OpenRouter y pulsar Sugerir, el texto recibido mostrado (incluido el pie disponible) y tu borrador van directamente a OpenRouter y su proveedor de IA. Tu clave autentica esa solicitud. El tratamiento y la conservación siguen sus políticas. Los archivos multimedia no se envían a la IA.",
     "deleteP": "Elimina respuestas en Mis respuestas guardadas. Desconecta la IA en ajustes para eliminar la clave y sus permisos. Los borradores y registros de envío caducan con la sesión del navegador.",
     "auditP": "El código es público bajo licencia MIT. Puedes inspeccionarlo, compilarlo, informar problemas y compararlo con la versión instalada.",
-    "statisticsP": "Opcional: comparte conteos de funciones usadas y categorías generales de errores, además del navegador y la versión de la extensión. Pasan por nuestro servidor de estadísticas hacia Google Analytics. Sin mensajes, contactos, números, direcciones de páginas, claves ni identificación permanente. Sin cookies. Rechazar no cambia las funciones. El servidor de estadísticas recibe información técnica de conexión, como la dirección IP; se aplican sus políticas de alojamiento y registros. Google guarda las estadísticas según sus políticas. No se envían eventos pasados después. Desactiva en Privacidad y código para detener nuevos envíos; esto no borra estadísticas ya recibidas. La elección local caduca en 180 días. El permiso del sitio es independiente."
+    "statisticsP": "Usamos estas estadísticas para mejorar las funciones y corregir errores. Opcional: comparte conteos de funciones usadas y categorías generales de errores, además del navegador y la versión de la extensión. Pasan por nuestro servidor de estadísticas hacia Google Analytics. Sin mensajes, contactos, números, direcciones de páginas, claves ni identificación permanente. Sin cookies. Rechazar no cambia las funciones. El servidor de estadísticas recibe información técnica de conexión, como la dirección IP; se aplican sus políticas de alojamiento y registros. Google guarda las estadísticas según sus políticas. No se envían eventos pasados después. Desactiva en Privacidad y código para detener nuevos envíos; esto no borra estadísticas ya recibidas. La elección local caduca en 180 días. El permiso del sitio es independiente."
   },
   "community": {
     "title": "Reportes de la comunidad — TabHero",

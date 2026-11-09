@@ -1,8 +1,8 @@
 # Optional extension usage statistics
 
-Separate from website analytics. Off by default, including existing installations. The extension works fully when refused. The first-install page and **Privacy & source** panel contain the choice in English, Portuguese, Spanish, Indonesian and Hindi.
+These statistics help improve features and fix errors. They are separate from website analytics and off by default, including existing installations. The extension works fully when refused. The first-install page and **Privacy & source** panel contain the choice in English, Portuguese, Spanish, Indonesian and Hindi.
 
-Only fixed event names, browser family (Chrome or Firefox) and extension version leave the extension. No message text/caption/media, saved reply content/title, chat/account ID, phone, search text, page URL, draft, credential, exception/stack, unread count, relay payload or machine/user identifier is accepted. No cookies or persistent visitor ID. Private contexts are excluded. No telemetry is injected into the WhatsApp document.
+In this optional statistics path, only fixed event names, browser family (Chrome or Firefox) and extension version leave the extension. No message text/caption/media, saved reply content/title, chat/account ID, phone, search text, page URL, draft, credential, exception/stack, unread count, relay payload or machine/user identifier is accepted. No cookies or persistent visitor ID. Private contexts are excluded. No telemetry is injected into the WhatsApp document.
 
 Events count panel openings, saved-reply selection, manual-send acceptance/errors, AI suggestion success/errors, conversation-opening success/errors, and (Bridge only) bridge settings actions. These are sampled best-effort counts (at most once per event per minute per running background context), not message-delivery, unique-user, retention, installation or complete usage statistics. Automatic relay message content and traffic are never instrumented. There is no queue, backfill or retry. Failure never blocks routing, manual sends, AI or relay.
 
