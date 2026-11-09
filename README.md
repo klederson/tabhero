@@ -32,7 +32,9 @@ Reload **the extension only**: use the reload button on its card at `chrome://ex
 
 ## Install in Chrome
 
-Ready-to-use files are in `dist/chrome`. Using the extension does not require Node or terminal commands.
+Install from the [official Chrome Web Store listing](https://chromewebstore.google.com/detail/akceknbdadnbmehonkicfhicoebhalgk). Review the permissions, confirm **Add to Chrome**, and keep WhatsApp Web open in the same browser. Requires Chrome 120 or later.
+
+For a local development installation, ready-to-use files are in `dist/chrome`:
 
 1. Open `chrome://extensions`.
 2. Turn on **Developer mode**.
@@ -40,16 +42,20 @@ Ready-to-use files are in `dist/chrome`. Using the extension does not require No
 4. Select this project’s `dist/chrome` folder.
 5. Keep WhatsApp Web open and click a `wa.me` or `api.whatsapp.com/send` link.
 
-If you downloaded `artifacts/tabhero-chrome.zip`, extract it first and select the extracted folder. Requires Chrome 120 or later. This is a local installation, not a Chrome Web Store listing.
+If you downloaded `artifacts/tabhero-chrome.zip`, extract it first and select the extracted folder. These steps load the local build; the store button installs the published release.
 
 ## Install in Firefox
+
+Install from the [official Mozilla Add-ons listing](https://addons.mozilla.org/en-US/firefox/addon/tabhero-new-chat-same-tab/). Review the permissions and confirm **Add to Firefox**. Requires Firefox 142 or later.
+
+For a temporary local development installation:
 
 1. Open `about:debugging#/runtime/this-firefox`.
 2. Click **Load Temporary Add-on**.
 3. Select `dist/firefox/manifest.json`.
 4. Keep WhatsApp Web open and try a chat link.
 
-If using `artifacts/tabhero-firefox.zip`, extract it first. Requires Firefox 142 or later. This temporary installation must be repeated after restarting Firefox. Permanent installation in standard Firefox requires Mozilla signing; the supplied package is not signed or published in an add-on store.
+If using `artifacts/tabhero-firefox.zip`, extract it first. This temporary local installation must be repeated after restarting Firefox. The unsigned development ZIP differs from the signed release installed through Mozilla Add-ons.
 
 ## Behavior
 

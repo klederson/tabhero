@@ -1,4 +1,5 @@
 import { sponsorshipUrl } from './sponsorship.js';
+import { storeLinks } from './store-links.js';
 const $ = selector => document.querySelector(selector);
 const all = selector => [...document.querySelectorAll(selector)];
 const supported = new Set(['en', 'es-419', 'pt-BR', 'id', 'hi']);
@@ -57,7 +58,7 @@ all('[data-browser]').forEach(button => button.addEventListener('click', () => {
   $('#install-title').textContent = t(`${browser}Title`);
   $('#install-steps').innerHTML = t(`${browser}Steps`);
   $('#install-note').textContent = t(`${browser}Note`);
-  $('#download-extension').href = new URL(`downloads/tabhero-${browser}.zip`, import.meta.url).href;
+  $('#download-extension').href = storeLinks[browser];
   $('#download-extension').textContent = t('download', { browser: name });
 }));
 let funding = null;

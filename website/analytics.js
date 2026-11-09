@@ -1,5 +1,6 @@
 // Website only. Never import this module into an extension.
 import { analytics } from './analytics-config.js';
+import { storeLinks } from './store-links.js';
 
 const copy = {
  en: {title:'Help us improve this site?', body:'Allow Google Analytics to count visits and downloads? It uses cookies. Your WhatsApp messages and extension activity are never included.', accept:'Allow statistics', reject:'No thanks', settings:'Visit statistics', privacy:'Google privacy', status:'You can change your choice here at any time.'},
@@ -107,6 +108,7 @@ function init() {
   let kind=null;
   if(url.origin===location.origin&&url.pathname.includes('/downloads/')&&url.pathname.endsWith('.zip'))kind='download';
   if(url.hostname==='github.com'&&url.pathname.startsWith('/klederson/'+analytics.repository+'/releases'))kind='download';
+  if(Object.values(storeLinks).some(link=>url.origin+url.pathname===link))kind='download';
   if(url.hostname==='github.com'&&url.pathname==='/sponsors/klederson')kind='support';
   if(kind)window.gtag('event',kind==='download'?'download_click':'support_click',{send_to:analytics.measurementId});
  });

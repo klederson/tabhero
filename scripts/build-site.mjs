@@ -1,4 +1,5 @@
 import { cp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { storeLinks } from '../website/store-links.js';
 
 const root = new URL('../', import.meta.url);
 const destination = new URL('website/dist/', root);
@@ -34,6 +35,7 @@ for (const catalog of catalogs) {
   const replacements = { __LANG__: catalog.locale, __META_TITLE__: catalog.meta.title, __META_DESCRIPTION__: catalog.meta.description, __OG_TITLE__: catalog.meta.ogTitle, __OG_DESCRIPTION__: catalog.meta.ogDescription, __OG_URL__: canonical, __OG_IMAGE__: `${origin}assets/social-card.png`, __CANONICAL__: canonical };
   for (const [token, value] of Object.entries(replacements)) html = html.replaceAll(token, escape(brand(value)));
   html = brand(html).replaceAll('__COMMUNITY_LINK__', escape(catalog.community.mainLink)).replaceAll('__SUPPORT_CUSTOM_LABEL__', escape(catalog.ui.supportCustomLabel)).replace('</head>', `${alternates}\n<script type="module" src="language.js"></script>\n</head>`);
+  html = html.replaceAll('__CHROME_STORE_URL__', escape(storeLinks.chrome));
   html = html.replace(/(<strong data-version(?:="")?>)[^<]+/g, `$1${version}`);
   html = html.replace(/(<label[^>]+for="language-select"[^>]*>)[\s\S]*?(<\/label>)/, `$1${languageLabels[catalog.locale]}$2`);
   html = html.replace(/<option value="([^"]+)">/g, (match, locale) => `<option value="${locale}"${locale === catalog.locale ? ' selected' : ''}>`);

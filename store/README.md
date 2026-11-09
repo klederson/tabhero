@@ -1,6 +1,6 @@
 # TabHero — store submission kit
 
-Target: experimental public desktop release. This directory prepares the submission; it does not indicate store acceptance or a published listing.
+Target: experimental public desktop release. TabHero has public listings in the [Chrome Web Store](https://chromewebstore.google.com/detail/akceknbdadnbmehonkicfhicoebhalgk) and [Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/tabhero-new-chat-same-tab/), verified on 9 November 2026. This directory prepares update submissions; generated local packages do not establish which build the stores have approved.
 
 ## Files
 
@@ -21,7 +21,7 @@ Target: experimental public desktop release. This directory prepares the submiss
 5. Complete disclosures using `privacy-and-permissions.md`, checked against the exact current form wording. Optional AI still counts as data transmission; do not select “no data” for the whole product merely because the developer runs no backend.
 6. Attach reviewer notes and the source archive when requested. If functional review requires a dedicated test account or additional access, arrange it privately with reviewers; never provide the maintainer’s own WhatsApp login or API key.
 7. Run the final authenticated acceptance checklist below. Automated fixtures alone cannot prove real compatibility. Submit for review, initially retaining the experimental/beta positioning. A beta label does not bypass policy review.
-8. Record the real store listing IDs/URLs only after receiving them. Add official installation links to the website and README after publication; until then keep the manual-install message truthful. Future versions must update the same listing and retain its identity.
+8. Keep the official installation links in `website/store-links.js` and the README aligned with the existing listings. Future versions must update the same listing and retain its identity. Chrome ID: `akceknbdadnbmehonkicfhicoebhalgk`; Firefox slug: `tabhero-new-chat-same-tab` (add-on ID: `whatsapp-mesma-aba@local.extension`).
 
 ## Authenticated acceptance checklist
 
@@ -34,6 +34,6 @@ Target: experimental public desktop release. This directory prepares the submiss
 
 ## Current validation and status
 
-The project has automated unit and browser tests against simulated WhatsApp interfaces, an actual Firefox toolbar-popup sizing check, and a local Firefox add-on lint check. Prior user feedback confirms successful quick reply in an authenticated Firefox session; this is not a full authenticated audit of the release. Store submission, approval, publisher-account completion and Chrome authenticated validation must not be claimed until performed.
+The project has automated unit and browser tests against simulated WhatsApp interfaces, an actual Firefox toolbar-popup sizing check, and a local Firefox add-on lint check. Prior user feedback confirms successful quick reply in an authenticated Firefox session; this is not a full authenticated audit of the release. Both store listings are public. Their availability does not establish approval of the latest local packages or a complete authenticated validation of the release.
 
 Official references checked 5 November 2026: [Chrome publication](https://developer.chrome.com/docs/webstore/publish), [Chrome listing assets](https://developer.chrome.com/docs/webstore/cws-dashboard-listing), [Chrome disclosures](https://developer.chrome.com/docs/webstore/cws-dashboard-privacy), [Firefox submission](https://extensionworkshop.com/documentation/publish/submitting-an-add-on/), [Mozilla policies](https://extensionworkshop.com/documentation/publish/add-on-policies/).

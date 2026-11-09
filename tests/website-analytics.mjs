@@ -86,6 +86,19 @@ try{
  assert.equal(commands.filter(c=>c[1]==='download_click').length,1);
  assert.equal(commands.filter(c=>c[1]==='support_click').length,1);
  assert.doesNotMatch(JSON.stringify(commands),/SECRET|PRIVATE|sensitive|unrelated/);
+ if(!bridge){
+  // The install button now opens a store. It still counts only after consent,
+  // and never sends the listing URL or its query parameters.
+  await page.evaluate(()=>{
+   const install=document.querySelector('#download-extension');
+   install.addEventListener('click',e=>e.preventDefault());
+   install.href+='?private=SECRET';
+   install.click();
+  });
+  commands=await page.evaluate(()=>window.dataLayer.map(args=>Array.from(args)));
+  assert.equal(commands.filter(c=>c[1]==='download_click').length,2);
+  assert.doesNotMatch(JSON.stringify(commands),/SECRET|chromewebstore|akceknbd/);
+ }
  await page.reload();await page.waitForFunction(()=>window.__analyticsLoaded===true);
  assert.equal(await box.isHidden(),true);assert.equal(external.length,2);
  // Revoking clears only project cookies and persists before a website-only reload.

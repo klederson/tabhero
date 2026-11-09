@@ -29,6 +29,10 @@ try {
   const locales = ['en', 'es-419', 'pt-BR', 'id', 'hi'];
   const catalogs = [];
   const version = JSON.parse(await readFile('package.json', 'utf8')).version;
+  const officialStores = {
+    chrome: 'https://chromewebstore.google.com/detail/akceknbdadnbmehonkicfhicoebhalgk',
+    firefox: 'https://addons.mozilla.org/en-US/firefox/addon/tabhero-new-chat-same-tab/'
+  };
   const receivingEnabled = JSON.parse(await readFile('website/funding.json', 'utf8')).enabled === true;
   const load = async path => {
     await page.goto(new URL(path, url).href);
@@ -40,6 +44,8 @@ try {
     const catalog = JSON.parse(await readFile(`website/locales/${locale}.json`, 'utf8'));
     catalogs.push(catalog);
     const path = catalog.path ? `${catalog.path}/` : '';
+    const staticHtml = await (await page.request.get(new URL(path, url).href)).text();
+    assert.match(staticHtml, /id="download-extension" href="https:\/\/chromewebstore\.google\.com\/detail\/akceknbdadnbmehonkicfhicoebhalgk"(?![^>]*\bdownload)/, `${locale}: official store link works before JavaScript`);
     await page.setViewportSize({ width: 1440, height: 1050 });
     await load(path);
     assert.equal(await page.locator('html').getAttribute('lang'), locale);
@@ -48,6 +54,10 @@ try {
     assert.match(await page.title(), /TabHero/);
     assert.equal(await page.locator('[data-version]').textContent(), version);
     assert.doesNotMatch(await page.locator('body').textContent(), /__(?:BRAND|WORDMARK|I18N|META|LANG)/);
+    assert.equal(await page.locator('#download-extension').getAttribute('href'), officialStores.chrome);
+    assert.equal(await page.locator('#download-extension').getAttribute('download'), null);
+    assert.match(await page.locator('#install-steps').textContent(), /Chrome Web Store/);
+    assert.doesNotMatch(await page.locator('#install-steps').textContent(), /chrome:\/\/extensions/);
     await page.waitForFunction(enabled => document.querySelector('#support-submit').disabled === !enabled, receivingEnabled);
     assert.equal(await page.locator('#support-submit').isDisabled(), !receivingEnabled);
     await page.locator('#run-demo').click();
@@ -60,10 +70,15 @@ try {
     assert.equal(await page.locator('.sim-tab').count(), 3);
     await page.locator('[data-mode="after"]').click();
     await page.locator('[data-browser="firefox"]').click();
-    assert.match(await page.locator('#install-steps').textContent(), /manifest.json/);
+    assert.match(await page.locator('#install-steps').textContent(), /Mozilla Add-ons/);
+    assert.doesNotMatch(await page.locator('#install-steps').textContent(), /manifest.json|about:debugging/);
     assert.equal(await page.locator('#install-title').textContent(), catalog.ui.firefoxTitle);
-    assert.match(await page.locator('#download-extension').getAttribute('href'), /tabhero-firefox.zip$/);
+    assert.equal(await page.locator('#download-extension').getAttribute('href'), officialStores.firefox);
+    assert.equal(await page.locator('#download-extension').getAttribute('download'), null);
+    assert.equal(await page.locator('#install-note').textContent(), catalog.ui.firefoxNote);
     await page.locator('[data-browser="chrome"]').click();
+    assert.equal(await page.locator('#download-extension').getAttribute('href'), officialStores.chrome);
+    assert.equal(await page.locator('#install-note').textContent(), catalog.ui.chromeNote);
     await page.locator('[data-amount="custom"]').click();
     assert.equal(await page.locator('#custom-note').isVisible(), true);
     assert.equal(await page.locator('#support-submit').isDisabled(), true, 'Custom amount starts empty');
@@ -105,7 +120,18 @@ try {
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, `${locale}: community no overflow at ${width}px`);
       if (locale === 'en' || locale === 'pt-BR') await page.screenshot({ path: `artifacts/community-${locale}-${width}.png`, fullPage: true });
     }
-    console.log(`OK site ${locale}: UI, downloads, privacy, community filters and responsive layout.`);
+    console.log(`OK site ${locale}: official store links, UI, downloads, privacy, community filters and responsive layout.`);
+  }
+  // Exercise the real buttons without installing an extension or contacting a store.
+  for (const [name, storeUrl] of Object.entries(officialStores)) {
+    await page.route(storeUrl, route => route.abort());
+    await load('');
+    await page.locator(`[data-browser="${name}"]`).click();
+    const [request] = await Promise.all([
+      page.waitForRequest(storeUrl),
+      page.locator('#download-extension').click({ noWaitAfter: true })
+    ]);
+    assert.equal(request.url(), storeUrl, `${name}: install button opens the official listing`);
   }
   await load('');
   await Promise.all([page.waitForURL(new URL('es/', url).href), page.locator('#language-select').selectOption('es-419')]);
